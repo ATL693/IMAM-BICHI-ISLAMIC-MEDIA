@@ -1,1 +1,1027 @@
-<Htlm, homepage Imam_lawan_abubakar_bichi>
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IMAM BICHI ISLAMIC MEDIA</title>
+
+  <meta
+    name="description"
+    content="IMAM BICHI ISLAMIC MEDIA - Karatuttuka, Audio, Video, Littattafai, Hotuna da Sanarwa."
+  >
+
+  <style>
+    :root {
+      --green: #087443;
+      --dark-green: #064d2e;
+      --gold: #d8b23c;
+      --cream: #fbfaf3;
+      --white: #ffffff;
+      --text: #173126;
+      --muted: #687870;
+      --border: #e5ebe7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--dark-green);
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #365247;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 85px 0;
+      background:
+        linear-gradient(
+          135deg,
+          #edf7f1,
+          #fffaf0
+        );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      color: var(--dark-green);
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border-radius: 10px;
+      background: var(--green);
+      color: white;
+      font-weight: 800;
+      border: 1px solid var(--green);
+    }
+
+    .btn:hover {
+      background: var(--dark-green);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--green);
+    }
+
+    .imam-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,.07);
+    }
+
+    .imam-image {
+      width: 100%;
+      height: 300px;
+      border-radius: 17px;
+      background: #edf5f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .imam-card h2 {
+      color: var(--dark-green);
+      margin-bottom: 5px;
+    }
+
+    .imam-card p {
+      font-size: 14px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-light {
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      color: var(--dark-green);
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    /* CONTENT CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 23px;
+      transition: .2s;
+    }
+
+    .section-light .card {
+      background: var(--cream);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 13px;
+      background: #e9f5ef;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--dark-green);
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ANNOUNCEMENT */
+
+    .announcement {
+      background: var(--dark-green);
+      color: white;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .announcement h3 {
+      color: #f2d46e;
+      margin-bottom: 8px;
+    }
+
+    .announcement p {
+      color: #dce9e2;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about h2 {
+      color: var(--dark-green);
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .about-box {
+      background: var(--dark-green);
+      color: white;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .about-box strong {
+      color: var(--gold);
+      font-size: 24px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #052e1e;
+      color: #d9e7e0;
+      padding: 45px 0 20px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-title {
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      border-top: 1px solid #275341;
+      margin-top: 30px;
+      padding-top: 18px;
+      text-align: center;
+      color: #9fb6ac;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 72px;
+        background: white;
+        padding: 18px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .imam-image {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="container nav">
+
+    <a href="#home" class="logo">
+      🕌 IMAM <span>BICHI</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">
+      ☰
+    </button>
+
+    <nav id="navigation">
+
+      <a href="#home">Gida</a>
+      <a href="#lectures">Karatuttuka</a>
+      <a href="#audio">Audio</a>
+      <a href="#video">Video</a>
+      <a href="#books">Littattafai</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">Game da Limami</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        ILIMI • ADDINI • TUNATARWA
+      </div>
+
+      <h1>
+        IMAM BICHI
+        ISLAMIC MEDIA
+      </h1>
+
+      <p>
+        Barka da zuwa shafin IMAM BICHI ISLAMIC MEDIA,
+        wurin tattara karatuttuka, wa'azuzzuka, audio,
+        video, littattafai, hotuna da sanarwa.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#lectures" class="btn">
+          📖 Duba Karatuttuka
+        </a>
+
+        <a href="#audio" class="btn btn-outline">
+          🎧 Saurari Audio
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="imam-card">
+
+      <div class="imam-image">
+        🕌
+      </div>
+
+      <h2>
+        Babban Limamin Bichi
+      </h2>
+
+      <p>
+        Karatuttuka da bayanan ilimi
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SANARWA
+========================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        SABON BAYANI
+      </div>
+
+      <h2>
+        Sanarwa
+      </h2>
+
+      <p>
+        Muhimman bayanai da sanarwa
+      </p>
+
+    </div>
+
+
+    <div class="announcement">
+
+      <h3>
+        Barka da zuwa IMAM BICHI ISLAMIC MEDIA
+      </h3>
+
+      <p>
+        Za a rika kawo muku sabbin karatuttuka,
+        wa'azuzzuka, audio, video, littattafai,
+        hotuna da sauran abubuwan ilimi a wannan shafi.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     KARATUTTUKA
+========================= -->
+
+<section class="section-light" id="lectures">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        ILIMI
+      </div>
+
+      <h2>
+        Karatuttuka
+      </h2>
+
+      <p>
+        Nemo kuma saurari karatuttukan ilimi
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <article class="card">
+
+        <div class="icon">📖</div>
+
+        <h3>
+          Tafsiri
+        </h3>
+
+        <p>
+          Karatuttukan Tafsirin Al-Qur'ani.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon">📚</div>
+
+        <h3>
+          Hadisi
+        </h3>
+
+        <p>
+          Karatuttukan Hadisai da bayanansu.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon">🕌</div>
+
+        <h3>
+          Fiqhu
+        </h3>
+
+        <p>
+          Darussa da bayanai akan Fiqhun Musulunci.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon">☪️</div>
+
+        <h3>
+          Akida
+        </h3>
+
+        <p>
+          Darussan Akida da sauran fannoni na ilimi.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon">📜</div>
+
+        <h3>
+          Tarihi
+        </h3>
+
+        <p>
+          Tarihi da darussan da suka shafi Musulunci.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon">🎓</div>
+
+        <h3>
+          Sauran Darussa
+        </h3>
+
+        <p>
+          Wasu muhimman darussa da bayanai.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<section id="audio">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        SAURARO
+      </div>
+
+      <h2>
+        Audio
+      </h2>
+
+      <p>
+        Za a samu audio na karatuttuka a nan.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <article class="card">
+
+        <div class="icon">🎧</div>
+
+        <h3>
+          Sabon Audio
+        </h3>
+
+        <p>
+          Za a bayyana sunan karatu da audio
+          daga Admin Panel.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     VIDEO
+========================= -->
+
+<section class="section-light" id="video">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        KALLI
+      </div>
+
+      <h2>
+        Video
+      </h2>
+
+      <p>
+        Videos na karatuttuka da wa'azuzzuka.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <article class="card">
+
+        <div class="icon">🎥</div>
+
+        <h3>
+          Sabon Video
+        </h3>
+
+        <p>
+          Za a rika saka videos a nan
+          ta hanyar Admin Panel.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     LITATTAFAI
+========================= -->
+
+<section id="books">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        KARATU
+      </div>
+
+      <h2>
+        Littattafai
+      </h2>
+
+      <p>
+        Littattafai da PDF za su bayyana a nan.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <article class="card">
+
+        <div class="icon">📕</div>
+
+        <h3>
+          Littattafai / PDF
+        </h3>
+
+        <p>
+          Admin zai iya saka sabon littafi
+          ko PDF daga Admin Panel.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="section-light" id="gallery">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        HOTUNA
+      </div>
+
+      <h2>
+        Gallery
+      </h2>
+
+      <p>
+        Hotunan karatuttuka da abubuwan da suka shafi shafin.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <article class="card">
+
+        <div class="icon">🖼️</div>
+
+        <h3>
+          Gallery
+        </h3>
+
+        <p>
+          Za a rika saka hotuna daga Admin Panel.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GAME DA LIMAMI
+========================= -->
+
+<section id="about">
+
+  <div class="container about">
+
+    <div>
+
+      <div class="eyebrow">
+        GAME DA SHAFIN
+      </div>
+
+      <h2>
+        Babban Limamin Bichi
+      </h2>
+
+      <p>
+        Wannan shafi an tsara shi domin tattara
+        da sauƙaƙa samun karatuttuka, wa'azuzzuka,
+        bayanai, hotuna da sauran abubuwan ilimi.
+      </p>
+
+      <p>
+        Za a rika sabunta shafin da sabbin abubuwan
+        ilimi domin masu ziyara su samu damar samun
+        bayanai cikin sauƙi.
+      </p>
+
+    </div>
+
+
+    <div class="about-box">
+
+      <strong>
+        IMAM BICHI
+      </strong>
+
+      <span>
+        Islamic Media & Knowledge
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="footer-title">
+          🕌 IMAM BICHI ISLAMIC MEDIA
+        </div>
+
+        <p>
+          Ilimi • Addini • Tunatarwa
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#home">Gida</a>
+        <a href="#lectures">Karatuttuka</a>
+        <a href="#audio">Audio</a>
+        <a href="#video">Video</a>
+        <a href="#books">Littattafai</a>
+        <a href="#about">Game da Limami</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      © <span id="year"></span>
+      IMAM BICHI ISLAMIC MEDIA.
+      All Rights Reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  // Mobile menu
+  const menuBtn = document.getElementById("menuBtn");
+  const navigation = document.getElementById("navigation");
+
+  menuBtn.addEventListener("click", function () {
+    navigation.classList.toggle("active");
+  });
+
+
+  // Close mobile menu after clicking a link
+  document.querySelectorAll("nav a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+      navigation.classList.remove("active");
+    });
+
+  });
+
+
+  // Current year
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+  </html>
