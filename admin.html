@@ -3,49 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imam Bichi Islamic Media - Admin</title>
+<title>Admin Panel | Imam Bichi Islamic Media</title>
 
 <style>
+:root{
+  --green:#087443;
+  --dark:#04542f;
+  --gold:#d4af37;
+  --cream:#fbf8ef;
+  --white:#fff;
+  --text:#173326;
+  --muted:#718078;
+  --border:#e2e9e5;
+  --danger:#c62828;
+}
+
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4efdf;
-  color:#222;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7f5;
+  color:var(--text);
 }
 
-.container{
-  width:94%;
-  max-width:1000px;
-  margin:25px auto;
+button,input,textarea,select{
+  font:inherit;
 }
 
-.box{
-  background:#fff;
-  padding:25px;
-  border-radius:16px;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
+button{
+  cursor:pointer;
 }
 
-#loginBox{
+.hidden{
+  display:none!important;
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#043d24,#087443,#0b8a52);
+}
+
+.login-box{
+  width:100%;
   max-width:420px;
-  margin:70px auto;
+  background:#fff;
+  padding:30px 25px;
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
-h1,h2{
-  color:#087443;
+.logo{
+  width:75px;
+  height:75px;
+  margin:auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--green);
+  border:4px solid var(--gold);
+  font-size:35px;
 }
 
-.center{text-align:center}
+.login-box h1{
+  text-align:center;
+  color:var(--dark);
+  margin:15px 0 5px;
+  font-size:24px;
+}
+
+.login-box p{
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:bold;
+  font-size:14px;
+}
 
 input,textarea,select{
   width:100%;
-  padding:13px;
-  margin:7px 0 14px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  outline:none;
+  background:#fff;
 }
 
 textarea{
@@ -53,1110 +110,2454 @@ textarea{
   resize:vertical;
 }
 
-button{
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(8,116,67,.1);
+}
+
+.password{
+  position:relative;
+}
+
+.password input{
+  padding-right:65px;
+}
+
+.show-pass{
+  position:absolute;
+  right:7px;
+  top:7px;
   border:0;
-  padding:13px 18px;
-  border-radius:8px;
-  background:#087443;
-  color:white;
-  font-size:15px;
-  cursor:pointer;
+  background:#edf5f0;
+  color:var(--green);
+  padding:7px 9px;
+  border-radius:7px;
+  font-size:12px;
 }
 
-button:hover{
-  background:#065d35;
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 15px;
+  font-weight:bold;
 }
 
-button:disabled{
-  opacity:.6;
+.btn-primary{
+  background:var(--green);
+  color:#fff;
 }
 
-.logout{
-  background:#a11b1b;
+.btn-primary:hover{
+  background:var(--dark);
 }
 
-.back{
-  background:#555;
-  margin-bottom:15px;
+.btn-light{
+  background:#edf4ef;
+  color:var(--green);
 }
 
-#dashboard{
-  display:none;
+.btn-danger{
+  background:#ffe9e9;
+  color:var(--danger);
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;
-  margin-top:25px;
+.btn-gold{
+  background:var(--gold);
+  color:#173326;
 }
 
-.card{
-  padding:25px 10px;
-  background:#fafafa;
-  border:1px solid #ddd;
-  border-radius:12px;
-  text-align:center;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 5px 15px rgba(0,0,0,.12);
-}
-
-.icon{
-  display:block;
-  font-size:35px;
-  margin-bottom:10px;
-}
-
-.section{
-  display:none;
-  margin-top:20px;
+.btn-block{
+  width:100%;
 }
 
 .message{
   margin-top:12px;
   padding:10px;
-  border-radius:7px;
-}
-
-.success{
-  background:#e6f7ec;
-  color:#087443;
+  border-radius:9px;
+  font-size:13px;
 }
 
 .error{
-  background:#ffe5e5;
-  color:#b00020;
+  background:#fff0f0;
+  color:#a51e1e;
 }
 
-.small{
-  color:#777;
-  font-size:14px;
+.success{
+  background:#edf9f1;
+  color:#126b3d;
+}
+
+/* ================= APP ================= */
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:68px;
+  background:var(--dark);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+}
+
+.brand-icon{
+  width:40px;
+  height:40px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.brand small{
+  display:block;
+  opacity:.7;
+  font-weight:normal;
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  padding:8px 11px;
+  border-radius:8px;
+  font-size:20px;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 68px);
+}
+
+.sidebar{
+  width:245px;
+  background:white;
+  border-right:1px solid var(--border);
+  padding:15px 12px;
+}
+
+.nav{
+  width:100%;
+  border:0;
+  background:transparent;
+  padding:12px;
+  text-align:left;
+  border-radius:9px;
+  margin-bottom:5px;
+  font-weight:bold;
+  color:#355247;
+}
+
+.nav:hover,
+.nav.active{
+  background:#eaf5ef;
+  color:var(--green);
+}
+
+.content{
+  flex:1;
+  padding:25px;
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+.title{
+  margin-bottom:20px;
+}
+
+.title h2{
+  margin:0;
+  color:var(--dark);
+}
+
+.title p{
+  margin:5px 0;
+  color:var(--muted);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.card strong{
+  display:block;
+  font-size:27px;
+  color:var(--dark);
+  margin-top:7px;
+}
+
+.card span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.panel h3{
+  margin-top:0;
+  color:var(--dark);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.list{
+  display:grid;
+  gap:10px;
+}
+
+.item{
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.item h4{
+  margin:0 0 6px;
+  color:var(--dark);
+}
+
+.item p{
+  margin:4px 0;
+  font-size:13px;
+  color:#596b62;
+  line-height:1.5;
+}
+
+.item small{
+  color:#89968f;
+}
+
+.item-buttons{
+  display:flex;
+  gap:6px;
+  flex:none;
+}
+
+.item-buttons button{
+  padding:8px 10px;
+  font-size:12px;
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:25px;
+  border:1px dashed #ccd8d1;
+  border-radius:10px;
+}
+
+#status{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#173326;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:10px;
+  display:none;
+  z-index:100;
+  max-width:380px;
+  font-size:13px;
+}
+
+#status.show{
+  display:block;
+}
+
+#status.bad{
+  background:#a51e1e;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:720px){
+
+  .menu{
+    display:block;
+  }
+
+  .sidebar{
+    position:fixed;
+    top:68px;
+    bottom:0;
+    left:0;
+    transform:translateX(-110%);
+    transition:.25s;
+    z-index:15;
+    box-shadow:10px 0 25px rgba(0,0,0,.15);
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .item{
+    flex-direction:column;
+  }
+
+  .item-buttons{
+    width:100%;
+  }
+
+  .item-buttons button{
+    flex:1;
+  }
+}
+
+@media(max-width:450px){
+
+  .topbar{
+    padding:0 10px;
+  }
+
+  .brand{
+    font-size:12px;
+  }
+
+  .cards{
+    gap:8px;
+  }
+
+  .card{
+    padding:13px;
+  }
+
+  .card strong{
+    font-size:22px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <!-- ================= LOGIN ================= -->
 
-<div class="box" id="loginBox">
+<div id="loginPage">
 
-  <div class="center">
-    <h1>Admin Login</h1>
-    <p class="small">Imam Bichi Islamic Media</p>
+  <div class="login-box">
+
+    <div class="logo">🕌</div>
+
+    <h1>Imam Bichi Islamic Media</h1>
+
+    <p>Admin Panel</p>
+
+    <form id="loginForm">
+
+      <div class="field">
+        <label>Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Admin email"
+          required
+        >
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+
+        <div class="password">
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            required
+          >
+
+          <button
+            type="button"
+            class="show-pass"
+            id="showPassword"
+          >
+            Nuna
+          </button>
+
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary btn-block"
+        id="loginButton"
+      >
+        Shiga Admin
+      </button>
+
+      <div id="loginMessage" class="message hidden"></div>
+
+    </form>
+
   </div>
-
-  <input
-    type="email"
-    id="email"
-    placeholder="Admin Email"
-  >
-
-  <input
-    type="password"
-    id="password"
-    placeholder="Password"
-  >
-
-  <button id="loginBtn">
-    Login
-  </button>
-
-  <div id="loginMessage"></div>
 
 </div>
 
+
+<!-- ================= ADMIN APP ================= -->
+
+<div id="app" class="hidden">
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <button class="menu" id="menuButton">☰</button>
+
+    <div class="brand-icon">🕌</div>
+
+    <div>
+      Imam Bichi Islamic Media
+      <small>Admin Panel</small>
+    </div>
+
+  </div>
+
+  <button class="btn btn-gold" id="logoutButton">
+    Logout
+  </button>
+
+</header>
+
+
+<div class="layout">
+
+<aside class="sidebar" id="sidebar">
+
+<button class="nav active" data-page="dashboard">📊 Dashboard</button>
+
+<button class="nav" data-page="lectures">📖 Karatuttuka</button>
+
+<button class="nav" data-page="audio">🎧 Audio</button>
+
+<button class="nav" data-page="videos">🎥 Video</button>
+
+<button class="nav" data-page="books">📚 Littattafai</button>
+
+<button class="nav" data-page="gallery">🖼️ Gallery</button>
+
+<button class="nav" data-page="announcements">📢 Sanarwa</button>
+
+<button class="nav" data-page="about">🕌 About Imam</button>
+
+</aside>
+
+
+<main class="content">
 
 <!-- ================= DASHBOARD ================= -->
 
-<div id="dashboard">
+<section class="section active" id="dashboard">
 
-  <div class="box">
+<div class="title">
+<h2>Admin Dashboard</h2>
+<p>Sarrafa dukkan abubuwan shafin daga nan.</p>
+</div>
 
-    <div class="center">
-      <h1>Admin Dashboard</h1>
-      <p class="small">
-        Imam Bichi Islamic Media
-      </p>
-    </div>
+<div class="cards">
 
-    <div class="cards">
+<div class="card">
+📖
+<strong id="lectureCount">0</strong>
+<span>Karatuttuka</span>
+</div>
 
-      <div class="card" onclick="openSection('lectures')">
-        <span class="icon">📖</span>
-        <b>Karatuttuka</b>
-      </div>
+<div class="card">
+🎧
+<strong id="audioCount">0</strong>
+<span>Audio</span>
+</div>
 
-      <div class="card" onclick="openSection('audio')">
-        <span class="icon">🎧</span>
-        <b>Audio</b>
-      </div>
+<div class="card">
+🎥
+<strong id="videoCount">0</strong>
+<span>Video</span>
+</div>
 
-      <div class="card" onclick="openSection('video')">
-        <span class="icon">🎥</span>
-        <b>Video</b>
-      </div>
+<div class="card">
+📚
+<strong id="bookCount">0</strong>
+<span>Littattafai</span>
+</div>
 
-      <div class="card" onclick="openSection('books')">
-        <span class="icon">📚</span>
-        <b>Littattafai</b>
-      </div>
+<div class="card">
+🖼️
+<strong id="galleryCount">0</strong>
+<span>Gallery</span>
+</div>
 
-      <div class="card" onclick="openSection('gallery')">
-        <span class="icon">🖼️</span>
-        <b>Gallery</b>
-      </div>
-
-      <div class="card" onclick="openSection('announcements')">
-        <span class="icon">📢</span>
-        <b>Sanarwa</b>
-      </div>
-
-      <div class="card" onclick="openSection('about')">
-        <span class="icon">🕌</span>
-        <b>About Imam</b>
-      </div>
-
-    </div>
-
-    <br>
-
-    <button class="logout" id="logoutBtn">
-      Logout
-    </button>
-
-  </div>
-
-
-<!-- ================= KARATUTUKA ================= -->
-
-<div class="box section" id="lectures">
-
-  <button class="back" onclick="closeSections()">← Back</button>
-
-  <h2>📖 Ƙara Karatu</h2>
-
-  <input id="lectureTitle" placeholder="Taken Karatu">
-
-  <select id="lectureCategory">
-    <option value="">Zaɓi Category</option>
-    <option>Tafsiri</option>
-    <option>Hadisi</option>
-    <option>Fiqhu</option>
-    <option>Akida</option>
-    <option>Tarihi</option>
-    <option>Wa'azi</option>
-    <option>Sauran</option>
-  </select>
-
-  <textarea
-    id="lectureDescription"
-    placeholder="Bayani game da karatun"
-  ></textarea>
-
-  <input
-    id="lectureVideo"
-    placeholder="YouTube URL (optional)"
-  >
-
-  <input
-    id="lectureImage"
-    placeholder="Image URL (optional)"
-  >
-
-  <button onclick="saveLecture()">
-    ➕ Ajiye Karatu
-  </button>
-
-  <div id="lectureMessage"></div>
+<div class="card">
+📢
+<strong id="announcementCount">0</strong>
+<span>Sanarwa</span>
+</div>
 
 </div>
+
+<div class="panel">
+
+<h3>Maraba da zuwa Admin Panel</h3>
+
+<p>
+Daga nan zaka iya saka, gyara ko share Karatuttuka,
+Audio, Video, Littattafai, Gallery, Sanarwa da bayanin Imam.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= LECTURES ================= -->
+
+<section class="section" id="lectures">
+
+<div class="title">
+<h2>📖 Karatuttuka</h2>
+<p>Saka sabon karatu.</p>
+</div>
+
+<div class="panel">
+
+<h3 id="lectureHeading">Saka Sabon Karatu</h3>
+
+<form id="lectureForm">
+
+<input type="hidden" id="lectureId">
+
+<div class="grid">
+
+<div class="field">
+<label>Title</label>
+<input id="lectureTitle" required placeholder="Sunan karatu">
+</div>
+
+<div class="field">
+<label>Category</label>
+
+<select id="lectureCategory">
+
+<option>Tafsiri</option>
+<option>Hadisi</option>
+<option>Fiqhu</option>
+<option>Akida</option>
+<option>Tarihi</option>
+<option>Wa'azi</option>
+<option>Sauran Karatuttuka</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="field">
+<label>Description</label>
+<textarea id="lectureDescription"></textarea>
+</div>
+
+<div class="grid">
+
+<div class="field">
+<label>Video URL</label>
+<input id="lectureVideoUrl" type="url" placeholder="https://...">
+</div>
+
+<div class="field">
+<label>Image URL</label>
+<input id="lectureImageUrl" type="url" placeholder="https://...">
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn btn-primary">
+Ajiye Karatu
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelLecture"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+
+<h3>Karatuttukan da aka saka</h3>
+
+<div class="list" id="lectureList"></div>
+
+</div>
+
+</section>
 
 
 <!-- ================= AUDIO ================= -->
 
-<div class="box section" id="audio">
+<section class="section" id="audio">
 
-  <button class="back" onclick="closeSections()">← Back</button>
+<div class="title">
+<h2>🎧 Audio</h2>
+<p>Saka sabon audio.</p>
+</div>
 
-  <h2>🎧 Ƙara Audio</h2>
+<div class="panel">
 
-  <input
-    id="audioTitle"
-    placeholder="Taken Audio"
-  >
+<h3>Saka Audio</h3>
 
-  <textarea
-    id="audioDescription"
-    placeholder="Bayani"
-  ></textarea>
+<form id="audioForm">
 
-  <input
-    id="audioUrl"
-    placeholder="Audio URL"
-  >
+<input type="hidden" id="audioId">
 
-  <button onclick="saveAudio()">
-    ➕ Ajiye Audio
-  </button>
+<div class="grid">
 
-  <div id="audioMessage"></div>
+<div class="field">
+<label>Title</label>
+<input id="audioTitle" required>
+</div>
+
+<div class="field">
+<label>Audio URL</label>
+<input id="audioUrl" type="url" required>
+</div>
 
 </div>
+
+<div class="field">
+<label>Description</label>
+<textarea id="audioDescription"></textarea>
+</div>
+
+<div class="actions">
+
+<button class="btn btn-primary">
+Ajiye Audio
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelAudio"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+<h3>Audio da aka saka</h3>
+<div class="list" id="audioList"></div>
+</div>
+
+</section>
 
 
 <!-- ================= VIDEO ================= -->
 
-<div class="box section" id="video">
+<section class="section" id="videos">
 
-  <button class="back" onclick="closeSections()">← Back</button>
+<div class="title">
+<h2>🎥 Video</h2>
+<p>Saka YouTube ko wani public video link.</p>
+</div>
 
-  <h2>🎥 Ƙara Video</h2>
+<div class="panel">
 
-  <input
-    id="videoTitle"
-    placeholder="Taken Video"
-  >
+<h3>Saka Video</h3>
 
-  <textarea
-    id="videoDescription"
-    placeholder="Bayani"
-  ></textarea>
+<form id="videoForm">
 
-  <input
-    id="videoUrl"
-    placeholder="YouTube URL"
-  >
+<input type="hidden" id="videoId">
 
-  <button onclick="saveVideo()">
-    ➕ Ajiye Video
-  </button>
+<div class="grid">
 
-  <div id="videoMessage"></div>
+<div class="field">
+<label>Title</label>
+<input id="videoTitle" required>
+</div>
+
+<div class="field">
+<label>Video URL</label>
+<input id="videoUrl" type="url" required>
+</div>
 
 </div>
+
+<div class="field">
+<label>Description</label>
+<textarea id="videoDescription"></textarea>
+</div>
+
+<div class="actions">
+
+<button class="btn btn-primary">
+Ajiye Video
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelVideo"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+<h3>Videos da aka saka</h3>
+<div class="list" id="videoList"></div>
+</div>
+
+</section>
 
 
 <!-- ================= BOOKS ================= -->
 
-<div class="box section" id="books">
+<section class="section" id="books">
 
-  <button class="back" onclick="closeSections()">← Back</button>
+<div class="title">
+<h2>📚 Littattafai</h2>
+<p>Saka littafi/PDF.</p>
+</div>
 
-  <h2>📚 Ƙara Littafi</h2>
+<div class="panel">
 
-  <input
-    id="bookTitle"
-    placeholder="Sunan Littafi"
-  >
+<h3>Saka Littafi</h3>
 
-  <input
-    id="bookAuthor"
-    placeholder="Marubuci"
-  >
+<form id="bookForm">
 
-  <textarea
-    id="bookDescription"
-    placeholder="Bayani"
-  ></textarea>
+<input type="hidden" id="bookId">
 
-  <input
-    id="bookUrl"
-    placeholder="PDF URL"
-  >
+<div class="grid">
 
-  <button onclick="saveBook()">
-    ➕ Ajiye Littafi
-  </button>
+<div class="field">
+<label>Title</label>
+<input id="bookTitle" required>
+</div>
 
-  <div id="bookMessage"></div>
+<div class="field">
+<label>Author</label>
+<input id="bookAuthor">
+</div>
 
 </div>
+
+<div class="field">
+<label>Description</label>
+<textarea id="bookDescription"></textarea>
+</div>
+
+<div class="field">
+<label>PDF URL</label>
+<input id="bookPdfUrl" type="url" required>
+</div>
+
+<div class="actions">
+
+<button class="btn btn-primary">
+Ajiye Littafi
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelBook"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+<h3>Littattafan da aka saka</h3>
+<div class="list" id="bookList"></div>
+</div>
+
+</section>
 
 
 <!-- ================= GALLERY ================= -->
 
-<div class="box section" id="gallery">
+<section class="section" id="gallery">
 
-  <button class="back" onclick="closeSections()">← Back</button>
-
-  <h2>🖼️ Ƙara Hoto</h2>
-
-  <input
-    id="galleryTitle"
-    placeholder="Taken Hoto"
-  >
-
-  <input
-    id="galleryImage"
-    placeholder="Image URL"
-  >
-
-  <textarea
-    id="galleryDescription"
-    placeholder="Bayani"
-  ></textarea>
-
-  <button onclick="saveGallery()">
-    ➕ Ajiye Hoto
-  </button>
-
-  <div id="galleryMessage"></div>
-
+<div class="title">
+<h2>🖼️ Gallery</h2>
+<p>Saka hotuna.</p>
 </div>
 
+<div class="panel">
 
-<!-- ================= SANARWA ================= -->
+<h3>Saka Hoto</h3>
 
-<div class="box section" id="announcements">
+<form id="galleryForm">
 
-  <button class="back" onclick="closeSections()">← Back</button>
+<input type="hidden" id="galleryId">
 
-  <h2>📢 Ƙara Sanarwa</h2>
+<div class="grid">
 
-  <input
-    id="announcementTitle"
-    placeholder="Taken Sanarwa"
-  >
-
-  <textarea
-    id="announcementText"
-    placeholder="Rubuta sanarwa"
-  ></textarea>
-
-  <button onclick="saveAnnouncement()">
-    ➕ Ajiye Sanarwa
-  </button>
-
-  <div id="announcementMessage"></div>
-
+<div class="field">
+<label>Title</label>
+<input id="galleryTitle" required>
 </div>
 
-
-<!-- ================= ABOUT IMAM ================= -->
-
-<div class="box section" id="about">
-
-  <button class="back" onclick="closeSections()">← Back</button>
-
-  <h2>🕌 About Imam</h2>
-
-  <input
-    id="aboutName"
-    placeholder="Sunan Imam"
-  >
-
-  <textarea
-    id="aboutText"
-    placeholder="Tarihin Imam / About Imam"
-  ></textarea>
-
-  <input
-    id="aboutImage"
-    placeholder="Image URL (optional)"
-  >
-
-  <button onclick="saveAbout()">
-    💾 Ajiye About Imam
-  </button>
-
-  <div id="aboutMessage"></div>
-
+<div class="field">
+<label>Image URL</label>
+<input id="galleryImageUrl" type="url" required>
 </div>
 
 </div>
 
+<div class="field">
+<label>Description</label>
+<textarea id="galleryDescription"></textarea>
 </div>
 
+<div class="actions">
 
-<!-- ================= FIREBASE ================= -->
+<button class="btn btn-primary">
+Ajiye Hoto
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelGallery"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+<h3>Hotunan da aka saka</h3>
+<div class="list" id="galleryList"></div>
+</div>
+
+</section>
+
+
+<!-- ================= ANNOUNCEMENTS ================= -->
+
+<section class="section" id="announcements">
+
+<div class="title">
+<h2>📢 Sanarwa</h2>
+<p>Saka sanarwa.</p>
+</div>
+
+<div class="panel">
+
+<h3>Saka Sanarwa</h3>
+
+<form id="announcementForm">
+
+<input type="hidden" id="announcementId">
+
+<div class="field">
+<label>Title</label>
+<input id="announcementTitle" required>
+</div>
+
+<div class="field">
+<label>Text</label>
+<textarea id="announcementText" required></textarea>
+</div>
+
+<div class="actions">
+
+<button class="btn btn-primary">
+Ajiye Sanarwa
+</button>
+
+<button
+type="button"
+class="btn btn-light hidden"
+id="cancelAnnouncement"
+>
+Soke Gyara
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="panel">
+<h3>Sanarwar da aka saka</h3>
+<div class="list" id="announcementList"></div>
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section" id="about">
+
+<div class="title">
+<h2>🕌 About Imam</h2>
+<p>Gyara bayanan Imam.</p>
+</div>
+
+<div class="panel">
+
+<form id="aboutForm">
+
+<div class="field">
+<label>Sunan Imam</label>
+<input id="aboutName">
+</div>
+
+<div class="field">
+<label>Tarihi / Bayani</label>
+<textarea id="aboutText" style="min-height:220px"></textarea>
+</div>
+
+<div class="field">
+<label>Image URL</label>
+<input id="aboutImageUrl" type="url">
+</div>
+
+<button class="btn btn-primary">
+Ajiye About Imam
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+</div>
+
+<div id="status"></div>
+
 
 <script type="module">
 
+/* =====================================================
+   FIREBASE
+===================================================== */
+
 import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
+getAuth,
+onAuthStateChanged,
+signInWithEmailAndPassword,
+signOut
 }
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  doc,
-  getDoc,
-  setDoc,
-  serverTimestamp
+getFirestore,
+collection,
+addDoc,
+getDocs,
+getDoc,
+doc,
+updateDoc,
+deleteDoc,
+setDoc,
+serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-
-/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
 
-  apiKey:
-  "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
+apiKey:"AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuO-4T4",
 
-  authDomain:
-  "imam-bichi-islamic-media.firebaseapp.com",
+authDomain:
+"imam-bichi-islamic-media.firebaseapp.com",
 
-  projectId:
-  "imam-bichi-islamic-media",
+projectId:
+"imam-bichi-islamic-media",
 
-  storageBucket:
-  "imam-bichi-islamic-media.firebasestorage.app",
+storageBucket:
+"imam-bichi-islamic-media.firebasestorage.app",
 
-  messagingSenderId:
-  "87559095522",
+messagingSenderId:
+"87559095522",
 
-  appId:
-  "1:87559095522:web:a2d9d783166f56aade8abb",
+appId:
+"1:87559095522:web:a2d9d783166f56aade8abb",
 
-  measurementId:
-  "G-J2QD3SRX5N"
-};
-
-
-/* ================= INITIALIZE ================= */
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-const db = getFirestore(app);
-
-
-/* ================= LOGIN ================= */
-
-document
-.getElementById("loginBtn")
-.addEventListener("click", async () => {
-
-  const email =
-  document.getElementById("email").value.trim();
-
-  const password =
-  document.getElementById("password").value;
-
-  const message =
-  document.getElementById("loginMessage");
-
-  if(!email || !password){
-
-    message.textContent =
-    "Cika email da password.";
-
-    message.className =
-    "message error";
-
-    return;
-  }
-
-  const button =
-  document.getElementById("loginBtn");
-
-  button.disabled = true;
-  button.textContent = "Logging in...";
-
-  try{
-
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    message.textContent =
-    "Login failed: " + error.code;
-
-    message.className =
-    "message error";
-
-    button.disabled = false;
-    button.textContent = "Login";
-  }
-
-});
-
-
-/* ================= AUTH CHECK ================= */
-
-onAuthStateChanged(auth, async (user) => {
-
-  if(!user){
-
-    document.getElementById(
-      "loginBox"
-    ).style.display = "block";
-
-    document.getElementById(
-      "dashboard"
-    ).style.display = "none";
-
-    return;
-  }
-
-  try{
-
-    const userDoc =
-    await getDoc(
-      doc(db,"users",user.uid)
-    );
-
-    if(
-      !userDoc.exists() ||
-      userDoc.data().role !== "admin"
-    ){
-
-      alert("Ba ka da izinin Admin.");
-
-      await signOut(auth);
-
-      return;
-    }
-
-    document.getElementById(
-      "loginBox"
-    ).style.display = "none";
-
-    document.getElementById(
-      "dashboard"
-    ).style.display = "block";
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "An kasa tabbatar da Admin: "
-      + error.message
-    );
-
-    await signOut(auth);
-  }
-
-});
-
-
-/* ================= LOGOUT ================= */
-
-document
-.getElementById("logoutBtn")
-.addEventListener("click", async () => {
-
-  await signOut(auth);
-
-});
-
-
-/* ================= OPEN SECTION ================= */
-
-window.openSection = function(id){
-
-  document
-  .querySelectorAll(".section")
-  .forEach(section => {
-    section.style.display = "none";
-  });
-
-  document.getElementById(id)
-  .style.display = "block";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+measurementId:
+"G-J2QD3SRX5N"
 
 };
 
 
-/* ================= CLOSE ================= */
+const app=initializeApp(firebaseConfig);
 
-window.closeSections = function(){
+const auth=getAuth(app);
 
-  document
-  .querySelectorAll(".section")
-  .forEach(section => {
-    section.style.display = "none";
-  });
-
-};
+const db=getFirestore(app);
 
 
-/* ================= MESSAGE ================= */
+/* ADMIN UID */
 
-function showMessage(id,text,success=true){
+const ADMIN_UID=
+"L4AmkUvGjjdQ47y3ud2pL8Jx8v43";
 
-  const box =
-  document.getElementById(id);
 
-  box.textContent = text;
+/* HELPERS */
 
-  box.className =
-  success
-  ? "message success"
-  : "message error";
+const $=id=>document.getElementById(id);
+
+function status(message,bad=false){
+
+const box=$("status");
+
+box.textContent=message;
+
+box.className=bad?"show bad":"show";
+
+setTimeout(()=>{
+box.className="";
+},4000);
+
 }
 
 
-/* ================= SAVE LECTURE ================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
-window.saveLecture = async function(){
+$("showPassword").onclick=()=>{
 
-  const title =
-  document.getElementById(
-    "lectureTitle"
-  ).value.trim();
+const input=$("password");
 
-  const category =
-  document.getElementById(
-    "lectureCategory"
-  ).value;
+if(input.type==="password"){
 
-  const description =
-  document.getElementById(
-    "lectureDescription"
-  ).value.trim();
+input.type="text";
+$("showPassword").textContent="Boye";
 
-  const videoUrl =
-  document.getElementById(
-    "lectureVideo"
-  ).value.trim();
+}else{
 
-  const imageUrl =
-  document.getElementById(
-    "lectureImage"
-  ).value.trim();
+input.type="password";
+$("showPassword").textContent="Nuna";
 
-  if(!title || !category){
-
-    showMessage(
-      "lectureMessage",
-      "Saka Taken da Category.",
-      false
-    );
-
-    return;
-  }
-
-  try{
-
-    await addDoc(
-      collection(db,"lectures"),
-      {
-        title,
-        category,
-        description,
-        videoUrl,
-        imageUrl,
-        createdAt:serverTimestamp()
-      }
-    );
-
-    showMessage(
-      "lectureMessage",
-      "An ajiye Karatu successfully."
-    );
-
-    document.getElementById(
-      "lectureTitle"
-    ).value="";
-
-    document.getElementById(
-      "lectureDescription"
-    ).value="";
-
-    document.getElementById(
-      "lectureVideo"
-    ).value="";
-
-    document.getElementById(
-      "lectureImage"
-    ).value="";
-
-  }catch(error){
-
-    showMessage(
-      "lectureMessage",
-      error.message,
-      false
-    );
-  }
+}
 
 };
 
 
-/* ================= SAVE AUDIO ================= */
+$("loginForm").addEventListener("submit",async e=>{
 
-window.saveAudio = async function(){
+e.preventDefault();
 
-  const title =
-  document.getElementById(
-    "audioTitle"
-  ).value.trim();
+const email=$("email").value.trim();
 
-  const description =
-  document.getElementById(
-    "audioDescription"
-  ).value.trim();
+const password=$("password").value;
 
-  const audioUrl =
-  document.getElementById(
-    "audioUrl"
-  ).value.trim();
+const button=$("loginButton");
 
-  if(!title || !audioUrl){
+button.disabled=true;
 
-    showMessage(
-      "audioMessage",
-      "Saka Taken da Audio URL.",
-      false
-    );
+button.textContent="Ana shiga...";
 
-    return;
-  }
-
-  try{
-
-    await addDoc(
-      collection(db,"audio"),
-      {
-        title,
-        description,
-        audioUrl,
-        createdAt:serverTimestamp()
-      }
-    );
-
-    showMessage(
-      "audioMessage",
-      "An ajiye Audio successfully."
-    );
-
-  }catch(error){
-
-    showMessage(
-      "audioMessage",
-      error.message,
-      false
-    );
-  }
-
-};
+$("loginMessage").className="message hidden";
 
 
-/* ================= SAVE VIDEO ================= */
+try{
 
-window.saveVideo = async function(){
-
-  const title =
-  document.getElementById(
-    "videoTitle"
-  ).value.trim();
-
-  const description =
-  document.getElementById(
-    "videoDescription"
-  ).value.trim();
-
-  const videoUrl =
-  document.getElementById(
-    "videoUrl"
-  ).value.trim();
-
-  if(!title || !videoUrl){
-
-    showMessage(
-      "videoMessage",
-      "Saka Taken da YouTube URL.",
-      false
-    );
-
-    return;
-  }
-
-  try{
-
-    await addDoc(
-      collection(db,"videos"),
-      {
-        title,
-        description,
-        videoUrl,
-        createdAt:serverTimestamp()
-      }
-    );
-
-    showMessage(
-      "videoMessage",
-      "An ajiye Video successfully."
-    );
-
-  }catch(error){
-
-    showMessage(
-      "videoMessage",
-      error.message,
-      false
-    );
-  }
-
-};
+const result=
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
 
 
-/* ================= SAVE BOOK ================= */
+/*
+ IMPORTANT:
+ Only the exact Admin UID can open
+ this dashboard.
+*/
 
-window.saveBook = async function(){
+if(result.user.uid!==ADMIN_UID){
 
-  const title =
-  document.getElementById(
-    "bookTitle"
-  ).value.trim();
+await signOut(auth);
 
-  const author =
-  document.getElementById(
-    "bookAuthor"
-  ).value.trim();
+throw new Error(
+"Wannan account ba shi ne Admin account na wannan website ba."
+);
 
-  const description =
-  document.getElementById(
-    "bookDescription"
-  ).value.trim();
+}
 
-  const pdfUrl =
-  document.getElementById(
-    "bookUrl"
-  ).value.trim();
+}catch(error){
 
-  if(!title || !pdfUrl){
+let message=error.message;
 
-    showMessage(
-      "bookMessage",
-      "Saka sunan littafi da PDF URL.",
-      false
-    );
+if(error.code==="auth/invalid-credential")
+message="Email ko password ba daidai ba ne.";
 
-    return;
-  }
+if(error.code==="auth/invalid-email")
+message="Email ɗin ba daidai ba ne.";
 
-  try{
+if(error.code==="auth/too-many-requests")
+message="An yi login da yawa. Jira kaɗan sannan ka sake gwadawa.";
 
-    await addDoc(
-      collection(db,"books"),
-      {
-        title,
-        author,
-        description,
-        pdfUrl,
-        createdAt:serverTimestamp()
-      }
-    );
+$("loginMessage").textContent=message;
 
-    showMessage(
-      "bookMessage",
-      "An ajiye Littafi successfully."
-    );
+$("loginMessage").className="message error";
 
-  }catch(error){
+}
 
-    showMessage(
-      "bookMessage",
-      error.message,
-      false
-    );
-  }
+button.disabled=false;
+
+button.textContent="Shiga Admin";
+
+});
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+onAuthStateChanged(auth,async user=>{
+
+if(!user){
+
+$("app").classList.add("hidden");
+
+$("loginPage").classList.remove("hidden");
+
+return;
+
+}
+
+
+/*
+ Confirm exact UID.
+*/
+
+if(user.uid!==ADMIN_UID){
+
+await signOut(auth);
+
+return;
+
+}
+
+
+/*
+ Confirm Firestore admin document.
+*/
+
+try{
+
+const adminDoc=
+await getDoc(
+doc(db,"users",user.uid)
+);
+
+if(!adminDoc.exists()){
+
+await signOut(auth);
+
+$("loginMessage").textContent=
+"An shiga Firebase, amma ba a sami users/" +
+user.uid +
+" ba.";
+
+$("loginMessage").className="message error";
+
+return;
+
+}
+
+
+const role=
+String(adminDoc.data().role||"")
+.trim()
+.toLowerCase();
+
+
+if(role!=="admin"){
+
+await signOut(auth);
+
+$("loginMessage").textContent=
+"Role ɗin wannan account ba admin ba ne.";
+
+$("loginMessage").className="message error";
+
+return;
+
+}
+
+
+/* EVERYTHING OK */
+
+$("loginPage").classList.add("hidden");
+
+$("app").classList.remove("hidden");
+
+await refreshDashboard();
+
+}catch(error){
+
+console.error(error);
+
+$("loginMessage").textContent=
+"An kasa tabbatar da Admin: "+error.message;
+
+$("loginMessage").className="message error";
+
+await signOut(auth);
+
+}
+
+});
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+$("logoutButton").onclick=async()=>{
+
+await signOut(auth);
 
 };
 
 
-/* ================= SAVE GALLERY ================= */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-window.saveGallery = async function(){
+document.querySelectorAll(".nav")
+.forEach(button=>{
 
-  const title =
-  document.getElementById(
-    "galleryTitle"
-  ).value.trim();
+button.onclick=()=>{
 
-  const imageUrl =
-  document.getElementById(
-    "galleryImage"
-  ).value.trim();
+const page=button.dataset.page;
 
-  const description =
-  document.getElementById(
-    "galleryDescription"
-  ).value.trim();
+document.querySelectorAll(".section")
+.forEach(section=>{
+section.classList.remove("active");
+});
 
-  if(!title || !imageUrl){
+$(page).classList.add("active");
 
-    showMessage(
-      "galleryMessage",
-      "Saka taken hoto da Image URL.",
-      false
-    );
+document.querySelectorAll(".nav")
+.forEach(nav=>{
+nav.classList.remove("active");
+});
 
-    return;
-  }
+button.classList.add("active");
 
-  try{
+$("sidebar").classList.remove("open");
 
-    await addDoc(
-      collection(db,"gallery"),
-      {
-        title,
-        imageUrl,
-        description,
-        createdAt:serverTimestamp()
-      }
-    );
+};
 
-    showMessage(
-      "galleryMessage",
-      "An ajiye Hoto successfully."
-    );
+});
 
-  }catch(error){
 
-    showMessage(
-      "galleryMessage",
-      error.message,
-      false
-    );
-  }
+$("menuButton").onclick=()=>{
+
+$("sidebar").classList.toggle("open");
 
 };
 
 
-/* ================= SAVE ANNOUNCEMENT ================= */
+/* =====================================================
+   LOAD COLLECTION
+===================================================== */
 
-window.saveAnnouncement = async function(){
+async function getItems(name){
 
-  const title =
-  document.getElementById(
-    "announcementTitle"
-  ).value.trim();
+const snapshot=
+await getDocs(collection(db,name));
 
-  const text =
-  document.getElementById(
-    "announcementText"
-  ).value.trim();
+return snapshot.docs.map(item=>({
 
-  if(!title || !text){
+id:item.id,
+...item.data()
 
-    showMessage(
-      "announcementMessage",
-      "Saka taken da rubutun sanarwa.",
-      false
-    );
+}));
 
-    return;
-  }
+}
 
-  try{
 
-    await addDoc(
-      collection(db,"announcements"),
-      {
-        title,
-        text,
-        createdAt:serverTimestamp()
-      }
-    );
+/* =====================================================
+   DASHBOARD
+===================================================== */
 
-    showMessage(
-      "announcementMessage",
-      "An ajiye Sanarwa successfully."
-    );
+async function refreshDashboard(){
 
-  }catch(error){
+try{
 
-    showMessage(
-      "announcementMessage",
-      error.message,
-      false
-    );
-  }
+const lectures=await getItems("lectures");
+const audio=await getItems("audio");
+const videos=await getItems("videos");
+const books=await getItems("books");
+const gallery=await getItems("gallery");
+const announcements=await getItems("announcements");
+
+$("lectureCount").textContent=lectures.length;
+$("audioCount").textContent=audio.length;
+$("videoCount").textContent=videos.length;
+$("bookCount").textContent=books.length;
+$("galleryCount").textContent=gallery.length;
+$("announcementCount").textContent=announcements.length;
+
+renderLectures(lectures);
+renderAudio(audio);
+renderVideos(videos);
+renderBooks(books);
+renderGallery(gallery);
+renderAnnouncements(announcements);
+
+await loadAbout();
+
+}catch(error){
+
+console.error(error);
+
+status(
+"An kasa lodawa: "+error.message,
+true
+);
+
+}
+
+}
+
+
+/* =====================================================
+   LECTURES
+===================================================== */
+
+function renderLectures(items){
+
+const list=$("lectureList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu karatu tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>
+<strong>Category:</strong>
+${escapeHtml(item.category||"")}
+</p>
+
+<p>
+${escapeHtml(item.description||"")}
+</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editLecture('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('lectures','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("lectureForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("lectureId").value;
+
+const data={
+
+title:$("lectureTitle").value.trim(),
+
+category:$("lectureCategory").value,
+
+description:
+$("lectureDescription").value.trim(),
+
+videoUrl:
+$("lectureVideoUrl").value.trim(),
+
+imageUrl:
+$("lectureImageUrl").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"lectures",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"lectures"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("lectureForm").reset();
+
+$("lectureId").value="";
+
+$("cancelLecture").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye karatu.");
+
+}catch(error){
+
+status(
+"An kasa ajiye karatu: "+error.message,
+true
+);
+
+}
 
 };
 
 
-/* ================= SAVE ABOUT ================= */
+window.editLecture=async id=>{
 
-window.saveAbout = async function(){
+const snap=
+await getDoc(doc(db,"lectures",id));
 
-  const name =
-  document.getElementById(
-    "aboutName"
-  ).value.trim();
+if(!snap.exists())return;
 
-  const text =
-  document.getElementById(
-    "aboutText"
-  ).value.trim();
+const d=snap.data();
 
-  const imageUrl =
-  document.getElementById(
-    "aboutImage"
-  ).value.trim();
+$("lectureId").value=id;
 
-  if(!name || !text){
+$("lectureTitle").value=d.title||"";
 
-    showMessage(
-      "aboutMessage",
-      "Saka sunan Imam da tarihinsa.",
-      false
-    );
+$("lectureCategory").value=
+d.category||"Tafsiri";
 
-    return;
-  }
+$("lectureDescription").value=
+d.description||"";
 
-  try{
+$("lectureVideoUrl").value=
+d.videoUrl||"";
 
-    await setDoc(
-      doc(db,"site","about"),
-      {
-        name,
-        text,
-        imageUrl,
-        updatedAt:serverTimestamp()
-      }
-    );
+$("lectureImageUrl").value=
+d.imageUrl||"";
 
-    showMessage(
-      "aboutMessage",
-      "An ajiye About Imam successfully."
-    );
+$("cancelLecture").classList.remove("hidden");
 
-  }catch(error){
-
-    showMessage(
-      "aboutMessage",
-      error.message,
-      false
-    );
-  }
+$("lectures").scrollIntoView();
 
 };
+
+
+$("cancelLecture").onclick=()=>{
+
+$("lectureForm").reset();
+
+$("lectureId").value="";
+
+$("cancelLecture").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+function renderAudio(items){
+
+const list=$("audioList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu audio tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>${escapeHtml(item.description||"")}</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editAudio('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('audio','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("audioForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("audioId").value;
+
+const data={
+
+title:$("audioTitle").value.trim(),
+
+audioUrl:$("audioUrl").value.trim(),
+
+description:
+$("audioDescription").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"audio",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"audio"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("audioForm").reset();
+
+$("audioId").value="";
+
+$("cancelAudio").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye audio.");
+
+}catch(error){
+
+status(
+"An kasa ajiye audio: "+error.message,
+true
+);
+
+}
+
+};
+
+
+window.editAudio=async id=>{
+
+const snap=
+await getDoc(doc(db,"audio",id));
+
+const d=snap.data();
+
+$("audioId").value=id;
+
+$("audioTitle").value=d.title||"";
+
+$("audioUrl").value=d.audioUrl||"";
+
+$("audioDescription").value=
+d.description||"";
+
+$("cancelAudio").classList.remove("hidden");
+
+};
+
+
+$("cancelAudio").onclick=()=>{
+
+$("audioForm").reset();
+
+$("audioId").value="";
+
+$("cancelAudio").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+function renderVideos(items){
+
+const list=$("videoList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu video tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>${escapeHtml(item.description||"")}</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editVideo('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('videos','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("videoForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("videoId").value;
+
+const data={
+
+title:$("videoTitle").value.trim(),
+
+videoUrl:$("videoUrl").value.trim(),
+
+description:
+$("videoDescription").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"videos",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"videos"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("videoForm").reset();
+
+$("videoId").value="";
+
+$("cancelVideo").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye video.");
+
+}catch(error){
+
+status(
+"An kasa ajiye video: "+error.message,
+true
+);
+
+}
+
+};
+
+
+window.editVideo=async id=>{
+
+const snap=
+await getDoc(doc(db,"videos",id));
+
+const d=snap.data();
+
+$("videoId").value=id;
+
+$("videoTitle").value=d.title||"";
+
+$("videoUrl").value=d.videoUrl||"";
+
+$("videoDescription").value=
+d.description||"";
+
+$("cancelVideo").classList.remove("hidden");
+
+};
+
+
+$("cancelVideo").onclick=()=>{
+
+$("videoForm").reset();
+
+$("videoId").value="";
+
+$("cancelVideo").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   BOOKS
+===================================================== */
+
+function renderBooks(items){
+
+const list=$("bookList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu littafi tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>
+<strong>Author:</strong>
+${escapeHtml(item.author||"")}
+</p>
+
+<p>
+${escapeHtml(item.description||"")}
+</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editBook('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('books','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("bookForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("bookId").value;
+
+const data={
+
+title:$("bookTitle").value.trim(),
+
+author:$("bookAuthor").value.trim(),
+
+description:
+$("bookDescription").value.trim(),
+
+pdfUrl:$("bookPdfUrl").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"books",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"books"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("bookForm").reset();
+
+$("bookId").value="";
+
+$("cancelBook").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye littafi.");
+
+}catch(error){
+
+status(
+"An kasa ajiye littafi: "+error.message,
+true
+);
+
+}
+
+};
+
+
+window.editBook=async id=>{
+
+const snap=
+await getDoc(doc(db,"books",id));
+
+const d=snap.data();
+
+$("bookId").value=id;
+
+$("bookTitle").value=d.title||"";
+
+$("bookAuthor").value=d.author||"";
+
+$("bookDescription").value=
+d.description||"";
+
+$("bookPdfUrl").value=d.pdfUrl||"";
+
+$("cancelBook").classList.remove("hidden");
+
+};
+
+
+$("cancelBook").onclick=()=>{
+
+$("bookForm").reset();
+
+$("bookId").value="";
+
+$("cancelBook").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+function renderGallery(items){
+
+const list=$("galleryList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu hoto tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>${escapeHtml(item.description||"")}</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editGallery('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('gallery','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("galleryForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("galleryId").value;
+
+const data={
+
+title:$("galleryTitle").value.trim(),
+
+imageUrl:$("galleryImageUrl").value.trim(),
+
+description:
+$("galleryDescription").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"gallery",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"gallery"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("galleryForm").reset();
+
+$("galleryId").value="";
+
+$("cancelGallery").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye hoto.");
+
+}catch(error){
+
+status(
+"An kasa ajiye hoto: "+error.message,
+true
+);
+
+}
+
+};
+
+
+window.editGallery=async id=>{
+
+const snap=
+await getDoc(doc(db,"gallery",id));
+
+const d=snap.data();
+
+$("galleryId").value=id;
+
+$("galleryTitle").value=d.title||"";
+
+$("galleryImageUrl").value=d.imageUrl||"";
+
+$("galleryDescription").value=
+d.description||"";
+
+$("cancelGallery").classList.remove("hidden");
+
+};
+
+
+$("cancelGallery").onclick=()=>{
+
+$("galleryForm").reset();
+
+$("galleryId").value="";
+
+$("cancelGallery").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   ANNOUNCEMENTS
+===================================================== */
+
+function renderAnnouncements(items){
+
+const list=$("announcementList");
+
+if(!items.length){
+
+list.innerHTML=
+'<div class="empty">Babu sanarwa tukuna.</div>';
+
+return;
+
+}
+
+list.innerHTML=items.map(item=>`
+
+<div class="item">
+
+<div>
+
+<h4>${escapeHtml(item.title)}</h4>
+
+<p>${escapeHtml(item.text||"")}</p>
+
+</div>
+
+<div class="item-buttons">
+
+<button
+class="btn btn-light"
+onclick="editAnnouncement('${item.id}')"
+>
+Gyara
+</button>
+
+<button
+class="btn btn-danger"
+onclick="deleteItem('announcements','${item.id}')"
+>
+Share
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+$("announcementForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+const id=$("announcementId").value;
+
+const data={
+
+title:$("announcementTitle").value.trim(),
+
+text:$("announcementText").value.trim()
+
+};
+
+if(id){
+
+await updateDoc(
+doc(db,"announcements",id),
+data
+);
+
+}else{
+
+await addDoc(
+collection(db,"announcements"),
+{
+...data,
+createdAt:serverTimestamp()
+}
+);
+
+}
+
+$("announcementForm").reset();
+
+$("announcementId").value="";
+
+$("cancelAnnouncement").classList.add("hidden");
+
+await refreshDashboard();
+
+status("An ajiye sanarwa.");
+
+}catch(error){
+
+status(
+"An kasa ajiye sanarwa: "+error.message,
+true
+);
+
+}
+
+};
+
+
+window.editAnnouncement=async id=>{
+
+const snap=
+await getDoc(doc(db,"announcements",id));
+
+const d=snap.data();
+
+$("announcementId").value=id;
+
+$("announcementTitle").value=d.title||"";
+
+$("announcementText").value=d.text||"";
+
+$("cancelAnnouncement").classList.remove("hidden");
+
+};
+
+
+$("cancelAnnouncement").onclick=()=>{
+
+$("announcementForm").reset();
+
+$("announcementId").value="";
+
+$("cancelAnnouncement").classList.add("hidden");
+
+};
+
+
+/* =====================================================
+   ABOUT IMAM
+===================================================== */
+
+async function loadAbout(){
+
+try{
+
+const snap=
+await getDoc(
+doc(db,"site","about")
+);
+
+if(snap.exists()){
+
+const d=snap.data();
+
+$("aboutName").value=d.name||"";
+
+$("aboutText").value=d.text||"";
+
+$("aboutImageUrl").value=
+d.imageUrl||"";
+
+}
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+$("aboutForm").onsubmit=async e=>{
+
+e.preventDefault();
+
+try{
+
+await setDoc(
+
+doc(db,"site","about"),
+
+{
+
+name:$("aboutName").value.trim(),
+
+text:$("aboutText").value.trim(),
+
+imageUrl:
+$("aboutImageUrl").value.trim(),
+
+updatedAt:serverTimestamp()
+
+},
+
+{merge:true}
+
+);
+
+status("An ajiye About Imam.");
+
+}catch(error){
+
+status(
+"An kasa ajiye About Imam: "+error.message,
+true
+);
+
+}
+
+};
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+window.deleteItem=async(name,id)=>{
+
+if(!confirm(
+"Ka tabbata kana son share wannan abu?"
+))return;
+
+try{
+
+await deleteDoc(
+doc(db,name,id)
+);
+
+await refreshDashboard();
+
+status("An share successfully.");
+
+}catch(error){
+
+status(
+"An kasa sharewa: "+error.message,
+true
+);
+
+}
+
+};
+
+
+/* =====================================================
+   SECURITY / HTML ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+return String(value??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
 
 </script>
 
 </body>
-  </html>
+</html>
