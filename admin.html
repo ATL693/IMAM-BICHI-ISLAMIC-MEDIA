@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imam Bichi Media - Admin Login</title>
+  <title>Imam Bichi Islamic Media - Admin</title>
 
   <style>
     * {
@@ -13,20 +13,20 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-family: Arial, sans-serif;
       background: #f5f0df;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .login-box {
-      width: 90%;
+    .box {
+      width: 92%;
       max-width: 400px;
       background: white;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,.15);
     }
 
     h1 {
@@ -35,15 +35,16 @@
       margin-bottom: 8px;
     }
 
-    p {
+    .subtitle {
       text-align: center;
       color: #777;
+      margin-bottom: 25px;
     }
 
     input {
       width: 100%;
       padding: 14px;
-      margin: 8px 0;
+      margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 16px;
@@ -52,7 +53,6 @@
     button {
       width: 100%;
       padding: 14px;
-      margin-top: 12px;
       border: none;
       border-radius: 8px;
       background: #087443;
@@ -67,139 +67,243 @@
 
     #message {
       margin-top: 15px;
-      color: #c00;
+      text-align: center;
+      color: #c62828;
       font-size: 14px;
     }
 
     #dashboard {
       display: none;
-      text-align: center;
+    }
+
+    .card {
+      background: #f8f8f8;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+
+    .logout {
+      background: #9b1c1c;
+      margin-top: 15px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="login-box">
+<div class="box">
 
-    <div id="login">
-      <h1>Admin Login</h1>
-      <p>Imam Bichi Islamic Media</p>
+  <!-- LOGIN -->
+  <div id="loginSection">
 
-      <input
-        type="email"
-        id="email"
-        placeholder="Admin Email"
-      >
-
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-      >
-
-      <button id="loginBtn">Login</button>
-
-      <div id="message"></div>
+    <h1>Admin Login</h1>
+    <div class="subtitle">
+      Imam Bichi Islamic Media
     </div>
 
-    <div id="dashboard">
-      <h1>Admin Dashboard</h1>
-      <p>Login successful.</p>
+    <input
+      type="email"
+      id="email"
+      placeholder="Admin Email"
+      autocomplete="email"
+    >
 
-      <button id="logoutBtn">Logout</button>
-    </div>
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button id="loginBtn">
+      Login
+    </button>
+
+    <div id="message"></div>
 
   </div>
 
 
-  <script type="module">
+  <!-- DASHBOARD -->
+  <div id="dashboard">
 
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    <h1>Admin Dashboard</h1>
 
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut
+    <div class="card">
+      📖 Karatuttuka
+    </div>
+
+    <div class="card">
+      🎧 Audio
+    </div>
+
+    <div class="card">
+      🎥 Video
+    </div>
+
+    <div class="card">
+      📚 Littattafai
+    </div>
+
+    <div class="card">
+      🖼️ Gallery
+    </div>
+
+    <div class="card">
+      📢 Sanarwa
+    </div>
+
+    <div class="card">
+      🕌 About Imam
+    </div>
+
+    <button class="logout" id="logoutBtn">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  }
+    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+  // =========================
+  // FIREBASE CONFIG
+  // =========================
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
+    authDomain: "imam-bichi-islamic-media.firebaseapp.com",
+    projectId: "imam-bichi-islamic-media",
+    storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
+    messagingSenderId: "87559095522",
+    appId: "1:87559095522:web:a2d9d783166f56aade8abb",
+    measurementId: "G-J2QD3SRX5N"
+  };
+
+
+  // =========================
+  // INITIALIZE FIREBASE
+  // =========================
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+
+  // =========================
+  // ELEMENTS
+  // =========================
+
+  const loginSection =
+    document.getElementById("loginSection");
+
+  const dashboard =
+    document.getElementById("dashboard");
+
+  const email =
+    document.getElementById("email");
+
+  const password =
+    document.getElementById("password");
+
+  const loginBtn =
+    document.getElementById("loginBtn");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+  const message =
+    document.getElementById("message");
+
+
+  // =========================
+  // LOGIN
+  // =========================
+
+  loginBtn.addEventListener("click", async () => {
+
+    message.textContent = "";
+
+    const emailValue = email.value.trim();
+    const passwordValue = password.value;
+
+    if (!emailValue || !passwordValue) {
+      message.textContent =
+        "Please enter your email and password.";
+      return;
     }
-      from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuO-4T4",
-  authDomain: "imam-bichi-islamic-media.firebaseapp.com",
-  projectId: "imam-bichi-islamic-media",
-  storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
-  messagingSenderId: "87559095522",
-  appId: "1:87559095522:web:4668efc5a419d014de8abb",
-  measurementId: "G-LR92D06R4N"
-};
-    
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logging in...";
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        emailValue,
+        passwordValue
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Login failed: " + error.code;
+
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Login";
+    }
+
+  });
 
 
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
+  // =========================
+  // AUTH STATE
+  // =========================
 
-    const loginBox = document.getElementById("login");
-    const dashboard = document.getElementById("dashboard");
-    const message = document.getElementById("message");
+  onAuthStateChanged(auth, (user) => {
 
+    if (user) {
 
-    loginBtn.addEventListener("click", async () => {
+      loginSection.style.display = "none";
+      dashboard.style.display = "block";
 
-      message.textContent = "";
+    } else {
 
-      if (!email.value || !password.value) {
-        message.textContent = "Please enter email and password.";
-        return;
-      }
+      loginSection.style.display = "block";
+      dashboard.style.display = "none";
 
-      try {
+    }
 
-        await signInWithEmailAndPassword(
-          auth,
-          email.value.trim(),
-          password.value
-        );
-
-      } catch (error) {
-
-        console.error(error);
-
-        message.textContent =
-          "Login failed: " + error.message;
-
-      }
-
-    });
+  });
 
 
-    onAuthStateChanged(auth, (user) => {
+  // =========================
+  // LOGOUT
+  // =========================
 
-      if (user) {
+  logoutBtn.addEventListener("click", async () => {
 
-        loginBox.style.display = "none";
-        dashboard.style.display = "block";
+    await signOut(auth);
 
-      } else {
+  });
 
-        loginBox.style.display = "block";
-        dashboard.style.display = "none";
-
-      }
-
-    });
-
-
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-    });
-
-  </script>
+</script>
 
 </body>
       </html>
