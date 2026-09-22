@@ -2,498 +2,221 @@
 <html lang="ha">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Admin Panel | Imam Bichi Islamic Media</title>
 
 <style>
-:root{
-  --green:#087443;
-  --dark:#04542f;
-  --gold:#d4af37;
-  --cream:#fbf8ef;
-  --white:#fff;
-  --text:#173326;
-  --muted:#718078;
-  --border:#e2e9e5;
-  --danger:#c62828;
-}
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f5;
-  color:var(--text);
+  font-family:Arial,sans-serif;
+  background:#f5f7f4;
+  color:#17231d;
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 
-button,input,textarea,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* ================= LOGIN ================= */
-
-#loginPage{
+.login-page{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   padding:20px;
-  background:linear-gradient(135deg,#043d24,#087443,#0b8a52);
+  background:linear-gradient(135deg,#063d29,#087443,#d4af37);
 }
-
 .login-box{
   width:100%;
   max-width:420px;
-  background:#fff;
-  padding:30px 25px;
-  border-radius:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
-
 .logo{
-  width:75px;
-  height:75px;
-  margin:auto;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--green);
-  border:4px solid var(--gold);
-  font-size:35px;
+  text-align:center;
+  font-size:48px;
+  margin-bottom:5px;
 }
-
 .login-box h1{
   text-align:center;
-  color:var(--dark);
-  margin:15px 0 5px;
-  font-size:24px;
+  color:#087443;
+  margin:5px 0;
 }
-
 .login-box p{
   text-align:center;
-  color:var(--muted);
-  margin-bottom:25px;
+  color:#777;
 }
-
-.field{
-  margin-bottom:15px;
-}
-
+.form-group{margin-bottom:15px}
 label{
   display:block;
-  margin-bottom:7px;
+  margin-bottom:6px;
   font-weight:bold;
-  font-size:14px;
 }
-
 input,textarea,select{
   width:100%;
   padding:12px;
-  border:1px solid var(--border);
-  border-radius:10px;
+  border:1px solid #ddd;
+  border-radius:9px;
   outline:none;
-  background:#fff;
 }
-
-textarea{
-  min-height:120px;
-  resize:vertical;
+input:focus,textarea:focus,select:focus{
+  border-color:#087443;
 }
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--green);
-  box-shadow:0 0 0 3px rgba(8,116,67,.1);
-}
-
-.password{
-  position:relative;
-}
-
-.password input{
-  padding-right:65px;
-}
-
-.show-pass{
-  position:absolute;
-  right:7px;
-  top:7px;
-  border:0;
-  background:#edf5f0;
-  color:var(--green);
-  padding:7px 9px;
-  border-radius:7px;
-  font-size:12px;
-}
+textarea{min-height:120px;resize:vertical}
 
 .btn{
   border:0;
-  border-radius:10px;
-  padding:11px 15px;
+  border-radius:9px;
+  padding:12px 18px;
+  background:#087443;
+  color:white;
   font-weight:bold;
 }
-
-.btn-primary{
-  background:var(--green);
-  color:#fff;
-}
-
-.btn-primary:hover{
-  background:var(--dark);
-}
-
-.btn-light{
-  background:#edf4ef;
-  color:var(--green);
-}
-
-.btn-danger{
-  background:#ffe9e9;
-  color:var(--danger);
-}
-
-.btn-gold{
-  background:var(--gold);
-  color:#173326;
-}
-
-.btn-block{
-  width:100%;
-}
+.btn:hover{opacity:.9}
+.btn.gold{background:#b38b18}
+.btn.red{background:#b42318}
+.btn.gray{background:#666}
+.btn.full{width:100%}
 
 .message{
-  margin-top:12px;
-  padding:10px;
-  border-radius:9px;
-  font-size:13px;
-}
-
-.error{
-  background:#fff0f0;
-  color:#a51e1e;
-}
-
-.success{
-  background:#edf9f1;
-  color:#126b3d;
-}
-
-/* ================= APP ================= */
-
-#app{
-  min-height:100vh;
-}
-
-.topbar{
-  height:68px;
-  background:var(--dark);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-}
-
-.brand-icon{
-  width:40px;
-  height:40px;
-  border:2px solid var(--gold);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.brand small{
-  display:block;
-  opacity:.7;
-  font-weight:normal;
-}
-
-.menu{
-  display:none;
-  border:0;
-  background:rgba(255,255,255,.1);
-  color:#fff;
-  padding:8px 11px;
+  padding:12px;
+  margin:12px 0;
   border-radius:8px;
-  font-size:20px;
+  display:none;
 }
+.error{background:#ffe5e5;color:#9d1111}
+.success{background:#e5f8ec;color:#087443}
 
-.layout{
-  display:flex;
-  min-height:calc(100vh - 68px);
-}
+.app{display:none;min-height:100vh}
 
 .sidebar{
-  width:245px;
-  background:white;
-  border-right:1px solid var(--border);
-  padding:15px 12px;
+  position:fixed;
+  left:0;
+  top:0;
+  width:250px;
+  height:100vh;
+  background:#063d29;
+  color:white;
+  padding:20px 12px;
+  overflow-y:auto;
 }
-
-.nav{
+.sidebar h2{
+  text-align:center;
+  color:#ffd84d;
+  font-size:20px;
+  margin-bottom:25px;
+}
+.nav-btn{
   width:100%;
   border:0;
   background:transparent;
-  padding:12px;
+  color:white;
   text-align:left;
-  border-radius:9px;
-  margin-bottom:5px;
-  font-weight:bold;
-  color:#355247;
+  padding:13px;
+  margin:3px 0;
+  border-radius:8px;
+}
+.nav-btn:hover,.nav-btn.active{
+  background:#087443;
+}
+.logout{
+  margin-top:25px;
+  background:#b42318;
 }
 
-.nav:hover,
-.nav.active{
-  background:#eaf5ef;
-  color:var(--green);
-}
-
-.content{
-  flex:1;
+.main{
+  margin-left:250px;
   padding:25px;
 }
-
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
-
-.title{
+.topbar{
+  background:white;
+  padding:18px 22px;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
+.topbar h1{margin:0;color:#087443}
 
-.title h2{
-  margin:0;
-  color:var(--dark);
-}
-
-.title p{
-  margin:5px 0;
-  color:var(--muted);
-}
+.section{display:none}
+.section.active{display:block}
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:20px;
-}
-
-.card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:18px;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.card strong{
-  display:block;
-  font-size:27px;
-  color:var(--dark);
-  margin-top:7px;
-}
-
-.card span{
-  color:var(--muted);
-  font-size:13px;
-}
-
-.panel{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.panel h3{
-  margin-top:0;
-  color:var(--dark);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:14px;
-}
-
-.list{
-  display:grid;
-  gap:10px;
-}
-
-.item{
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:14px;
-  display:flex;
-  justify-content:space-between;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:15px;
 }
-
-.item h4{
-  margin:0 0 6px;
-  color:var(--dark);
+.card{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
+.card .icon{font-size:32px}
+.card h3{margin:10px 0 5px}
+.card strong{font-size:25px;color:#087443}
 
-.item p{
-  margin:4px 0;
-  font-size:13px;
-  color:#596b62;
-  line-height:1.5;
+.panel{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
-
-.item small{
-  color:#89968f;
+.panel h2{
+  color:#087443;
+  margin-top:0;
 }
-
-.item-buttons{
-  display:flex;
-  gap:6px;
-  flex:none;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
+.full-col{grid-column:1/-1}
 
-.item-buttons button{
-  padding:8px 10px;
-  font-size:12px;
-}
-
-.empty{
-  text-align:center;
-  color:var(--muted);
-  padding:25px;
-  border:1px dashed #ccd8d1;
+.items{margin-top:20px}
+.item{
+  border:1px solid #e5e5e5;
   border-radius:10px;
+  padding:15px;
+  margin-bottom:10px;
 }
+.item h3{margin:0 0 7px;color:#087443}
+.item small{color:#777}
+.actions{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap}
+.actions button{
+  border:0;
+  padding:8px 12px;
+  border-radius:7px;
+  color:white;
+  background:#087443;
+}
+.actions .delete{background:#b42318}
+.actions .edit{background:#b38b18}
 
-#status{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#173326;
-  color:#fff;
-  padding:12px 15px;
-  border-radius:10px;
+.loading{text-align:center;padding:20px;color:#777}
+
+.mobile-menu{
   display:none;
-  z-index:100;
-  max-width:380px;
-  font-size:13px;
+  border:0;
+  background:#087443;
+  color:white;
+  padding:10px;
+  border-radius:7px;
 }
 
-#status.show{
-  display:block;
-}
-
-#status.bad{
-  background:#a51e1e;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:720px){
-
-  .menu{
-    display:block;
-  }
-
+@media(max-width:800px){
   .sidebar{
-    position:fixed;
-    top:68px;
-    bottom:0;
-    left:0;
-    transform:translateX(-110%);
-    transition:.25s;
-    z-index:15;
-    box-shadow:10px 0 25px rgba(0,0,0,.15);
+    transform:translateX(-100%);
+    z-index:100;
+    transition:.2s;
   }
-
-  .sidebar.open{
-    transform:translateX(0);
-  }
-
-  .content{
-    padding:15px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .item{
-    flex-direction:column;
-  }
-
-  .item-buttons{
-    width:100%;
-  }
-
-  .item-buttons button{
-    flex:1;
-  }
-}
-
-@media(max-width:450px){
-
-  .topbar{
-    padding:0 10px;
-  }
-
-  .brand{
-    font-size:12px;
-  }
-
-  .cards{
-    gap:8px;
-  }
-
-  .card{
-    padding:13px;
-  }
-
-  .card strong{
-    font-size:22px;
-  }
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:15px}
+  .mobile-menu{display:block}
+  .grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -502,668 +225,508 @@ select:focus{
 
 <!-- ================= LOGIN ================= -->
 
-<div id="loginPage">
-
+<div id="loginPage" class="login-page">
   <div class="login-box">
-
     <div class="logo">🕌</div>
+    <h1>Admin Panel</h1>
+    <p>Imam Bichi Islamic Media</p>
 
-    <h1>Imam Bichi Islamic Media</h1>
-
-    <p>Admin Panel</p>
+    <div id="loginMessage" class="message"></div>
 
     <form id="loginForm">
-
-      <div class="field">
+      <div class="form-group">
         <label>Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="Admin email"
-          required
-        >
+        <input id="email" type="email" required autocomplete="email">
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <label>Password</label>
-
-        <div class="password">
-
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            required
-          >
-
-          <button
-            type="button"
-            class="show-pass"
-            id="showPassword"
-          >
-            Nuna
-          </button>
-
-        </div>
+        <input id="password" type="password" required autocomplete="current-password">
       </div>
 
-      <button
-        class="btn btn-primary btn-block"
-        id="loginButton"
-      >
-        Shiga Admin
+      <button class="btn full" id="loginBtn" type="submit">
+        Login zuwa Admin
       </button>
-
-      <div id="loginMessage" class="message hidden"></div>
-
     </form>
-
   </div>
-
 </div>
 
 
 <!-- ================= ADMIN APP ================= -->
 
-<div id="app" class="hidden">
+<div id="app" class="app">
 
-<header class="topbar">
+  <aside id="sidebar" class="sidebar">
+    <h2>🕌 IMAM BICHI<br>ADMIN</h2>
 
-  <div class="brand">
+    <button class="nav-btn active" data-section="dashboard">📊 Dashboard</button>
+    <button class="nav-btn" data-section="lectures">📖 Karatuttuka</button>
+    <button class="nav-btn" data-section="audio">🎧 Audio</button>
+    <button class="nav-btn" data-section="videos">🎥 Video</button>
+    <button class="nav-btn" data-section="books">📚 Littattafai</button>
+    <button class="nav-btn" data-section="gallery">🖼️ Gallery</button>
+    <button class="nav-btn" data-section="announcements">📢 Sanarwa</button>
+    <button class="nav-btn" data-section="about">🕌 About Imam</button>
 
-    <button class="menu" id="menuButton">☰</button>
+    <button id="logoutBtn" class="nav-btn logout">🚪 Logout</button>
+  </aside>
 
-    <div class="brand-icon">🕌</div>
 
-    <div>
-      Imam Bichi Islamic Media
-      <small>Admin Panel</small>
+  <main class="main">
+
+    <div class="topbar">
+      <button class="mobile-menu" id="mobileMenu">☰</button>
+      <h1 id="pageTitle">Dashboard</h1>
+      <span id="adminEmail"></span>
     </div>
 
-  </div>
 
-  <button class="btn btn-gold" id="logoutButton">
-    Logout
-  </button>
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard" class="section active">
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">📖</div>
+          <h3>Karatuttuka</h3>
+          <strong id="countLectures">0</strong>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎧</div>
+          <h3>Audio</h3>
+          <strong id="countAudio">0</strong>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎥</div>
+          <h3>Video</h3>
+          <strong id="countVideos">0</strong>
+        </div>
 
-</header>
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>Littattafai</h3>
+          <strong id="countBooks">0</strong>
+        </div>
 
+        <div class="card">
+          <div class="icon">🖼️</div>
+          <h3>Gallery</h3>
+          <strong id="countGallery">0</strong>
+        </div>
 
-<div class="layout">
+        <div class="card">
+          <div class="icon">📢</div>
+          <h3>Sanarwa</h3>
+          <strong id="countAnnouncements">0</strong>
+        </div>
 
-<aside class="sidebar" id="sidebar">
+      </div>
 
-<button class="nav active" data-page="dashboard">📊 Dashboard</button>
+      <div class="panel" style="margin-top:20px">
+        <h2>Maraba da zuwa Admin Panel</h2>
+        <p>
+          Daga nan zaka iya ƙara, gyara ko share abubuwan da za su bayyana
+          a Imam Bichi Islamic Media.
+        </p>
+        <p>
+          <b>Admin:</b> <span id="verifiedAdmin"></span>
+        </p>
+      </div>
 
-<button class="nav" data-page="lectures">📖 Karatuttuka</button>
+    </section>
 
-<button class="nav" data-page="audio">🎧 Audio</button>
 
-<button class="nav" data-page="videos">🎥 Video</button>
+    <!-- ================= LECTURES ================= -->
 
-<button class="nav" data-page="books">📚 Littattafai</button>
+    <section id="lectures" class="section">
 
-<button class="nav" data-page="gallery">🖼️ Gallery</button>
+      <div class="panel">
+        <h2>📖 Ƙara Karatun / Lecture</h2>
 
-<button class="nav" data-page="announcements">📢 Sanarwa</button>
+        <form id="lectureForm">
 
-<button class="nav" data-page="about">🕌 About Imam</button>
+          <input type="hidden" id="lectureId">
 
-</aside>
+          <div class="grid">
 
+            <div class="form-group">
+              <label>Sunan Lecture</label>
+              <input id="lectureTitle" required>
+            </div>
 
-<main class="content">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="lectureCategory">
+                <option>Tafsiri</option>
+                <option>Hadisi</option>
+                <option>Fiqhu</option>
+                <option>Akida</option>
+                <option>Tarihi</option>
+                <option>Wa'azi</option>
+                <option>Sauran Karatuttuka</option>
+              </select>
+            </div>
 
-<!-- ================= DASHBOARD ================= -->
+            <div class="form-group full-col">
+              <label>Description</label>
+              <textarea id="lectureDescription"></textarea>
+            </div>
 
-<section class="section active" id="dashboard">
+            <div class="form-group">
+              <label>Audio URL (optional)</label>
+              <input id="lectureAudioUrl" type="url">
+            </div>
 
-<div class="title">
-<h2>Admin Dashboard</h2>
-<p>Sarrafa dukkan abubuwan shafin daga nan.</p>
-</div>
-
-<div class="cards">
-
-<div class="card">
-📖
-<strong id="lectureCount">0</strong>
-<span>Karatuttuka</span>
-</div>
-
-<div class="card">
-🎧
-<strong id="audioCount">0</strong>
-<span>Audio</span>
-</div>
-
-<div class="card">
-🎥
-<strong id="videoCount">0</strong>
-<span>Video</span>
-</div>
-
-<div class="card">
-📚
-<strong id="bookCount">0</strong>
-<span>Littattafai</span>
-</div>
-
-<div class="card">
-🖼️
-<strong id="galleryCount">0</strong>
-<span>Gallery</span>
-</div>
-
-<div class="card">
-📢
-<strong id="announcementCount">0</strong>
-<span>Sanarwa</span>
-</div>
-
-</div>
-
-<div class="panel">
-
-<h3>Maraba da zuwa Admin Panel</h3>
-
-<p>
-Daga nan zaka iya saka, gyara ko share Karatuttuka,
-Audio, Video, Littattafai, Gallery, Sanarwa da bayanin Imam.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- ================= LECTURES ================= -->
-
-<section class="section" id="lectures">
-
-<div class="title">
-<h2>📖 Karatuttuka</h2>
-<p>Saka sabon karatu.</p>
-</div>
-
-<div class="panel">
-
-<h3 id="lectureHeading">Saka Sabon Karatu</h3>
-
-<form id="lectureForm">
-
-<input type="hidden" id="lectureId">
-
-<div class="grid">
-
-<div class="field">
-<label>Title</label>
-<input id="lectureTitle" required placeholder="Sunan karatu">
-</div>
-
-<div class="field">
-<label>Category</label>
-
-<select id="lectureCategory">
-
-<option>Tafsiri</option>
-<option>Hadisi</option>
-<option>Fiqhu</option>
-<option>Akida</option>
-<option>Tarihi</option>
-<option>Wa'azi</option>
-<option>Sauran Karatuttuka</option>
-
-</select>
-
-</div>
-
-</div>
-
-<div class="field">
-<label>Description</label>
-<textarea id="lectureDescription"></textarea>
-</div>
-
-<div class="grid">
-
-<div class="field">
-<label>Video URL</label>
-<input id="lectureVideoUrl" type="url" placeholder="https://...">
-</div>
-
-<div class="field">
-<label>Image URL</label>
-<input id="lectureImageUrl" type="url" placeholder="https://...">
-</div>
-
-</div>
-
-<div class="actions">
-
-<button class="btn btn-primary">
-Ajiye Karatu
-</button>
-
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelLecture"
->
-Soke Gyara
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-<div class="panel">
-
-<h3>Karatuttukan da aka saka</h3>
-
-<div class="list" id="lectureList"></div>
-
-</div>
-
-</section>
-
+            <div class="form-group">
+              <label>Video URL (optional)</label>
+              <input id="lectureVideoUrl" type="url">
+            </div>
 
-<!-- ================= AUDIO ================= -->
+          </div>
 
-<section class="section" id="audio">
+          <button class="btn" type="submit">Ajiye Lecture</button>
+          <button class="btn gray" type="button" onclick="resetLecture()">Clear</button>
 
-<div class="title">
-<h2>🎧 Audio</h2>
-<p>Saka sabon audio.</p>
-</div>
-
-<div class="panel">
-
-<h3>Saka Audio</h3>
-
-<form id="audioForm">
-
-<input type="hidden" id="audioId">
-
-<div class="grid">
-
-<div class="field">
-<label>Title</label>
-<input id="audioTitle" required>
-</div>
-
-<div class="field">
-<label>Audio URL</label>
-<input id="audioUrl" type="url" required>
-</div>
-
-</div>
-
-<div class="field">
-<label>Description</label>
-<textarea id="audioDescription"></textarea>
-</div>
-
-<div class="actions">
-
-<button class="btn btn-primary">
-Ajiye Audio
-</button>
+        </form>
+      </div>
 
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelAudio"
->
-Soke Gyara
-</button>
+      <div class="panel">
+        <h2>📖 Jerin Karatuttuka</h2>
+        <div id="lecturesList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
-</div>
-
-</form>
-
-</div>
-
-<div class="panel">
-<h3>Audio da aka saka</h3>
-<div class="list" id="audioList"></div>
-</div>
-
-</section>
-
+    </section>
 
-<!-- ================= VIDEO ================= -->
 
-<section class="section" id="videos">
+    <!-- ================= AUDIO ================= -->
 
-<div class="title">
-<h2>🎥 Video</h2>
-<p>Saka YouTube ko wani public video link.</p>
-</div>
-
-<div class="panel">
-
-<h3>Saka Video</h3>
-
-<form id="videoForm">
+    <section id="audio" class="section">
 
-<input type="hidden" id="videoId">
-
-<div class="grid">
-
-<div class="field">
-<label>Title</label>
-<input id="videoTitle" required>
-</div>
-
-<div class="field">
-<label>Video URL</label>
-<input id="videoUrl" type="url" required>
-</div>
+      <div class="panel">
+        <h2>🎧 Ƙara Audio</h2>
 
-</div>
+        <form id="audioForm">
 
-<div class="field">
-<label>Description</label>
-<textarea id="videoDescription"></textarea>
-</div>
+          <input type="hidden" id="audioId">
 
-<div class="actions">
+          <div class="grid">
 
-<button class="btn btn-primary">
-Ajiye Video
-</button>
+            <div class="form-group">
+              <label>Sunan Audio</label>
+              <input id="audioTitle" required>
+            </div>
 
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelVideo"
->
-Soke Gyara
-</button>
+            <div class="form-group">
+              <label>Category</label>
+              <input id="audioCategory">
+            </div>
 
-</div>
+            <div class="form-group full-col">
+              <label>Audio URL</label>
+              <input id="audioUrl" type="url" required
+                     placeholder="https://...">
+            </div>
 
-</form>
+            <div class="form-group full-col">
+              <label>Description</label>
+              <textarea id="audioDescription"></textarea>
+            </div>
 
-</div>
+          </div>
 
-<div class="panel">
-<h3>Videos da aka saka</h3>
-<div class="list" id="videoList"></div>
-</div>
+          <button class="btn" type="submit">Ajiye Audio</button>
+          <button class="btn gray" type="button" onclick="resetAudio()">Clear</button>
 
-</section>
+        </form>
+      </div>
 
+      <div class="panel">
+        <h2>🎧 Audio List</h2>
+        <div id="audioList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
-<!-- ================= BOOKS ================= -->
+    </section>
 
-<section class="section" id="books">
 
-<div class="title">
-<h2>📚 Littattafai</h2>
-<p>Saka littafi/PDF.</p>
-</div>
+    <!-- ================= VIDEOS ================= -->
 
-<div class="panel">
+    <section id="videos" class="section">
 
-<h3>Saka Littafi</h3>
+      <div class="panel">
+        <h2>🎥 Ƙara Video</h2>
 
-<form id="bookForm">
+        <form id="videoForm">
 
-<input type="hidden" id="bookId">
+          <input type="hidden" id="videoId">
 
-<div class="grid">
+          <div class="grid">
 
-<div class="field">
-<label>Title</label>
-<input id="bookTitle" required>
-</div>
+            <div class="form-group">
+              <label>Sunan Video</label>
+              <input id="videoTitle" required>
+            </div>
 
-<div class="field">
-<label>Author</label>
-<input id="bookAuthor">
-</div>
+            <div class="form-group">
+              <label>Category</label>
+              <input id="videoCategory">
+            </div>
 
-</div>
+            <div class="form-group full-col">
+              <label>YouTube / Video URL</label>
+              <input id="videoUrl" type="url" required
+                     placeholder="https://youtube.com/watch?v=...">
+            </div>
 
-<div class="field">
-<label>Description</label>
-<textarea id="bookDescription"></textarea>
-</div>
+            <div class="form-group full-col">
+              <label>Description</label>
+              <textarea id="videoDescription"></textarea>
+            </div>
 
-<div class="field">
-<label>PDF URL</label>
-<input id="bookPdfUrl" type="url" required>
-</div>
+          </div>
 
-<div class="actions">
+          <button class="btn" type="submit">Ajiye Video</button>
+          <button class="btn gray" type="button" onclick="resetVideo()">Clear</button>
 
-<button class="btn btn-primary">
-Ajiye Littafi
-</button>
+        </form>
+      </div>
 
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelBook"
->
-Soke Gyara
-</button>
+      <div class="panel">
+        <h2>🎥 Video List</h2>
+        <div id="videosList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
-</div>
+    </section>
 
-</form>
 
-</div>
+    <!-- ================= BOOKS ================= -->
 
-<div class="panel">
-<h3>Littattafan da aka saka</h3>
-<div class="list" id="bookList"></div>
-</div>
+    <section id="books" class="section">
 
-</section>
+      <div class="panel">
+        <h2>📚 Ƙara Littafi / PDF</h2>
 
+        <form id="bookForm">
 
-<!-- ================= GALLERY ================= -->
+          <input type="hidden" id="bookId">
 
-<section class="section" id="gallery">
+          <div class="grid">
 
-<div class="title">
-<h2>🖼️ Gallery</h2>
-<p>Saka hotuna.</p>
-</div>
+            <div class="form-group">
+              <label>Sunan Littafi</label>
+              <input id="bookTitle" required>
+            </div>
 
-<div class="panel">
+            <div class="form-group">
+              <label>Marubuci</label>
+              <input id="bookAuthor">
+            </div>
 
-<h3>Saka Hoto</h3>
+            <div class="form-group">
+              <label>Category</label>
+              <input id="bookCategory">
+            </div>
 
-<form id="galleryForm">
+            <div class="form-group">
+              <label>PDF URL</label>
+              <input id="bookUrl" type="url" required
+                     placeholder="https://...">
+            </div>
 
-<input type="hidden" id="galleryId">
+            <div class="form-group full-col">
+              <label>Description</label>
+              <textarea id="bookDescription"></textarea>
+            </div>
 
-<div class="grid">
+          </div>
 
-<div class="field">
-<label>Title</label>
-<input id="galleryTitle" required>
-</div>
+          <button class="btn" type="submit">Ajiye Littafi</button>
+          <button class="btn gray" type="button" onclick="resetBook()">Clear</button>
 
-<div class="field">
-<label>Image URL</label>
-<input id="galleryImageUrl" type="url" required>
-</div>
+        </form>
+      </div>
 
-</div>
+      <div class="panel">
+        <h2>📚 Littattafai</h2>
+        <div id="booksList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
-<div class="field">
-<label>Description</label>
-<textarea id="galleryDescription"></textarea>
-</div>
+    </section>
 
-<div class="actions">
 
-<button class="btn btn-primary">
-Ajiye Hoto
-</button>
+    <!-- ================= GALLERY ================= -->
 
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelGallery"
->
-Soke Gyara
-</button>
+    <section id="gallery" class="section">
 
-</div>
+      <div class="panel">
+        <h2>🖼️ Ƙara Hoto</h2>
 
-</form>
+        <form id="galleryForm">
 
-</div>
+          <input type="hidden" id="galleryId">
 
-<div class="panel">
-<h3>Hotunan da aka saka</h3>
-<div class="list" id="galleryList"></div>
-</div>
+          <div class="grid">
 
-</section>
+            <div class="form-group">
+              <label>Caption / Sunan Hoto</label>
+              <input id="galleryTitle" required>
+            </div>
 
+            <div class="form-group">
+              <label>Category</label>
+              <input id="galleryCategory">
+            </div>
 
-<!-- ================= ANNOUNCEMENTS ================= -->
+            <div class="form-group full-col">
+              <label>Image URL</label>
+              <input id="galleryUrl" type="url" required
+                     placeholder="https://...">
+            </div>
 
-<section class="section" id="announcements">
+          </div>
 
-<div class="title">
-<h2>📢 Sanarwa</h2>
-<p>Saka sanarwa.</p>
-</div>
+          <button class="btn" type="submit">Ajiye Hoto</button>
+          <button class="btn gray" type="button" onclick="resetGallery()">Clear</button>
 
-<div class="panel">
+        </form>
+      </div>
 
-<h3>Saka Sanarwa</h3>
+      <div class="panel">
+        <h2>🖼️ Gallery</h2>
+        <div id="galleryList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
-<form id="announcementForm">
+    </section>
 
-<input type="hidden" id="announcementId">
 
-<div class="field">
-<label>Title</label>
-<input id="announcementTitle" required>
-</div>
+    <!-- ================= ANNOUNCEMENTS ================= -->
 
-<div class="field">
-<label>Text</label>
-<textarea id="announcementText" required></textarea>
-</div>
+    <section id="announcements" class="section">
 
-<div class="actions">
+      <div class="panel">
+        <h2>📢 Ƙara Sanarwa</h2>
 
-<button class="btn btn-primary">
-Ajiye Sanarwa
-</button>
+        <form id="announcementForm">
 
-<button
-type="button"
-class="btn btn-light hidden"
-id="cancelAnnouncement"
->
-Soke Gyara
-</button>
+          <input type="hidden" id="announcementId">
 
-</div>
+          <div class="form-group">
+            <label>Take / Title</label>
+            <input id="announcementTitle" required>
+          </div>
 
-</form>
+          <div class="form-group">
+            <label>Saƙon Sanarwa</label>
+            <textarea id="announcementText" required></textarea>
+          </div>
 
-</div>
+          <button class="btn" type="submit">Ajiye Sanarwa</button>
+          <button class="btn gray" type="button" onclick="resetAnnouncement()">Clear</button>
 
-<div class="panel">
-<h3>Sanarwar da aka saka</h3>
-<div class="list" id="announcementList"></div>
-</div>
+        </form>
+      </div>
 
-</section>
+      <div class="panel">
+        <h2>📢 Sanarwa</h2>
+        <div id="announcementsList" class="items">
+          <div class="loading">Ana lodawa...</div>
+        </div>
+      </div>
 
+    </section>
 
-<!-- ================= ABOUT ================= -->
 
-<section class="section" id="about">
+    <!-- ================= ABOUT IMAM ================= -->
 
-<div class="title">
-<h2>🕌 About Imam</h2>
-<p>Gyara bayanan Imam.</p>
-</div>
+    <section id="about" class="section">
 
-<div class="panel">
+      <div class="panel">
 
-<form id="aboutForm">
+        <h2>🕌 About Imam</h2>
 
-<div class="field">
-<label>Sunan Imam</label>
-<input id="aboutName">
-</div>
+        <form id="aboutForm">
 
-<div class="field">
-<label>Tarihi / Bayani</label>
-<textarea id="aboutText" style="min-height:220px"></textarea>
-</div>
+          <div class="form-group">
+            <label>Sunan Imam</label>
+            <input id="aboutName">
+          </div>
 
-<div class="field">
-<label>Image URL</label>
-<input id="aboutImageUrl" type="url">
-</div>
+          <div class="form-group">
+            <label>Short Biography</label>
+            <textarea id="aboutBio"></textarea>
+          </div>
 
-<button class="btn btn-primary">
-Ajiye About Imam
-</button>
+          <div class="form-group">
+            <label>History / Cikakken Bayani</label>
+            <textarea id="aboutHistory" style="min-height:220px"></textarea>
+          </div>
 
-</form>
+          <div class="form-group">
+            <label>Imam Photo URL</label>
+            <input id="aboutPhoto" type="url">
+          </div>
 
-</div>
+          <button class="btn" type="submit">
+            Ajiye About Imam
+          </button>
 
-</section>
+        </form>
 
-</main>
+      </div>
 
-</div>
+    </section>
 
+  </main>
 </div>
 
-<div id="status"></div>
 
+<!-- ================= FIREBASE ================= -->
 
 <script type="module">
-
-/* =====================================================
-   FIREBASE
-===================================================== */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
 import {
-getAuth,
-onAuthStateChanged,
-signInWithEmailAndPassword,
-signOut
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
 }
 from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-getDoc,
-doc,
-updateDoc,
-deleteDoc,
-setDoc,
-serverTimestamp
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  setDoc,
+  serverTimestamp,
+  query,
+  orderBy
 }
 from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
   apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
@@ -1176,1373 +739,1195 @@ const firebaseConfig = {
 };
 
 
-const app=initializeApp(firebaseConfig);
+/* =========================================================
+   ADMIN CONFIG
+========================================================= */
 
-const auth=getAuth(app);
-
-const db=getFirestore(app);
-
-
-/* ADMIN UID */
-
-const ADMIN_UID=
-
-  const ADMIN_UID = "L4AmkUvGjjdQ47y3ud2pL8Jx8v43";
+const ADMIN_UID = "L4AmkUvGjjdQ47y3ud2pL8Jx8v43";
 
 
-/* HELPERS */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-const $=id=>document.getElementById(id);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-function status(message,bad=false){
 
-const box=$("status");
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-box.textContent=message;
+const loginPage = document.getElementById("loginPage");
+const appPage = document.getElementById("app");
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
+const loginBtn = document.getElementById("loginBtn");
 
-box.className=bad?"show bad":"show";
 
-setTimeout(()=>{
-box.className="";
-},4000);
+/* =========================================================
+   MESSAGE
+========================================================= */
 
+function showLoginMessage(text,type="error"){
+  loginMessage.textContent = text;
+  loginMessage.className = "message " + type;
+  loginMessage.style.display = "block";
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+========================================================= */
 
-$("showPassword").onclick=()=>{
+loginForm.addEventListener("submit",async(e)=>{
 
-const input=$("password");
+  e.preventDefault();
 
-if(input.type==="password"){
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
-input.type="text";
-$("showPassword").textContent="Boye";
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Ana shiga...";
 
-}else{
+  try{
 
-input.type="password";
-$("showPassword").textContent="Nuna";
+    const credential =
+      await signInWithEmailAndPassword(auth,email,password);
 
-}
+    const user = credential.user;
 
-};
+    /*
+      SECURITY CHECK 1:
+      Only the registered Admin UID can enter.
+    */
 
+    if(user.uid !== ADMIN_UID){
 
-$("loginForm").addEventListener("submit",async e=>{
+      await signOut(auth);
 
-e.preventDefault();
+      throw new Error(
+        "Wannan account ba shi ne Admin account ba. UID ɗin account ɗin bai dace da Admin UID ba."
+      );
+    }
 
-const email=$("email").value.trim();
+    /*
+      SECURITY CHECK 2:
+      Check users/{UID}
+    */
 
-const password=$("password").value;
+    const adminRef = doc(db,"users",user.uid);
+    const adminSnap = await getDoc(adminRef);
 
-const button=$("loginButton");
+    if(!adminSnap.exists()){
 
-button.disabled=true;
+      await signOut(auth);
 
-button.textContent="Ana shiga...";
+      throw new Error(
+        "An shiga Firebase, amma ba a sami users/" +
+        user.uid +
+        " ba. Ka tabbatar document ID ɗin users ya zama UID ɗin nan."
+      );
+    }
 
-$("loginMessage").className="message hidden";
+    /*
+      SECURITY CHECK 3:
+      Check role
+    */
 
+    const adminData = adminSnap.data();
 
-try{
+    if(String(adminData.role || "").toLowerCase() !== "admin"){
 
-const result=
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+      await signOut(auth);
 
+      throw new Error(
+        "An sami user ɗin, amma role ɗinsa ba 'admin' ba ne."
+      );
+    }
 
-/*
- IMPORTANT:
- Only the exact Admin UID can open
- this dashboard.
-*/
+    /*
+      ALL CHECKS PASSED
+    */
 
-if(result.user.uid!==ADMIN_UID){
+    showAdmin(user);
 
-await signOut(auth);
+  }catch(error){
 
-throw new Error(
-"Wannan account ba shi ne Admin account na wannan website ba."
-);
+    console.error("LOGIN ERROR:",error);
 
-}
+    let msg = error.message || "An samu matsala wajen login.";
 
-}catch(error){
+    if(error.code === "auth/invalid-credential"){
+      msg = "Email ko Password ba daidai ba ne.";
+    }
 
-let message=error.message;
+    if(error.code === "auth/user-not-found"){
+      msg = "Ba a sami wannan Email a Firebase Authentication ba.";
+    }
 
-if(error.code==="auth/invalid-credential")
-message="Email ko password ba daidai ba ne.";
+    if(error.code === "auth/wrong-password"){
+      msg = "Password ba daidai ba ne.";
+    }
 
-if(error.code==="auth/invalid-email")
-message="Email ɗin ba daidai ba ne.";
+    if(error.code === "auth/invalid-api-key"){
+      msg = "Firebase API key ba ya aiki. Ka sake duba Firebase Web App config.";
+    }
 
-if(error.code==="auth/too-many-requests")
-message="An yi login da yawa. Jira kaɗan sannan ka sake gwadawa.";
+    if(error.code === "permission-denied"){
+      msg = "Firestore ya hana karanta users document. Ka duba Firestore Rules.";
+    }
 
-$("loginMessage").textContent=message;
+    showLoginMessage(msg,"error");
 
-$("loginMessage").className="message error";
+  }finally{
 
-}
+    loginBtn.disabled = false;
+    loginBtn.textContent = "Login zuwa Admin";
 
-button.disabled=false;
-
-button.textContent="Shiga Admin";
+  }
 
 });
 
 
-/* =====================================================
+/* =========================================================
+   SHOW ADMIN
+========================================================= */
+
+function showAdmin(user){
+
+  loginPage.style.display = "none";
+  appPage.style.display = "block";
+
+  document.getElementById("adminEmail").textContent =
+    user.email || "Admin";
+
+  document.getElementById("verifiedAdmin").textContent =
+    user.email + " ✓";
+
+  loadEverything();
+
+}
+
+
+/* =========================================================
    AUTH STATE
-===================================================== */
+========================================================= */
 
-onAuthStateChanged(auth,async user=>{
+onAuthStateChanged(auth,async(user)=>{
 
-if(!user){
+  if(!user) return;
 
-$("app").classList.add("hidden");
+  try{
 
-$("loginPage").classList.remove("hidden");
+    if(user.uid !== ADMIN_UID){
 
-return;
+      await signOut(auth);
+      return;
+    }
 
-}
+    const ref = doc(db,"users",user.uid);
+    const snap = await getDoc(ref);
 
+    if(
+      snap.exists() &&
+      String(snap.data().role || "").toLowerCase() === "admin"
+    ){
 
-/*
- Confirm exact UID.
-*/
+      showAdmin(user);
 
-if(user.uid!==ADMIN_UID){
+    }else{
 
-await signOut(auth);
+      await signOut(auth);
 
-return;
+    }
 
-}
+  }catch(error){
 
+    console.error(error);
 
-/*
- Confirm Firestore admin document.
-*/
-
-try{
-
-const adminDoc=
-await getDoc(
-doc(db,"users",user.uid)
-);
-
-if(!adminDoc.exists()){
-
-await signOut(auth);
-
-$("loginMessage").textContent=
-"An shiga Firebase, amma ba a sami users/" +
-user.uid +
-" ba.";
-
-$("loginMessage").className="message error";
-
-return;
-
-}
-
-
-const role=
-String(adminDoc.data().role||"")
-.trim()
-.toLowerCase();
-
-
-if(role!=="admin"){
-
-await signOut(auth);
-
-$("loginMessage").textContent=
-"Role ɗin wannan account ba admin ba ne.";
-
-$("loginMessage").className="message error";
-
-return;
-
-}
-
-
-/* EVERYTHING OK */
-
-$("loginPage").classList.add("hidden");
-
-$("app").classList.remove("hidden");
-
-await refreshDashboard();
-
-}catch(error){
-
-console.error(error);
-
-$("loginMessage").textContent=
-"An kasa tabbatar da Admin: "+error.message;
-
-$("loginMessage").className="message error";
-
-await signOut(auth);
-
-}
+  }
 
 });
 
 
-/* =====================================================
+/* =========================================================
    LOGOUT
-===================================================== */
+========================================================= */
 
-$("logoutButton").onclick=async()=>{
+document.getElementById("logoutBtn").addEventListener("click",async()=>{
 
-await signOut(auth);
+  await signOut(auth);
 
-};
+  appPage.style.display = "none";
+  loginPage.style.display = "flex";
+
+  loginForm.reset();
+
+});
 
 
-/* =====================================================
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
-document.querySelectorAll(".nav")
+document.querySelectorAll(".nav-btn[data-section]")
 .forEach(button=>{
 
-button.onclick=()=>{
+  button.addEventListener("click",()=>{
 
-const page=button.dataset.page;
+    const section = button.dataset.section;
 
-document.querySelectorAll(".section")
-.forEach(section=>{
-section.classList.remove("active");
+    document.querySelectorAll(".nav-btn")
+    .forEach(x=>x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".section")
+    .forEach(x=>x.classList.remove("active"));
+
+    document.getElementById(section).classList.add("active");
+
+    const titles = {
+      dashboard:"Dashboard",
+      lectures:"Karatuttuka",
+      audio:"Audio",
+      videos:"Video",
+      books:"Littattafai",
+      gallery:"Gallery",
+      announcements:"Sanarwa",
+      about:"About Imam"
+    };
+
+    document.getElementById("pageTitle").textContent =
+      titles[section] || "Admin Panel";
+
+    document.getElementById("sidebar").classList.remove("open");
+
+  });
+
 });
 
-$(page).classList.add("active");
 
-document.querySelectorAll(".nav")
-.forEach(nav=>{
-nav.classList.remove("active");
-});
-
-button.classList.add("active");
-
-$("sidebar").classList.remove("open");
-
-};
-
+document.getElementById("mobileMenu")
+.addEventListener("click",()=>{
+  document.getElementById("sidebar").classList.toggle("open");
 });
 
 
-$("menuButton").onclick=()=>{
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
-$("sidebar").classList.toggle("open");
+function esc(value){
 
-};
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
 
 
-/* =====================================================
+/* =========================================================
    LOAD COLLECTION
-===================================================== */
+========================================================= */
 
-async function getItems(name){
+async function getCollection(name){
 
-const snapshot=
-await getDocs(collection(db,name));
+  const snap = await getDocs(collection(db,name));
 
-return snapshot.docs.map(item=>({
-
-id:item.id,
-...item.data()
-
-}));
+  return snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 
 }
 
 
-/* =====================================================
-   DASHBOARD
-===================================================== */
+/* =========================================================
+   LOAD EVERYTHING
+========================================================= */
 
-async function refreshDashboard(){
+async function loadEverything(){
 
-try{
-
-const lectures=await getItems("lectures");
-const audio=await getItems("audio");
-const videos=await getItems("videos");
-const books=await getItems("books");
-const gallery=await getItems("gallery");
-const announcements=await getItems("announcements");
-
-$("lectureCount").textContent=lectures.length;
-$("audioCount").textContent=audio.length;
-$("videoCount").textContent=videos.length;
-$("bookCount").textContent=books.length;
-$("galleryCount").textContent=gallery.length;
-$("announcementCount").textContent=announcements.length;
-
-renderLectures(lectures);
-renderAudio(audio);
-renderVideos(videos);
-renderBooks(books);
-renderGallery(gallery);
-renderAnnouncements(announcements);
-
-await loadAbout();
-
-}catch(error){
-
-console.error(error);
-
-status(
-"An kasa lodawa: "+error.message,
-true
-);
-
-}
+  await Promise.all([
+    loadLectures(),
+    loadAudio(),
+    loadVideos(),
+    loadBooks(),
+    loadGallery(),
+    loadAnnouncements(),
+    loadAbout()
+  ]);
 
 }
 
 
-/* =====================================================
+/* =========================================================
    LECTURES
-===================================================== */
+========================================================= */
 
-function renderLectures(items){
+async function loadLectures(){
 
-const list=$("lectureList");
+  const list = document.getElementById("lecturesList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu karatu tukuna.</div>';
+    const data = await getCollection("lectures");
 
-return;
+    document.getElementById("countLectures").textContent = data.length;
 
-}
+    if(!data.length){
 
-list.innerHTML=items.map(item=>`
+      list.innerHTML = "<p>Babu lecture tukuna.</p>";
+      return;
+    }
 
-<div class="item">
+    list.innerHTML = data.map(x=>`
 
-<div>
+      <div class="item">
 
-<h4>${escapeHtml(item.title)}</h4>
+        <h3>${esc(x.title)}</h3>
 
-<p>
-<strong>Category:</strong>
-${escapeHtml(item.category||"")}
-</p>
+        <small>
+          ${esc(x.category || "Sauran Karatu")}
+        </small>
 
-<p>
-${escapeHtml(item.description||"")}
-</p>
+        <p>${esc(x.description || "")}</p>
 
-</div>
+        <div class="actions">
 
-<div class="item-buttons">
+          <button class="edit"
+            onclick='editLecture(${JSON.stringify(x)})'>
+            Gyara
+          </button>
 
-<button
-class="btn btn-light"
-onclick="editLecture('${item.id}')"
->
-Gyara
-</button>
+          <button class="delete"
+            onclick="deleteItem('lectures','${x.id}')">
+            Share
+          </button>
 
-<button
-class="btn btn-danger"
-onclick="deleteItem('lectures','${item.id}')"
->
-Share
-</button>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    `).join("");
 
-`).join("");
+  }catch(error){
 
-}
+    list.innerHTML =
+      "<p style='color:red'>An kasa loda lectures.</p>";
 
+    console.error(error);
 
-$("lectureForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-const id=$("lectureId").value;
-
-const data={
-
-title:$("lectureTitle").value.trim(),
-
-category:$("lectureCategory").value,
-
-description:
-$("lectureDescription").value.trim(),
-
-videoUrl:
-$("lectureVideoUrl").value.trim(),
-
-imageUrl:
-$("lectureImageUrl").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"lectures",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"lectures"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
+  }
 
 }
 
-$("lectureForm").reset();
 
-$("lectureId").value="";
+window.editLecture = function(x){
 
-$("cancelLecture").classList.add("hidden");
+  document.getElementById("lectureId").value = x.id;
+  document.getElementById("lectureTitle").value = x.title || "";
+  document.getElementById("lectureCategory").value = x.category || "Tafsiri";
+  document.getElementById("lectureDescription").value = x.description || "";
+  document.getElementById("lectureAudioUrl").value = x.audioUrl || "";
+  document.getElementById("lectureVideoUrl").value = x.videoUrl || "";
 
-await refreshDashboard();
-
-status("An ajiye karatu.");
-
-}catch(error){
-
-status(
-"An kasa ajiye karatu: "+error.message,
-true
-);
-
-}
+  window.scrollTo({top:0,behavior:"smooth"});
 
 };
 
 
-window.editLecture=async id=>{
+window.resetLecture = function(){
 
-const snap=
-await getDoc(doc(db,"lectures",id));
-
-if(!snap.exists())return;
-
-const d=snap.data();
-
-$("lectureId").value=id;
-
-$("lectureTitle").value=d.title||"";
-
-$("lectureCategory").value=
-d.category||"Tafsiri";
-
-$("lectureDescription").value=
-d.description||"";
-
-$("lectureVideoUrl").value=
-d.videoUrl||"";
-
-$("lectureImageUrl").value=
-d.imageUrl||"";
-
-$("cancelLecture").classList.remove("hidden");
-
-$("lectures").scrollIntoView();
+  document.getElementById("lectureForm").reset();
+  document.getElementById("lectureId").value = "";
 
 };
 
 
-$("cancelLecture").onclick=()=>{
+document.getElementById("lectureForm")
+.addEventListener("submit",async(e)=>{
 
-$("lectureForm").reset();
+  e.preventDefault();
 
-$("lectureId").value="";
+  const id = document.getElementById("lectureId").value;
 
-$("cancelLecture").classList.add("hidden");
+  const data = {
+    title:document.getElementById("lectureTitle").value.trim(),
+    category:document.getElementById("lectureCategory").value,
+    description:document.getElementById("lectureDescription").value.trim(),
+    audioUrl:document.getElementById("lectureAudioUrl").value.trim(),
+    videoUrl:document.getElementById("lectureVideoUrl").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"lectures",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"lectures"),data);
+
+    }
+
+    resetLecture();
+    await loadLectures();
+
+    alert("An ajiye lecture successfully.");
+
+  }catch(error){
+
+    console.error(error);
+    alert("An kasa ajiye lecture: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    AUDIO
-===================================================== */
+========================================================= */
 
-function renderAudio(items){
+async function loadAudio(){
 
-const list=$("audioList");
+  const list = document.getElementById("audioList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu audio tukuna.</div>';
+    const data = await getCollection("audio");
 
-return;
+    document.getElementById("countAudio").textContent = data.length;
 
-}
+    if(!data.length){
 
-list.innerHTML=items.map(item=>`
+      list.innerHTML = "<p>Babu audio tukuna.</p>";
+      return;
+    }
 
-<div class="item">
+    list.innerHTML = data.map(x=>`
 
-<div>
+      <div class="item">
 
-<h4>${escapeHtml(item.title)}</h4>
+        <h3>${esc(x.title)}</h3>
 
-<p>${escapeHtml(item.description||"")}</p>
+        <small>${esc(x.category || "")}</small>
 
-</div>
+        <p>${esc(x.description || "")}</p>
 
-<div class="item-buttons">
+        <p>
+          <a href="${esc(x.url)}" target="_blank">
+            Buɗe Audio
+          </a>
+        </p>
 
-<button
-class="btn btn-light"
-onclick="editAudio('${item.id}')"
->
-Gyara
-</button>
+        <div class="actions">
 
-<button
-class="btn btn-danger"
-onclick="deleteItem('audio','${item.id}')"
->
-Share
-</button>
+          <button class="edit"
+            onclick='editAudio(${JSON.stringify(x)})'>
+            Gyara
+          </button>
 
-</div>
+          <button class="delete"
+            onclick="deleteItem('audio','${x.id}')">
+            Share
+          </button>
 
-</div>
+        </div>
 
-`).join("");
+      </div>
 
-}
+    `).join("");
 
+  }catch(error){
 
-$("audioForm").onsubmit=async e=>{
+    list.innerHTML = "<p style='color:red'>An kasa loda audio.</p>";
+    console.error(error);
 
-e.preventDefault();
-
-try{
-
-const id=$("audioId").value;
-
-const data={
-
-title:$("audioTitle").value.trim(),
-
-audioUrl:$("audioUrl").value.trim(),
-
-description:
-$("audioDescription").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"audio",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"audio"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
+  }
 
 }
 
-$("audioForm").reset();
 
-$("audioId").value="";
+window.editAudio = function(x){
 
-$("cancelAudio").classList.add("hidden");
-
-await refreshDashboard();
-
-status("An ajiye audio.");
-
-}catch(error){
-
-status(
-"An kasa ajiye audio: "+error.message,
-true
-);
-
-}
+  document.getElementById("audioId").value = x.id;
+  document.getElementById("audioTitle").value = x.title || "";
+  document.getElementById("audioCategory").value = x.category || "";
+  document.getElementById("audioUrl").value = x.url || "";
+  document.getElementById("audioDescription").value = x.description || "";
 
 };
 
 
-window.editAudio=async id=>{
+window.resetAudio = function(){
 
-const snap=
-await getDoc(doc(db,"audio",id));
-
-const d=snap.data();
-
-$("audioId").value=id;
-
-$("audioTitle").value=d.title||"";
-
-$("audioUrl").value=d.audioUrl||"";
-
-$("audioDescription").value=
-d.description||"";
-
-$("cancelAudio").classList.remove("hidden");
+  document.getElementById("audioForm").reset();
+  document.getElementById("audioId").value = "";
 
 };
 
 
-$("cancelAudio").onclick=()=>{
+document.getElementById("audioForm")
+.addEventListener("submit",async(e)=>{
 
-$("audioForm").reset();
+  e.preventDefault();
 
-$("audioId").value="";
+  const id = document.getElementById("audioId").value;
 
-$("cancelAudio").classList.add("hidden");
+  const data = {
+    title:document.getElementById("audioTitle").value.trim(),
+    category:document.getElementById("audioCategory").value.trim(),
+    url:document.getElementById("audioUrl").value.trim(),
+    description:document.getElementById("audioDescription").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"audio",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"audio"),data);
+
+    }
+
+    resetAudio();
+    await loadAudio();
+
+    alert("An ajiye audio successfully.");
+
+  }catch(error){
+
+    alert("An kasa ajiye audio: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
-   VIDEO
-===================================================== */
+/* =========================================================
+   VIDEOS
+========================================================= */
 
-function renderVideos(items){
+async function loadVideos(){
 
-const list=$("videoList");
+  const list = document.getElementById("videosList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu video tukuna.</div>';
+    const data = await getCollection("videos");
 
-return;
+    document.getElementById("countVideos").textContent = data.length;
+
+    if(!data.length){
+
+      list.innerHTML = "<p>Babu video tukuna.</p>";
+      return;
+    }
+
+    list.innerHTML = data.map(x=>`
+
+      <div class="item">
+
+        <h3>${esc(x.title)}</h3>
+
+        <small>${esc(x.category || "")}</small>
+
+        <p>${esc(x.description || "")}</p>
+
+        <p>
+          <a href="${esc(x.url)}" target="_blank">
+            Buɗe Video
+          </a>
+        </p>
+
+        <div class="actions">
+
+          <button class="edit"
+            onclick='editVideo(${JSON.stringify(x)})'>
+            Gyara
+          </button>
+
+          <button class="delete"
+            onclick="deleteItem('videos','${x.id}')">
+            Share
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+  }catch(error){
+
+    list.innerHTML = "<p style='color:red'>An kasa loda videos.</p>";
+
+  }
 
 }
 
-list.innerHTML=items.map(item=>`
 
-<div class="item">
+window.editVideo = function(x){
 
-<div>
-
-<h4>${escapeHtml(item.title)}</h4>
-
-<p>${escapeHtml(item.description||"")}</p>
-
-</div>
-
-<div class="item-buttons">
-
-<button
-class="btn btn-light"
-onclick="editVideo('${item.id}')"
->
-Gyara
-</button>
-
-<button
-class="btn btn-danger"
-onclick="deleteItem('videos','${item.id}')"
->
-Share
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-$("videoForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-const id=$("videoId").value;
-
-const data={
-
-title:$("videoTitle").value.trim(),
-
-videoUrl:$("videoUrl").value.trim(),
-
-description:
-$("videoDescription").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"videos",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"videos"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
-
-}
-
-$("videoForm").reset();
-
-$("videoId").value="";
-
-$("cancelVideo").classList.add("hidden");
-
-await refreshDashboard();
-
-status("An ajiye video.");
-
-}catch(error){
-
-status(
-"An kasa ajiye video: "+error.message,
-true
-);
-
-}
+  document.getElementById("videoId").value = x.id;
+  document.getElementById("videoTitle").value = x.title || "";
+  document.getElementById("videoCategory").value = x.category || "";
+  document.getElementById("videoUrl").value = x.url || "";
+  document.getElementById("videoDescription").value = x.description || "";
 
 };
 
 
-window.editVideo=async id=>{
+window.resetVideo = function(){
 
-const snap=
-await getDoc(doc(db,"videos",id));
-
-const d=snap.data();
-
-$("videoId").value=id;
-
-$("videoTitle").value=d.title||"";
-
-$("videoUrl").value=d.videoUrl||"";
-
-$("videoDescription").value=
-d.description||"";
-
-$("cancelVideo").classList.remove("hidden");
+  document.getElementById("videoForm").reset();
+  document.getElementById("videoId").value = "";
 
 };
 
 
-$("cancelVideo").onclick=()=>{
+document.getElementById("videoForm")
+.addEventListener("submit",async(e)=>{
 
-$("videoForm").reset();
+  e.preventDefault();
 
-$("videoId").value="";
+  const id = document.getElementById("videoId").value;
 
-$("cancelVideo").classList.add("hidden");
+  const data = {
+    title:document.getElementById("videoTitle").value.trim(),
+    category:document.getElementById("videoCategory").value.trim(),
+    url:document.getElementById("videoUrl").value.trim(),
+    description:document.getElementById("videoDescription").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"videos",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"videos"),data);
+
+    }
+
+    resetVideo();
+    await loadVideos();
+
+    alert("An ajiye video successfully.");
+
+  }catch(error){
+
+    alert("An kasa ajiye video: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    BOOKS
-===================================================== */
+========================================================= */
 
-function renderBooks(items){
+async function loadBooks(){
 
-const list=$("bookList");
+  const list = document.getElementById("booksList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu littafi tukuna.</div>';
+    const data = await getCollection("books");
 
-return;
+    document.getElementById("countBooks").textContent = data.length;
 
-}
+    if(!data.length){
 
-list.innerHTML=items.map(item=>`
+      list.innerHTML = "<p>Babu littafi tukuna.</p>";
+      return;
+    }
 
-<div class="item">
+    list.innerHTML = data.map(x=>`
 
-<div>
+      <div class="item">
 
-<h4>${escapeHtml(item.title)}</h4>
+        <h3>${esc(x.title)}</h3>
 
-<p>
-<strong>Author:</strong>
-${escapeHtml(item.author||"")}
-</p>
+        <small>
+          ${esc(x.author || "")}
+          ${x.category ? " • " + esc(x.category) : ""}
+        </small>
 
-<p>
-${escapeHtml(item.description||"")}
-</p>
+        <p>${esc(x.description || "")}</p>
 
-</div>
+        <p>
+          <a href="${esc(x.url)}" target="_blank">
+            Buɗe PDF
+          </a>
+        </p>
 
-<div class="item-buttons">
+        <div class="actions">
 
-<button
-class="btn btn-light"
-onclick="editBook('${item.id}')"
->
-Gyara
-</button>
+          <button class="edit"
+            onclick='editBook(${JSON.stringify(x)})'>
+            Gyara
+          </button>
 
-<button
-class="btn btn-danger"
-onclick="deleteItem('books','${item.id}')"
->
-Share
-</button>
+          <button class="delete"
+            onclick="deleteItem('books','${x.id}')">
+            Share
+          </button>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-`).join("");
+    `).join("");
 
-}
+  }catch(error){
 
+    list.innerHTML = "<p style='color:red'>An kasa loda littattafai.</p>";
 
-$("bookForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-const id=$("bookId").value;
-
-const data={
-
-title:$("bookTitle").value.trim(),
-
-author:$("bookAuthor").value.trim(),
-
-description:
-$("bookDescription").value.trim(),
-
-pdfUrl:$("bookPdfUrl").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"books",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"books"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
+  }
 
 }
 
-$("bookForm").reset();
 
-$("bookId").value="";
+window.editBook = function(x){
 
-$("cancelBook").classList.add("hidden");
-
-await refreshDashboard();
-
-status("An ajiye littafi.");
-
-}catch(error){
-
-status(
-"An kasa ajiye littafi: "+error.message,
-true
-);
-
-}
+  document.getElementById("bookId").value = x.id;
+  document.getElementById("bookTitle").value = x.title || "";
+  document.getElementById("bookAuthor").value = x.author || "";
+  document.getElementById("bookCategory").value = x.category || "";
+  document.getElementById("bookUrl").value = x.url || "";
+  document.getElementById("bookDescription").value = x.description || "";
 
 };
 
 
-window.editBook=async id=>{
+window.resetBook = function(){
 
-const snap=
-await getDoc(doc(db,"books",id));
-
-const d=snap.data();
-
-$("bookId").value=id;
-
-$("bookTitle").value=d.title||"";
-
-$("bookAuthor").value=d.author||"";
-
-$("bookDescription").value=
-d.description||"";
-
-$("bookPdfUrl").value=d.pdfUrl||"";
-
-$("cancelBook").classList.remove("hidden");
+  document.getElementById("bookForm").reset();
+  document.getElementById("bookId").value = "";
 
 };
 
 
-$("cancelBook").onclick=()=>{
+document.getElementById("bookForm")
+.addEventListener("submit",async(e)=>{
 
-$("bookForm").reset();
+  e.preventDefault();
 
-$("bookId").value="";
+  const id = document.getElementById("bookId").value;
 
-$("cancelBook").classList.add("hidden");
+  const data = {
+    title:document.getElementById("bookTitle").value.trim(),
+    author:document.getElementById("bookAuthor").value.trim(),
+    category:document.getElementById("bookCategory").value.trim(),
+    url:document.getElementById("bookUrl").value.trim(),
+    description:document.getElementById("bookDescription").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"books",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"books"),data);
+
+    }
+
+    resetBook();
+    await loadBooks();
+
+    alert("An ajiye littafi successfully.");
+
+  }catch(error){
+
+    alert("An kasa ajiye littafi: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    GALLERY
-===================================================== */
+========================================================= */
 
-function renderGallery(items){
+async function loadGallery(){
 
-const list=$("galleryList");
+  const list = document.getElementById("galleryList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu hoto tukuna.</div>';
+    const data = await getCollection("gallery");
 
-return;
+    document.getElementById("countGallery").textContent = data.length;
 
-}
+    if(!data.length){
 
-list.innerHTML=items.map(item=>`
+      list.innerHTML = "<p>Babu hoto tukuna.</p>";
+      return;
+    }
 
-<div class="item">
+    list.innerHTML = data.map(x=>`
 
-<div>
+      <div class="item">
 
-<h4>${escapeHtml(item.title)}</h4>
+        <h3>${esc(x.title)}</h3>
 
-<p>${escapeHtml(item.description||"")}</p>
+        <small>${esc(x.category || "")}</small>
 
-</div>
+        <p>
+          <a href="${esc(x.url)}" target="_blank">
+            Buɗe Hoto
+          </a>
+        </p>
 
-<div class="item-buttons">
+        <div class="actions">
 
-<button
-class="btn btn-light"
-onclick="editGallery('${item.id}')"
->
-Gyara
-</button>
+          <button class="edit"
+            onclick='editGallery(${JSON.stringify(x)})'>
+            Gyara
+          </button>
 
-<button
-class="btn btn-danger"
-onclick="deleteItem('gallery','${item.id}')"
->
-Share
-</button>
+          <button class="delete"
+            onclick="deleteItem('gallery','${x.id}')">
+            Share
+          </button>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-`).join("");
+    `).join("");
 
-}
+  }catch(error){
 
+    list.innerHTML = "<p style='color:red'>An kasa loda gallery.</p>";
 
-$("galleryForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-const id=$("galleryId").value;
-
-const data={
-
-title:$("galleryTitle").value.trim(),
-
-imageUrl:$("galleryImageUrl").value.trim(),
-
-description:
-$("galleryDescription").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"gallery",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"gallery"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
+  }
 
 }
 
-$("galleryForm").reset();
 
-$("galleryId").value="";
+window.editGallery = function(x){
 
-$("cancelGallery").classList.add("hidden");
-
-await refreshDashboard();
-
-status("An ajiye hoto.");
-
-}catch(error){
-
-status(
-"An kasa ajiye hoto: "+error.message,
-true
-);
-
-}
+  document.getElementById("galleryId").value = x.id;
+  document.getElementById("galleryTitle").value = x.title || "";
+  document.getElementById("galleryCategory").value = x.category || "";
+  document.getElementById("galleryUrl").value = x.url || "";
 
 };
 
 
-window.editGallery=async id=>{
+window.resetGallery = function(){
 
-const snap=
-await getDoc(doc(db,"gallery",id));
-
-const d=snap.data();
-
-$("galleryId").value=id;
-
-$("galleryTitle").value=d.title||"";
-
-$("galleryImageUrl").value=d.imageUrl||"";
-
-$("galleryDescription").value=
-d.description||"";
-
-$("cancelGallery").classList.remove("hidden");
+  document.getElementById("galleryForm").reset();
+  document.getElementById("galleryId").value = "";
 
 };
 
 
-$("cancelGallery").onclick=()=>{
+document.getElementById("galleryForm")
+.addEventListener("submit",async(e)=>{
 
-$("galleryForm").reset();
+  e.preventDefault();
 
-$("galleryId").value="";
+  const id = document.getElementById("galleryId").value;
 
-$("cancelGallery").classList.add("hidden");
+  const data = {
+    title:document.getElementById("galleryTitle").value.trim(),
+    category:document.getElementById("galleryCategory").value.trim(),
+    url:document.getElementById("galleryUrl").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"gallery",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"gallery"),data);
+
+    }
+
+    resetGallery();
+    await loadGallery();
+
+    alert("An ajiye hoto successfully.");
+
+  }catch(error){
+
+    alert("An kasa ajiye hoto: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    ANNOUNCEMENTS
-===================================================== */
+========================================================= */
 
-function renderAnnouncements(items){
+async function loadAnnouncements(){
 
-const list=$("announcementList");
+  const list = document.getElementById("announcementsList");
 
-if(!items.length){
+  try{
 
-list.innerHTML=
-'<div class="empty">Babu sanarwa tukuna.</div>';
+    const data = await getCollection("announcements");
 
-return;
+    document.getElementById("countAnnouncements").textContent = data.length;
 
-}
+    if(!data.length){
 
-list.innerHTML=items.map(item=>`
+      list.innerHTML = "<p>Babu sanarwa tukuna.</p>";
+      return;
+    }
 
-<div class="item">
+    list.innerHTML = data.map(x=>`
 
-<div>
+      <div class="item">
 
-<h4>${escapeHtml(item.title)}</h4>
+        <h3>${esc(x.title)}</h3>
 
-<p>${escapeHtml(item.text||"")}</p>
+        <p>${esc(x.text || "")}</p>
 
-</div>
+        <div class="actions">
 
-<div class="item-buttons">
+          <button class="edit"
+            onclick='editAnnouncement(${JSON.stringify(x)})'>
+            Gyara
+          </button>
 
-<button
-class="btn btn-light"
-onclick="editAnnouncement('${item.id}')"
->
-Gyara
-</button>
+          <button class="delete"
+            onclick="deleteItem('announcements','${x.id}')">
+            Share
+          </button>
 
-<button
-class="btn btn-danger"
-onclick="deleteItem('announcements','${item.id}')"
->
-Share
-</button>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    `).join("");
 
-`).join("");
+  }catch(error){
 
-}
+    list.innerHTML = "<p style='color:red'>An kasa loda sanarwa.</p>";
 
-
-$("announcementForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-const id=$("announcementId").value;
-
-const data={
-
-title:$("announcementTitle").value.trim(),
-
-text:$("announcementText").value.trim()
-
-};
-
-if(id){
-
-await updateDoc(
-doc(db,"announcements",id),
-data
-);
-
-}else{
-
-await addDoc(
-collection(db,"announcements"),
-{
-...data,
-createdAt:serverTimestamp()
-}
-);
+  }
 
 }
 
-$("announcementForm").reset();
 
-$("announcementId").value="";
+window.editAnnouncement = function(x){
 
-$("cancelAnnouncement").classList.add("hidden");
-
-await refreshDashboard();
-
-status("An ajiye sanarwa.");
-
-}catch(error){
-
-status(
-"An kasa ajiye sanarwa: "+error.message,
-true
-);
-
-}
+  document.getElementById("announcementId").value = x.id;
+  document.getElementById("announcementTitle").value = x.title || "";
+  document.getElementById("announcementText").value = x.text || "";
 
 };
 
 
-window.editAnnouncement=async id=>{
+window.resetAnnouncement = function(){
 
-const snap=
-await getDoc(doc(db,"announcements",id));
-
-const d=snap.data();
-
-$("announcementId").value=id;
-
-$("announcementTitle").value=d.title||"";
-
-$("announcementText").value=d.text||"";
-
-$("cancelAnnouncement").classList.remove("hidden");
+  document.getElementById("announcementForm").reset();
+  document.getElementById("announcementId").value = "";
 
 };
 
 
-$("cancelAnnouncement").onclick=()=>{
+document.getElementById("announcementForm")
+.addEventListener("submit",async(e)=>{
 
-$("announcementForm").reset();
+  e.preventDefault();
 
-$("announcementId").value="";
+  const id =
+    document.getElementById("announcementId").value;
 
-$("cancelAnnouncement").classList.add("hidden");
+  const data = {
+    title:document.getElementById("announcementTitle").value.trim(),
+    text:document.getElementById("announcementText").value.trim(),
+    updatedAt:serverTimestamp()
+  };
 
-};
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"announcements",id),data);
+
+    }else{
+
+      data.createdAt = serverTimestamp();
+
+      await addDoc(collection(db,"announcements"),data);
+
+    }
+
+    resetAnnouncement();
+    await loadAnnouncements();
+
+    alert("An ajiye sanarwa successfully.");
+
+  }catch(error){
+
+    alert("An kasa ajiye sanarwa: " + error.message);
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    ABOUT IMAM
-===================================================== */
+========================================================= */
 
 async function loadAbout(){
 
-try{
+  try{
 
-const snap=
-await getDoc(
-doc(db,"site","about")
-);
+    const ref = doc(db,"settings","aboutImam");
+    const snap = await getDoc(ref);
 
-if(snap.exists()){
+    if(!snap.exists()) return;
 
-const d=snap.data();
+    const x = snap.data();
 
-$("aboutName").value=d.name||"";
+    document.getElementById("aboutName").value =
+      x.name || "";
 
-$("aboutText").value=d.text||"";
+    document.getElementById("aboutBio").value =
+      x.bio || "";
 
-$("aboutImageUrl").value=
-d.imageUrl||"";
+    document.getElementById("aboutHistory").value =
+      x.history || "";
 
-}
+    document.getElementById("aboutPhoto").value =
+      x.photo || "";
 
-}catch(error){
+  }catch(error){
 
-console.log(error);
+    console.error("ABOUT:",error);
 
-}
-
-}
-
-
-$("aboutForm").onsubmit=async e=>{
-
-e.preventDefault();
-
-try{
-
-await setDoc(
-
-doc(db,"site","about"),
-
-{
-
-name:$("aboutName").value.trim(),
-
-text:$("aboutText").value.trim(),
-
-imageUrl:
-$("aboutImageUrl").value.trim(),
-
-updatedAt:serverTimestamp()
-
-},
-
-{merge:true}
-
-);
-
-status("An ajiye About Imam.");
-
-}catch(error){
-
-status(
-"An kasa ajiye About Imam: "+error.message,
-true
-);
+  }
 
 }
 
-};
+
+document.getElementById("aboutForm")
+.addEventListener("submit",async(e)=>{
+
+  e.preventDefault();
+
+  const data = {
+
+    name:document.getElementById("aboutName").value.trim(),
+
+    bio:document.getElementById("aboutBio").value.trim(),
+
+    history:document.getElementById("aboutHistory").value.trim(),
+
+    photo:document.getElementById("aboutPhoto").value.trim(),
+
+    updatedAt:serverTimestamp()
+
+  };
+
+  try{
+
+    await setDoc(
+      doc(db,"settings","aboutImam"),
+      data,
+      {merge:true}
+    );
+
+    alert("An ajiye bayanan Imam successfully.");
+
+  }catch(error){
+
+    alert(
+      "An kasa ajiye About Imam: " +
+      error.message
+    );
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    DELETE
-===================================================== */
+========================================================= */
 
-window.deleteItem=async(name,id)=>{
+window.deleteItem = async function(collectionName,id){
 
-if(!confirm(
-"Ka tabbata kana son share wannan abu?"
-))return;
+  const ok = confirm(
+    "Ka tabbata kana son share wannan abu?"
+  );
 
-try{
+  if(!ok) return;
 
-await deleteDoc(
-doc(db,name,id)
-);
+  try{
 
-await refreshDashboard();
+    await deleteDoc(
+      doc(db,collectionName,id)
+    );
 
-status("An share successfully.");
+    if(collectionName === "lectures") await loadLectures();
+    if(collectionName === "audio") await loadAudio();
+    if(collectionName === "videos") await loadVideos();
+    if(collectionName === "books") await loadBooks();
+    if(collectionName === "gallery") await loadGallery();
+    if(collectionName === "announcements") await loadAnnouncements();
 
-}catch(error){
+    alert("An share successfully.");
 
-status(
-"An kasa sharewa: "+error.message,
-true
-);
+  }catch(error){
 
-}
+    console.error(error);
+
+    alert(
+      "An kasa sharewa: " +
+      error.message
+    );
+
+  }
 
 };
-
-
-/* =====================================================
-   SECURITY / HTML ESCAPE
-===================================================== */
-
-function escapeHtml(value){
-
-return String(value??"")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
 
 </script>
 
