@@ -7,244 +7,263 @@
   <title>Admin Panel | Imam Bichi Islamic Media</title>
 
   <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-      font-family:Arial, sans-serif;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
-    body{
-      background:#f4f1e8;
-      color:#173d2b;
+    body {
+      background: #f4f1e8;
+      color: #173d2b;
     }
 
-    header{
-      background:#075c3b;
-      color:#fff;
-      padding:18px;
-      text-align:center;
-      border-bottom:4px solid #d4af37;
+    header {
+      background: #075c3b;
+      color: white;
+      padding: 18px;
+      text-align: center;
+      border-bottom: 4px solid #d4af37;
     }
 
-    header h1{
-      font-size:22px;
+    header h1 {
+      font-size: 22px;
     }
 
-    header p{
-      margin-top:5px;
-      font-size:14px;
-      color:#f7e7a8;
+    header p {
+      margin-top: 5px;
+      color: #f7e7a8;
+      font-size: 14px;
     }
 
-    .container{
-      max-width:1100px;
-      margin:25px auto;
-      padding:15px;
+    .container {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 15px;
     }
 
-    .card{
-      background:#fff;
-      border-radius:12px;
-      padding:20px;
-      margin-bottom:20px;
-      box-shadow:0 4px 15px rgba(0,0,0,.08);
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
     }
 
-    .login-box{
-      max-width:450px;
-      margin:60px auto;
+    .login-box {
+      max-width: 450px;
+      margin: 60px auto;
     }
 
-    h2{
-      color:#075c3b;
-      margin-bottom:15px;
+    h2 {
+      color: #075c3b;
+      margin-bottom: 15px;
     }
 
-    h3{
-      color:#075c3b;
-      margin-bottom:12px;
+    h3 {
+      color: #075c3b;
+      margin-bottom: 12px;
     }
 
     input,
     textarea,
-    select{
-      width:100%;
-      padding:12px;
-      margin:7px 0 12px;
-      border:1px solid #ccc;
-      border-radius:8px;
-      outline:none;
-      font-size:15px;
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
     }
 
     input:focus,
     textarea:focus,
-    select:focus{
-      border-color:#075c3b;
+    select:focus {
+      border-color: #075c3b;
     }
 
-    textarea{
-      min-height:120px;
-      resize:vertical;
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
-    button{
-      border:none;
-      padding:11px 17px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:bold;
-      margin:4px;
+    button {
+      border: none;
+      padding: 11px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 4px;
     }
 
-    .btn-primary{
-      background:#075c3b;
-      color:#fff;
+    button:hover {
+      opacity: .88;
     }
 
-    .btn-gold{
-      background:#d4af37;
-      color:#173d2b;
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
     }
 
-    .btn-danger{
-      background:#b42318;
-      color:#fff;
+    .btn-primary {
+      background: #075c3b;
+      color: white;
     }
 
-    .btn-secondary{
-      background:#555;
-      color:#fff;
+    .btn-gold {
+      background: #d4af37;
+      color: #173d2b;
     }
 
-    button:hover{
-      opacity:.88;
+    .btn-danger {
+      background: #b42318;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #555;
+      color: white;
     }
 
     #loginMessage,
-    #statusMessage{
-      padding:10px;
-      border-radius:8px;
-      margin:10px 0;
-      display:none;
+    #statusMessage {
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      display: none;
     }
 
-    .success{
-      background:#dff5e8;
-      color:#075c3b;
-      display:block !important;
+    .success {
+      background: #dff5e8;
+      color: #075c3b;
+      display: block !important;
     }
 
-    .error{
-      background:#fde2e1;
-      color:#9b1c1c;
-      display:block !important;
+    .error {
+      background: #fde2e1;
+      color: #9b1c1c;
+      display: block !important;
     }
 
-    #dashboard{
-      display:none;
+    #dashboard {
+      display: none;
     }
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .tabs{
-      display:flex;
-      flex-wrap:wrap;
-      gap:7px;
-      margin-bottom:20px;
+    .admin-info {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #555;
+      word-break: break-all;
     }
 
-    .tab-btn{
-      background:#e5e0d1;
-      color:#173d2b;
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 20px;
     }
 
-    .tab-btn.active{
-      background:#075c3b;
-      color:#fff;
+    .tab-btn {
+      background: #e5e0d1;
+      color: #173d2b;
     }
 
-    .section{
-      display:none;
+    .tab-btn.active {
+      background: #075c3b;
+      color: white;
     }
 
-    .section.active{
-      display:block;
+    .section {
+      display: none;
     }
 
-    .item{
-      background:#faf9f4;
-      border:1px solid #ddd;
-      border-left:5px solid #075c3b;
-      padding:15px;
-      margin:10px 0;
-      border-radius:8px;
+    .section.active {
+      display: block;
     }
 
-    .item h4{
-      color:#075c3b;
-      margin-bottom:7px;
+    .item {
+      background: #faf9f4;
+      border: 1px solid #ddd;
+      border-left: 5px solid #075c3b;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
     }
 
-    .item p{
-      white-space:pre-wrap;
-      line-height:1.5;
+    .item h4 {
+      color: #075c3b;
+      margin-bottom: 7px;
     }
 
-    .item a{
-      color:#075c3b;
-      word-break:break-all;
+    .item p {
+      white-space: pre-wrap;
+      line-height: 1.5;
+      margin-bottom: 5px;
     }
 
-    .actions{
-      margin-top:10px;
+    .item a {
+      color: #075c3b;
+      word-break: break-all;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
+    .actions {
+      margin-top: 10px;
     }
 
-    .full{
-      grid-column:1/-1;
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
 
-    .empty{
-      color:#777;
-      padding:15px;
-      text-align:center;
+    .full {
+      grid-column: 1 / -1;
     }
 
-    .loading{
-      text-align:center;
-      padding:20px;
-      color:#075c3b;
+    .empty {
+      color: #777;
+      padding: 15px;
+      text-align: center;
     }
 
-    @media(max-width:700px){
-      .grid{
-        grid-template-columns:1fr;
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #075c3b;
+    }
+
+    .debug-box {
+      margin-top: 12px;
+      padding: 10px;
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 12px;
+      word-break: break-all;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
       }
 
-      .full{
-        grid-column:auto;
+      .full {
+        grid-column: auto;
       }
 
-      .topbar{
-        align-items:flex-start;
-      }
-
-      header h1{
-        font-size:18px;
+      header h1 {
+        font-size: 18px;
       }
     }
   </style>
@@ -256,6 +275,7 @@
   <h1>IMAM BICHI ISLAMIC MEDIA</h1>
   <p>Admin Control Panel</p>
 </header>
+
 
 <!-- ================= LOGIN ================= -->
 
@@ -293,6 +313,8 @@
 
     <div id="loginMessage"></div>
 
+    <div id="debugBox" class="debug-box"></div>
+
   </div>
 
 </div>
@@ -308,7 +330,10 @@
 
       <div>
         <h2>Admin Dashboard</h2>
+
         <p id="adminEmail"></p>
+
+        <p id="adminUid" class="admin-info"></p>
       </div>
 
       <button
@@ -376,44 +401,82 @@
 
           <div>
             <label>Take</label>
-            <input id="lectureTitle" required placeholder="Misali: Tafsirin Suratul Baqarah">
+
+            <input
+              id="lectureTitle"
+              required
+              placeholder="Misali: Tafsirin Suratul Baqarah"
+            >
           </div>
 
           <div>
             <label>Malami</label>
-            <input id="lectureSpeaker" placeholder="Imam Lawan Abubakar Ahmad Bichi">
+
+            <input
+              id="lectureSpeaker"
+              placeholder="Imam Lawan Abubakar Ahmad Bichi"
+            >
           </div>
 
           <div>
             <label>Rukuni</label>
+
             <select id="lectureCategory">
+
               <option value="Tafsir">Tafsir</option>
+
               <option value="Hadisi">Hadisi</option>
+
               <option value="Fiqhu">Fiqhu</option>
+
               <option value="Akida">Akida</option>
+
               <option value="Tarihi">Tarihi</option>
-              <option value="Sauran Karatu">Sauran Karatu</option>
+
+              <option value="Sauran Karatu">
+                Sauran Karatu
+              </option>
+
             </select>
           </div>
 
           <div>
             <label>Ranar Karatu</label>
-            <input type="date" id="lectureDate">
+
+            <input
+              type="date"
+              id="lectureDate"
+            >
           </div>
 
           <div class="full">
+
             <label>Bayani</label>
-            <textarea id="lectureDescription" placeholder="Bayani game da karatun..."></textarea>
+
+            <textarea
+              id="lectureDescription"
+              placeholder="Bayani game da karatun..."
+            ></textarea>
+
           </div>
 
           <div class="full">
+
             <label>Link na Audio/Video idan akwai</label>
-            <input id="lectureUrl" placeholder="https://...">
+
+            <input
+              id="lectureUrl"
+              placeholder="https://..."
+            >
+
           </div>
 
         </div>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Karatu
         </button>
 
@@ -428,6 +491,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -454,18 +518,32 @@
 
         <input type="hidden" id="audioId">
 
-        <input id="audioTitle" required placeholder="Taken Audio">
+        <input
+          id="audioTitle"
+          required
+          placeholder="Taken Audio"
+        >
 
-        <input id="audioSpeaker" placeholder="Sunan Malami">
+        <input
+          id="audioSpeaker"
+          placeholder="Sunan Malami"
+        >
 
-        <input id="audioUrl" required placeholder="Audio URL">
+        <input
+          id="audioUrl"
+          required
+          placeholder="Audio URL"
+        >
 
         <textarea
           id="audioDescription"
           placeholder="Bayani game da Audio"
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Audio
         </button>
 
@@ -480,6 +558,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -506,16 +585,27 @@
 
         <input type="hidden" id="videoId">
 
-        <input id="videoTitle" required placeholder="Taken Video">
+        <input
+          id="videoTitle"
+          required
+          placeholder="Taken Video"
+        >
 
-        <input id="videoUrl" required placeholder="YouTube URL">
+        <input
+          id="videoUrl"
+          required
+          placeholder="YouTube URL"
+        >
 
         <textarea
           id="videoDescription"
           placeholder="Bayani game da Video"
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Video
         </button>
 
@@ -530,6 +620,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -556,18 +647,32 @@
 
         <input type="hidden" id="bookId">
 
-        <input id="bookTitle" required placeholder="Sunan Littafi">
+        <input
+          id="bookTitle"
+          required
+          placeholder="Sunan Littafi"
+        >
 
-        <input id="bookAuthor" placeholder="Marubuci">
+        <input
+          id="bookAuthor"
+          placeholder="Marubuci"
+        >
 
-        <input id="bookUrl" required placeholder="PDF / Download URL">
+        <input
+          id="bookUrl"
+          required
+          placeholder="PDF / Download URL"
+        >
 
         <textarea
           id="bookDescription"
           placeholder="Bayani game da littafin"
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Littafi
         </button>
 
@@ -582,6 +687,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -608,16 +714,27 @@
 
         <input type="hidden" id="galleryId">
 
-        <input id="galleryTitle" required placeholder="Taken Hoto">
+        <input
+          id="galleryTitle"
+          required
+          placeholder="Taken Hoto"
+        >
 
-        <input id="galleryImageUrl" required placeholder="Image URL">
+        <input
+          id="galleryImageUrl"
+          required
+          placeholder="Image URL"
+        >
 
         <textarea
           id="galleryDescription"
           placeholder="Bayani game da hoton"
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Hoto
         </button>
 
@@ -632,6 +749,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -656,7 +774,10 @@
 
       <form id="announcementForm">
 
-        <input type="hidden" id="announcementId">
+        <input
+          type="hidden"
+          id="announcementId"
+        >
 
         <input
           id="announcementTitle"
@@ -670,7 +791,10 @@
           placeholder="Rubuta sanarwa..."
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye Sanarwa
         </button>
 
@@ -685,6 +809,7 @@
       </form>
 
     </div>
+
 
     <div class="card">
 
@@ -734,7 +859,10 @@
           placeholder="Sakon Imam..."
         ></textarea>
 
-        <button class="btn-primary" type="submit">
+        <button
+          class="btn-primary"
+          type="submit"
+        >
           Ajiye About Imam
         </button>
 
@@ -772,58 +900,93 @@
     updateDoc,
     deleteDoc,
     setDoc,
-    serverTimestamp,
-    orderBy,
-    query
+    serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
-  // ================= FIREBASE CONFIG =================
+  // ==================================================
+  // FIREBASE CONFIG
+  // ==================================================
 
   const firebaseConfig = {
-    apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
-    authDomain: "imam-bichi-islamic-media.firebaseapp.com",
-    projectId: "imam-bichi-islamic-media",
-    storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
-    messagingSenderId: "87559095522",
-    appId: "1:87559095522:web:a2d9d783166f56aade8abb",
-    measurementId: "G-J2QD3SRX5N"
+
+    apiKey:
+      "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
+
+    authDomain:
+      "imam-bichi-islamic-media.firebaseapp.com",
+
+    projectId:
+      "imam-bichi-islamic-media",
+
+    storageBucket:
+      "imam-bichi-islamic-media.firebasestorage.app",
+
+    messagingSenderId:
+      "87559095522",
+
+    appId:
+      "1:87559095522:web:a2d9d783166f56aade8abb",
+
+    measurementId:
+      "G-J2QD3SRX5N"
+
   };
 
 
-  const app = initializeApp(firebaseConfig);
-
-  const auth = getAuth(app);
-
-  const db = getFirestore(app);
+  const app =
+    initializeApp(firebaseConfig);
 
 
-  // ================= ADMIN UIDS =================
-
-  const ADMIN_UIDS = [
-    "L4AmkUvGjjdQ47y3ud2pL8Jx8v43",
-    "rOnMBuoIbNX7cEC3d1urj8lZtiJ2"
-  ];
+  const auth =
+    getAuth(app);
 
 
-  // ================= ELEMENTS =================
-
-  const loginPage = document.getElementById("loginPage");
-  const dashboard = document.getElementById("dashboard");
-
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-
-  const loginBtn = document.getElementById("loginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  const loginMessage = document.getElementById("loginMessage");
-  const statusMessage = document.getElementById("statusMessage");
-
-  const adminEmail = document.getElementById("adminEmail");
+  const db =
+    getFirestore(app);
 
 
-  // ================= MESSAGE =================
+  // ==================================================
+  // ELEMENTS
+  // ==================================================
+
+  const loginPage =
+    document.getElementById("loginPage");
+
+  const dashboard =
+    document.getElementById("dashboard");
+
+  const emailInput =
+    document.getElementById("email");
+
+  const passwordInput =
+    document.getElementById("password");
+
+  const loginBtn =
+    document.getElementById("loginBtn");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+  const loginMessage =
+    document.getElementById("loginMessage");
+
+  const statusMessage =
+    document.getElementById("statusMessage");
+
+  const adminEmail =
+    document.getElementById("adminEmail");
+
+  const adminUid =
+    document.getElementById("adminUid");
+
+  const debugBox =
+    document.getElementById("debugBox");
+
+
+  // ==================================================
+  // MESSAGE FUNCTIONS
+  // ==================================================
 
   function showLoginMessage(message, type = "error") {
 
@@ -846,50 +1009,214 @@
 
       statusMessage.style.display = "none";
 
-    }, 3500);
+    }, 4000);
 
   }
 
 
-  // ================= ADMIN CHECK =================
+  function showDebug(message) {
+
+    debugBox.textContent = message;
+
+    debugBox.style.display = "block";
+
+  }
+
+
+  // ==================================================
+  // THE IMPORTANT ADMIN AUTHORIZATION CHECK
+  // ==================================================
 
   async function checkAdmin(user) {
 
     if (!user) {
-      return false;
-    }
-
-    if (!ADMIN_UIDS.includes(user.uid)) {
-
-      console.log("UID not in ADMIN_UIDS:", user.uid);
 
       return false;
 
     }
+
+
+    /*
+      IMPORTANT:
+
+      We DO NOT use a hard-coded UID list.
+
+      Firebase gives us the real UID of the
+      account that successfully logged in.
+
+      Then we check:
+
+      users/{REAL_FIREBASE_UID}
+
+      and look for:
+
+      role = admin
+    */
+
+
+    const realUid =
+      user.uid;
+
+
+    console.log(
+      "===================================="
+    );
+
+    console.log(
+      "LOGIN SUCCESS"
+    );
+
+    console.log(
+      "Email:",
+      user.email
+    );
+
+    console.log(
+      "REAL FIREBASE UID:",
+      realUid
+    );
+
+    console.log(
+      "Firestore document:",
+      "users/" + realUid
+    );
+
+    console.log(
+      "===================================="
+    );
+
 
     try {
 
-      const userRef = doc(db, "users", user.uid);
+      const userRef =
+        doc(
+          db,
+          "users",
+          realUid
+        );
 
-      const userSnap = await getDoc(userRef);
+
+      const userSnap =
+        await getDoc(userRef);
+
+
+      // ----------------------------------------------
+      // DOCUMENT DOES NOT EXIST
+      // ----------------------------------------------
 
       if (!userSnap.exists()) {
 
-        console.log("Admin document missing:", user.uid);
+        console.error(
+          "ADMIN DOCUMENT DOES NOT EXIST"
+        );
+
+        showDebug(
+          "Firebase UID: " +
+          realUid +
+          "\n\nFirestore document checked:\n" +
+          "users/" +
+          realUid +
+          "\n\nResult: DOCUMENT NOT FOUND"
+        );
 
         return false;
 
       }
 
-      const data = userSnap.data();
 
-      console.log("Admin document:", data);
+      // ----------------------------------------------
+      // DOCUMENT EXISTS
+      // ----------------------------------------------
 
-      return data.role === "admin";
+      const data =
+        userSnap.data();
+
+
+      console.log(
+        "Firestore admin document:",
+        data
+      );
+
+
+      const role =
+        data.role;
+
+
+      console.log(
+        "ROLE FROM FIRESTORE:",
+        role
+      );
+
+
+      // ----------------------------------------------
+      // ADMIN ROLE CHECK
+      // ----------------------------------------------
+
+      if (
+        typeof role === "string" &&
+        role.trim().toLowerCase() === "admin"
+      ) {
+
+        console.log(
+          "ADMIN VERIFIED SUCCESSFULLY"
+        );
+
+
+        showDebug(
+          "Firebase UID: " +
+          realUid +
+          "\n\nFirestore document:\n" +
+          "users/" +
+          realUid +
+          "\n\nRole: admin\n\nADMIN VERIFIED"
+        );
+
+
+        return true;
+
+      }
+
+
+      // ----------------------------------------------
+      // DOCUMENT EXISTS BUT ROLE IS WRONG
+      // ----------------------------------------------
+
+      console.error(
+        "ROLE IS NOT ADMIN:",
+        role
+      );
+
+
+      showDebug(
+        "Firebase UID: " +
+        realUid +
+        "\n\nFirestore document:\n" +
+        "users/" +
+        realUid +
+        "\n\nRole found: " +
+        String(role) +
+        "\n\nExpected: admin"
+      );
+
+
+      return false;
+
 
     } catch (error) {
 
-      console.error("Admin check error:", error);
+      console.error(
+        "ADMIN CHECK ERROR:",
+        error
+      );
+
+
+      showDebug(
+        "Firebase UID: " +
+        realUid +
+        "\n\nFirestore check failed:\n" +
+        error.message
+      );
+
 
       throw error;
 
@@ -898,49 +1225,68 @@
   }
 
 
-  // ================= LOGIN =================
+  // ==================================================
+  // SHOW DASHBOARD
+  // ==================================================
 
-  loginBtn.addEventListener("click", async () => {
+  function showDashboard(user) {
 
-    const email = emailInput.value.trim();
+    loginPage.style.display =
+      "none";
 
-    const password = passwordInput.value;
+    dashboard.style.display =
+      "block";
 
-    if (!email || !password) {
 
-      showLoginMessage(
-        "Ka saka email da password.",
-        "error"
-      );
+    adminEmail.textContent =
+      "Admin Email: " +
+      user.email;
 
-      return;
 
-    }
+    adminUid.textContent =
+      "Firebase UID: " +
+      user.uid;
 
-    loginBtn.disabled = true;
 
-    loginBtn.textContent = "Ana shiga...";
+    loadAllData();
 
-    try {
+  }
 
-      const result =
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
 
-      const user = result.user;
+  // ==================================================
+  // SHOW LOGIN
+  // ==================================================
 
-      const isAdmin =
-        await checkAdmin(user);
+  function showLoginPage() {
 
-      if (!isAdmin) {
+    loginPage.style.display =
+      "block";
 
-        await signOut(auth);
+    dashboard.style.display =
+      "none";
+
+  }
+
+
+  // ==================================================
+  // LOGIN
+  // ==================================================
+
+  loginBtn.addEventListener(
+    "click",
+    async () => {
+
+      const email =
+        emailInput.value.trim();
+
+      const password =
+        passwordInput.value;
+
+
+      if (!email || !password) {
 
         showLoginMessage(
-          "Wannan account ba shi da izinin Admin.",
+          "Ka saka email da password.",
           "error"
         );
 
@@ -948,197 +1294,383 @@
 
       }
 
-      showDashboard(user);
 
-    } catch (error) {
+      loginBtn.disabled =
+        true;
 
-      console.error(error);
-
-      let message =
-        "An samu matsala wajen shiga.";
-
-      if (error.code === "auth/invalid-credential") {
-
-        message =
-          "Email ko password ba daidai ba ne.";
-
-      }
-
-      if (error.code === "auth/invalid-email") {
-
-        message =
-          "Email din ba daidai ba ne.";
-
-      }
-
-      if (error.code === "auth/too-many-requests") {
-
-        message =
-          "An yi yawan kokarin shiga. Ka sake gwadawa daga baya.";
-
-      }
-
-      showLoginMessage(message, "error");
-
-    } finally {
-
-      loginBtn.disabled = false;
-
-      loginBtn.textContent = "Shiga Admin";
-
-    }
-
-  });
+      loginBtn.textContent =
+        "Ana shiga...";
 
 
-  // ================= AUTH STATE =================
+      try {
 
-  onAuthStateChanged(auth, async (user) => {
+        /*
+          FIRST:
+          Firebase checks email + password.
+        */
 
-    if (!user) {
+        const result =
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
 
-      showLoginPage();
 
-      return;
+        const user =
+          result.user;
 
-    }
 
-    try {
+        /*
+          SECOND:
+          Now check Firestore admin role.
+        */
 
-      const isAdmin =
-        await checkAdmin(user);
+        const isAdmin =
+          await checkAdmin(user);
 
-      if (isAdmin) {
+
+        if (!isAdmin) {
+
+          /*
+            Authentication succeeded,
+            but authorization failed.
+          */
+
+          await signOut(auth);
+
+
+          showLoginMessage(
+            "An shiga Firebase, amma wannan account ba shi da izinin Admin.",
+            "error"
+          );
+
+
+          return;
+
+        }
+
+
+        /*
+          EVERYTHING PASSED.
+        */
 
         showDashboard(user);
 
-      } else {
 
-        await signOut(auth);
+      } catch (error) {
+
+        console.error(
+          "LOGIN ERROR:",
+          error
+        );
+
+
+        let message =
+          "An samu matsala wajen shiga.";
+
+
+        if (
+          error.code ===
+          "auth/invalid-credential"
+        ) {
+
+          message =
+            "Email ko password ba daidai ba ne.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/invalid-email"
+        ) {
+
+          message =
+            "Email din ba daidai ba ne.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/user-disabled"
+        ) {
+
+          message =
+            "An dakatar da wannan account.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "auth/too-many-requests"
+        ) {
+
+          message =
+            "An yi yawan kokarin shiga. Ka sake gwadawa daga baya.";
+
+        }
+
+
+        else if (
+          error.code ===
+          "permission-denied"
+        ) {
+
+          message =
+            "Firestore ya hana karanta users document. Duba Firestore Rules.";
+
+        }
+
+
+        else {
+
+          message =
+            error.message ||
+            message;
+
+        }
+
+
+        showLoginMessage(
+          message,
+          "error"
+        );
+
+
+      } finally {
+
+        loginBtn.disabled =
+          false;
+
+        loginBtn.textContent =
+          "Shiga Admin";
+
+      }
+
+    }
+  );
+
+
+  // ==================================================
+  // AUTH STATE
+  // ==================================================
+
+  onAuthStateChanged(
+    auth,
+    async (user) => {
+
+      if (!user) {
+
+        showLoginPage();
+
+        return;
+
+      }
+
+
+      try {
+
+        const isAdmin =
+          await checkAdmin(user);
+
+
+        if (isAdmin) {
+
+          showDashboard(user);
+
+        }
+
+        else {
+
+          await signOut(auth);
+
+          showLoginPage();
+
+          showLoginMessage(
+            "Wannan account ba shi da izinin Admin.",
+            "error"
+          );
+
+        }
+
+
+      } catch (error) {
+
+        console.error(
+          "AUTH STATE ERROR:",
+          error
+        );
+
 
         showLoginPage();
 
         showLoginMessage(
-          "Wannan account ba shi da izinin Admin.",
+          "An kasa tabbatar da admin.",
           "error"
         );
 
       }
 
-    } catch (error) {
+    }
+  );
 
-      console.error(error);
 
-      showLoginPage();
+  // ==================================================
+  // LOGOUT
+  // ==================================================
 
-      showLoginMessage(
-        "An kasa tabbatar da admin. Duba Firestore users/" + user.uid,
-        "error"
-      );
+  logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        await signOut(auth);
+
+        showLoginPage();
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
 
     }
-
-  });
-
-
-  // ================= SHOW/HIDE =================
-
-  function showDashboard(user) {
-
-    loginPage.style.display = "none";
-
-    dashboard.style.display = "block";
-
-    adminEmail.textContent =
-      "Admin: " + user.email;
-
-    loadAllData();
-
-  }
+  );
 
 
-  function showLoginPage() {
+  // ==================================================
+  // TABS
+  // ==================================================
 
-    loginPage.style.display = "block";
+  document
+    .querySelectorAll(".tab-btn")
+    .forEach(button => {
 
-    dashboard.style.display = "none";
+      button.addEventListener(
+        "click",
+        () => {
 
-  }
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach(btn => {
+
+              btn.classList.remove(
+                "active"
+              );
+
+            });
 
 
-  // ================= LOGOUT =================
+          document
+            .querySelectorAll(".section")
+            .forEach(section => {
 
-  logoutBtn.addEventListener("click", async () => {
+              section.classList.remove(
+                "active"
+              );
 
-    await signOut(auth);
-
-    showLoginPage();
-
-  });
+            });
 
 
-  // ================= TABS =================
+          button.classList.add(
+            "active"
+          );
 
-  document.querySelectorAll(".tab-btn").forEach(button => {
 
-    button.addEventListener("click", () => {
+          document
+            .getElementById(
+              button.dataset.section
+            )
+            .classList.add(
+              "active"
+            );
 
-      document.querySelectorAll(".tab-btn")
-        .forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-      document.querySelectorAll(".section")
-        .forEach(section =>
-          section.classList.remove("active")
-        );
-
-      button.classList.add("active");
-
-      document
-        .getElementById(button.dataset.section)
-        .classList.add("active");
+        }
+      );
 
     });
 
-  });
 
-
-  // ================= HELPER =================
+  // ==================================================
+  // HTML ESCAPE
+  // ==================================================
 
   function escapeHTML(value) {
 
-    if (value === undefined || value === null) {
+    if (
+      value === undefined ||
+      value === null
+    ) {
+
       return "";
+
     }
 
+
     return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
 
   }
 
 
+  // ==================================================
+  // SAFE URL
+  // ==================================================
+
   function safeUrl(url) {
 
-    if (!url) return "#";
+    if (!url) {
+
+      return "#";
+
+    }
+
 
     try {
 
-      const parsed = new URL(url);
+      const parsed =
+        new URL(url);
+
 
       if (
         parsed.protocol === "http:" ||
         parsed.protocol === "https:"
       ) {
+
         return parsed.href;
 
       }
 
     } catch (e) {}
+
 
     return "#";
 
@@ -1146,101 +1678,151 @@
 
 
   // ==================================================
-  // KARATUTUKA
+  // LECTURES
   // ==================================================
 
   const lectureForm =
-    document.getElementById("lectureForm");
+    document.getElementById(
+      "lectureForm"
+    );
 
 
-  lectureForm.addEventListener("submit", async (e) => {
+  lectureForm.addEventListener(
+    "submit",
+    async (e) => {
 
-    e.preventDefault();
-
-    try {
-
-      const id =
-        document.getElementById("lectureId").value;
-
-      const data = {
-
-        title:
-          document.getElementById("lectureTitle").value.trim(),
-
-        speaker:
-          document.getElementById("lectureSpeaker").value.trim(),
-
-        category:
-          document.getElementById("lectureCategory").value,
-
-        date:
-          document.getElementById("lectureDate").value,
-
-        description:
-          document.getElementById("lectureDescription").value.trim(),
-
-        url:
-          document.getElementById("lectureUrl").value.trim(),
-
-        updatedAt:
-          serverTimestamp()
-
-      };
+      e.preventDefault();
 
 
-      if (id) {
+      try {
 
-        await updateDoc(
-          doc(db, "lectures", id),
-          data
+        const id =
+          document.getElementById(
+            "lectureId"
+          ).value;
+
+
+        const data = {
+
+          title:
+            document.getElementById(
+              "lectureTitle"
+            ).value.trim(),
+
+          speaker:
+            document.getElementById(
+              "lectureSpeaker"
+            ).value.trim(),
+
+          category:
+            document.getElementById(
+              "lectureCategory"
+            ).value,
+
+          date:
+            document.getElementById(
+              "lectureDate"
+            ).value,
+
+          description:
+            document.getElementById(
+              "lectureDescription"
+            ).value.trim(),
+
+          url:
+            document.getElementById(
+              "lectureUrl"
+            ).value.trim(),
+
+          updatedAt:
+            serverTimestamp()
+
+        };
+
+
+        if (id) {
+
+          await updateDoc(
+            doc(
+              db,
+              "lectures",
+              id
+            ),
+            data
+          );
+
+
+          showStatus(
+            "An gyara karatun."
+          );
+
+        }
+
+        else {
+
+          data.createdAt =
+            serverTimestamp();
+
+
+          await addDoc(
+            collection(
+              db,
+              "lectures"
+            ),
+            data
+          );
+
+
+          showStatus(
+            "An ƙara sabon karatu."
+          );
+
+        }
+
+
+        clearLectureForm();
+
+        loadLectures();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+          "An kasa ajiye karatu: " +
+          error.message,
+          "error"
         );
-
-        showStatus("An gyara karatun.");
-
-      } else {
-
-        data.createdAt =
-          serverTimestamp();
-
-        await addDoc(
-          collection(db, "lectures"),
-          data
-        );
-
-        showStatus("An ƙara sabon karatu.");
 
       }
 
-      clearLectureForm();
-
-      loadLectures();
-
-    } catch (error) {
-
-      console.error(error);
-
-      showStatus(
-        "An kasa ajiye karatu: " + error.message,
-        "error"
-      );
-
     }
-
-  });
+  );
 
 
   async function loadLectures() {
 
     const box =
-      document.getElementById("lecturesList");
+      document.getElementById(
+        "lecturesList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
 
+
     try {
 
       const snap =
-        await getDocs(collection(db, "lectures"));
+        await getDocs(
+          collection(
+            db,
+            "lectures"
+          )
+        );
+
 
       if (snap.empty) {
 
@@ -1251,17 +1833,23 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
             <p>
               <strong>Malami:</strong>
@@ -1279,127 +1867,197 @@
 
             ${
               d.url
-              ? `<p>
-                   <a href="${safeUrl(d.url)}"
-                      target="_blank"
-                      rel="noopener">
-                     Buɗe Audio/Video
-                   </a>
-                 </p>`
-              : ""
+              ?
+              `
+              <p>
+                <a
+                  href="${safeUrl(d.url)}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Buɗe Audio/Video
+                </a>
+              </p>
+              `
+              :
+              ""
             }
 
             <div class="actions">
 
               <button
                 class="btn-gold"
-                onclick="editLecture('${item.id}')">
+                onclick="editLecture('${item.id}')"
+              >
                 Gyara
               </button>
 
               <button
                 class="btn-danger"
-                onclick="deleteLecture('${item.id}')">
+                onclick="deleteLecture('${item.id}')"
+              >
                 Goge
               </button>
 
             </div>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       console.error(error);
 
       box.innerHTML =
-        `<div class="empty">
-          An kasa lodawa: ${escapeHTML(error.message)}
-        </div>`;
+        `
+        <div class="empty">
+          An kasa lodawa:
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editLecture = async function(id) {
+  window.editLecture =
+    async function(id) {
 
-    const snap =
-      await getDoc(
-        doc(db, "lectures", id)
-      );
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("lectureId").value = id;
-
-    document.getElementById("lectureTitle").value =
-      d.title || "";
-
-    document.getElementById("lectureSpeaker").value =
-      d.speaker || "";
-
-    document.getElementById("lectureCategory").value =
-      d.category || "Tafsir";
-
-    document.getElementById("lectureDate").value =
-      d.date || "";
-
-    document.getElementById("lectureDescription").value =
-      d.description || "";
-
-    document.getElementById("lectureUrl").value =
-      d.url || "";
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "lectures",
+            id
+          )
+        );
 
 
-  window.deleteLecture = async function(id) {
+      if (!snap.exists()) {
 
-    if (!confirm("Ka tabbata kana son goge wannan karatun?")) {
-      return;
-    }
+        return;
 
-    try {
-
-      await deleteDoc(
-        doc(db, "lectures", id)
-      );
-
-      showStatus("An goge karatun.");
-
-      loadLectures();
-
-    } catch (error) {
-
-      showStatus(
-        "An kasa gogewa: " + error.message,
-        "error"
-      );
-
-    }
-
-  };
+      }
 
 
-  window.clearLectureForm = function() {
+      const d =
+        snap.data();
 
-    lectureForm.reset();
 
-    document.getElementById("lectureId").value = "";
+      document.getElementById(
+        "lectureId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "lectureTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "lectureSpeaker"
+      ).value =
+        d.speaker || "";
+
+
+      document.getElementById(
+        "lectureCategory"
+      ).value =
+        d.category || "Tafsir";
+
+
+      document.getElementById(
+        "lectureDate"
+      ).value =
+        d.date || "";
+
+
+      document.getElementById(
+        "lectureDescription"
+      ).value =
+        d.description || "";
+
+
+      document.getElementById(
+        "lectureUrl"
+      ).value =
+        d.url || "";
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    };
+
+
+  window.deleteLecture =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge wannan karatun?"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "lectures",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge karatun."
+        );
+
+
+        loadLectures();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearLectureForm =
+    function() {
+
+      lectureForm.reset();
+
+      document.getElementById(
+        "lectureId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -1408,85 +2066,130 @@
 
   document
     .getElementById("audioForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const id =
-          document.getElementById("audioId").value;
+        try {
 
-        const data = {
+          const id =
+            document.getElementById(
+              "audioId"
+            ).value;
 
-          title:
-            document.getElementById("audioTitle").value.trim(),
 
-          speaker:
-            document.getElementById("audioSpeaker").value.trim(),
+          const data = {
 
-          url:
-            document.getElementById("audioUrl").value.trim(),
+            title:
+              document.getElementById(
+                "audioTitle"
+              ).value.trim(),
 
-          description:
-            document.getElementById("audioDescription").value.trim(),
+            speaker:
+              document.getElementById(
+                "audioSpeaker"
+              ).value.trim(),
 
-          updatedAt:
-            serverTimestamp()
+            url:
+              document.getElementById(
+                "audioUrl"
+              ).value.trim(),
 
-        };
+            description:
+              document.getElementById(
+                "audioDescription"
+              ).value.trim(),
 
-        if (id) {
+            updatedAt:
+              serverTimestamp()
 
-          await updateDoc(
-            doc(db, "audio", id),
-            data
+          };
+
+
+          if (id) {
+
+            await updateDoc(
+              doc(
+                db,
+                "audio",
+                id
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An gyara audio."
+            );
+
+          }
+
+          else {
+
+            data.createdAt =
+              serverTimestamp();
+
+
+            await addDoc(
+              collection(
+                db,
+                "audio"
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An ƙara audio."
+            );
+
+          }
+
+
+          clearAudioForm();
+
+          loadAudio();
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye audio: " +
+            error.message,
+            "error"
           );
-
-          showStatus("An gyara audio.");
-
-        } else {
-
-          data.createdAt =
-            serverTimestamp();
-
-          await addDoc(
-            collection(db, "audio"),
-            data
-          );
-
-          showStatus("An ƙara audio.");
 
         }
 
-        clearAudioForm();
-
-        loadAudio();
-
-      } catch (error) {
-
-        showStatus(
-          "An kasa ajiye audio: " + error.message,
-          "error"
-        );
-
       }
-
-    });
+    );
 
 
   async function loadAudio() {
 
     const box =
-      document.getElementById("audioList");
+      document.getElementById(
+        "audioList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
 
+
     try {
 
       const snap =
-        await getDocs(collection(db, "audio"));
+        await getDocs(
+          collection(
+            db,
+            "audio"
+          )
+        );
+
 
       if (snap.empty) {
 
@@ -1497,117 +2200,188 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
             <p>
               <strong>Malami:</strong>
               ${escapeHTML(d.speaker)}
             </p>
 
-            <p>${escapeHTML(d.description)}</p>
+            <p>
+              ${escapeHTML(d.description)}
+            </p>
 
             <p>
-              <a href="${safeUrl(d.url)}"
-                 target="_blank"
-                 rel="noopener">
+              <a
+                href="${safeUrl(d.url)}"
+                target="_blank"
+                rel="noopener"
+              >
                 Saurari Audio
               </a>
             </p>
 
             <button
               class="btn-gold"
-              onclick="editAudio('${item.id}')">
+              onclick="editAudio('${item.id}')"
+            >
               Gyara
             </button>
 
             <button
               class="btn-danger"
-              onclick="deleteAudio('${item.id}')">
+              onclick="deleteAudio('${item.id}')"
+            >
               Goge
             </button>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       box.innerHTML =
-        `<div class="empty">${escapeHTML(error.message)}</div>`;
+        `
+        <div class="empty">
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editAudio = async function(id) {
+  window.editAudio =
+    async function(id) {
 
-    const snap =
-      await getDoc(doc(db, "audio", id));
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("audioId").value = id;
-
-    document.getElementById("audioTitle").value =
-      d.title || "";
-
-    document.getElementById("audioSpeaker").value =
-      d.speaker || "";
-
-    document.getElementById("audioUrl").value =
-      d.url || "";
-
-    document.getElementById("audioDescription").value =
-      d.description || "";
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "audio",
+            id
+          )
+        );
 
 
-  window.deleteAudio = async function(id) {
-
-    if (!confirm("Ka tabbata kana son goge audio?")) {
-      return;
-    }
-
-    await deleteDoc(
-      doc(db, "audio", id)
-    );
-
-    showStatus("An goge audio.");
-
-    loadAudio();
-
-  };
+      if (!snap.exists()) return;
 
 
-  window.clearAudioForm = function() {
+      const d =
+        snap.data();
 
-    document.getElementById("audioForm").reset();
 
-    document.getElementById("audioId").value = "";
+      document.getElementById(
+        "audioId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "audioTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "audioSpeaker"
+      ).value =
+        d.speaker || "";
+
+
+      document.getElementById(
+        "audioUrl"
+      ).value =
+        d.url || "";
+
+
+      document.getElementById(
+        "audioDescription"
+      ).value =
+        d.description || "";
+
+    };
+
+
+  window.deleteAudio =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge audio?"
+        )
+      ) return;
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "audio",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge audio."
+        );
+
+
+        loadAudio();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearAudioForm =
+    function() {
+
+      document
+        .getElementById("audioForm")
+        .reset();
+
+
+      document.getElementById(
+        "audioId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -1616,82 +2390,125 @@
 
   document
     .getElementById("videoForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const id =
-          document.getElementById("videoId").value;
+        try {
 
-        const data = {
+          const id =
+            document.getElementById(
+              "videoId"
+            ).value;
 
-          title:
-            document.getElementById("videoTitle").value.trim(),
 
-          url:
-            document.getElementById("videoUrl").value.trim(),
+          const data = {
 
-          description:
-            document.getElementById("videoDescription").value.trim(),
+            title:
+              document.getElementById(
+                "videoTitle"
+              ).value.trim(),
 
-          updatedAt:
-            serverTimestamp()
+            url:
+              document.getElementById(
+                "videoUrl"
+              ).value.trim(),
 
-        };
+            description:
+              document.getElementById(
+                "videoDescription"
+              ).value.trim(),
 
-        if (id) {
+            updatedAt:
+              serverTimestamp()
 
-          await updateDoc(
-            doc(db, "videos", id),
-            data
+          };
+
+
+          if (id) {
+
+            await updateDoc(
+              doc(
+                db,
+                "videos",
+                id
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An gyara video."
+            );
+
+          }
+
+          else {
+
+            data.createdAt =
+              serverTimestamp();
+
+
+            await addDoc(
+              collection(
+                db,
+                "videos"
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An ƙara video."
+            );
+
+          }
+
+
+          clearVideoForm();
+
+          loadVideos();
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye video: " +
+            error.message,
+            "error"
           );
-
-          showStatus("An gyara video.");
-
-        } else {
-
-          data.createdAt =
-            serverTimestamp();
-
-          await addDoc(
-            collection(db, "videos"),
-            data
-          );
-
-          showStatus("An ƙara video.");
 
         }
 
-        clearVideoForm();
-
-        loadVideos();
-
-      } catch (error) {
-
-        showStatus(
-          "An kasa ajiye video: " + error.message,
-          "error"
-        );
-
       }
-
-    });
+    );
 
 
   async function loadVideos() {
 
     const box =
-      document.getElementById("videosList");
+      document.getElementById(
+        "videosList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
 
+
     try {
 
       const snap =
-        await getDocs(collection(db, "videos"));
+        await getDocs(
+          collection(
+            db,
+            "videos"
+          )
+        );
+
 
       if (snap.empty) {
 
@@ -1702,109 +2519,177 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
-
-            <p>${escapeHTML(d.description)}</p>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
             <p>
-              <a href="${safeUrl(d.url)}"
-                 target="_blank"
-                 rel="noopener">
+              ${escapeHTML(d.description)}
+            </p>
+
+            <p>
+              <a
+                href="${safeUrl(d.url)}"
+                target="_blank"
+                rel="noopener"
+              >
                 Buɗe Video
               </a>
             </p>
 
             <button
               class="btn-gold"
-              onclick="editVideo('${item.id}')">
+              onclick="editVideo('${item.id}')"
+            >
               Gyara
             </button>
 
             <button
               class="btn-danger"
-              onclick="deleteVideo('${item.id}')">
+              onclick="deleteVideo('${item.id}')"
+            >
               Goge
             </button>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       box.innerHTML =
-        `<div class="empty">${escapeHTML(error.message)}</div>`;
+        `
+        <div class="empty">
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editVideo = async function(id) {
+  window.editVideo =
+    async function(id) {
 
-    const snap =
-      await getDoc(doc(db, "videos", id));
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("videoId").value = id;
-
-    document.getElementById("videoTitle").value =
-      d.title || "";
-
-    document.getElementById("videoUrl").value =
-      d.url || "";
-
-    document.getElementById("videoDescription").value =
-      d.description || "";
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "videos",
+            id
+          )
+        );
 
 
-  window.deleteVideo = async function(id) {
-
-    if (!confirm("Ka tabbata kana son goge video?")) {
-      return;
-    }
-
-    await deleteDoc(
-      doc(db, "videos", id)
-    );
-
-    showStatus("An goge video.");
-
-    loadVideos();
-
-  };
+      if (!snap.exists()) return;
 
 
-  window.clearVideoForm = function() {
+      const d =
+        snap.data();
 
-    document.getElementById("videoForm").reset();
 
-    document.getElementById("videoId").value = "";
+      document.getElementById(
+        "videoId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "videoTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "videoUrl"
+      ).value =
+        d.url || "";
+
+
+      document.getElementById(
+        "videoDescription"
+      ).value =
+        d.description || "";
+
+    };
+
+
+  window.deleteVideo =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge video?"
+        )
+      ) return;
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "videos",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge video."
+        );
+
+
+        loadVideos();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearVideoForm =
+    function() {
+
+      document
+        .getElementById("videoForm")
+        .reset();
+
+
+      document.getElementById(
+        "videoId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -1813,85 +2698,130 @@
 
   document
     .getElementById("bookForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const id =
-          document.getElementById("bookId").value;
+        try {
 
-        const data = {
+          const id =
+            document.getElementById(
+              "bookId"
+            ).value;
 
-          title:
-            document.getElementById("bookTitle").value.trim(),
 
-          author:
-            document.getElementById("bookAuthor").value.trim(),
+          const data = {
 
-          url:
-            document.getElementById("bookUrl").value.trim(),
+            title:
+              document.getElementById(
+                "bookTitle"
+              ).value.trim(),
 
-          description:
-            document.getElementById("bookDescription").value.trim(),
+            author:
+              document.getElementById(
+                "bookAuthor"
+              ).value.trim(),
 
-          updatedAt:
-            serverTimestamp()
+            url:
+              document.getElementById(
+                "bookUrl"
+              ).value.trim(),
 
-        };
+            description:
+              document.getElementById(
+                "bookDescription"
+              ).value.trim(),
 
-        if (id) {
+            updatedAt:
+              serverTimestamp()
 
-          await updateDoc(
-            doc(db, "books", id),
-            data
+          };
+
+
+          if (id) {
+
+            await updateDoc(
+              doc(
+                db,
+                "books",
+                id
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An gyara littafi."
+            );
+
+          }
+
+          else {
+
+            data.createdAt =
+              serverTimestamp();
+
+
+            await addDoc(
+              collection(
+                db,
+                "books"
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An ƙara littafi."
+            );
+
+          }
+
+
+          clearBookForm();
+
+          loadBooks();
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye littafi: " +
+            error.message,
+            "error"
           );
-
-          showStatus("An gyara littafi.");
-
-        } else {
-
-          data.createdAt =
-            serverTimestamp();
-
-          await addDoc(
-            collection(db, "books"),
-            data
-          );
-
-          showStatus("An ƙara littafi.");
 
         }
 
-        clearBookForm();
-
-        loadBooks();
-
-      } catch (error) {
-
-        showStatus(
-          "An kasa ajiye littafi: " + error.message,
-          "error"
-        );
-
       }
-
-    });
+    );
 
 
   async function loadBooks() {
 
     const box =
-      document.getElementById("booksList");
+      document.getElementById(
+        "booksList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
 
+
     try {
 
       const snap =
-        await getDocs(collection(db, "books"));
+        await getDocs(
+          collection(
+            db,
+            "books"
+          )
+        );
+
 
       if (snap.empty) {
 
@@ -1902,112 +2832,188 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
             <p>
               <strong>Marubuci:</strong>
               ${escapeHTML(d.author)}
             </p>
 
-            <p>${escapeHTML(d.description)}</p>
+            <p>
+              ${escapeHTML(d.description)}
+            </p>
 
             <p>
-              <a href="${safeUrl(d.url)}"
-                 target="_blank"
-                 rel="noopener">
+              <a
+                href="${safeUrl(d.url)}"
+                target="_blank"
+                rel="noopener"
+              >
                 Buɗe PDF
               </a>
             </p>
 
             <button
               class="btn-gold"
-              onclick="editBook('${item.id}')">
+              onclick="editBook('${item.id}')"
+            >
               Gyara
             </button>
 
             <button
               class="btn-danger"
-              onclick="deleteBook('${item.id}')">
+              onclick="deleteBook('${item.id}')"
+            >
               Goge
             </button>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       box.innerHTML =
-        `<div class="empty">${escapeHTML(error.message)}</div>`;
+        `
+        <div class="empty">
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editBook = async function(id) {
+  window.editBook =
+    async function(id) {
 
-    const snap =
-      await getDoc(doc(db, "books", id));
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("bookId").value = id;
-
-    document.getElementById("bookTitle").value =
-      d.title || "";
-
-    document.getElementById("bookAuthor").value =
-      d.author || "";
-
-    document.getElementById("bookUrl").value =
-      d.url || "";
-
-    document.getElementById("bookDescription").value =
-      d.description || "";
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "books",
+            id
+          )
+        );
 
 
-  window.deleteBook = async function(id) {
-
-    if (!confirm("Ka tabbata kana son goge littafin?")) {
-      return;
-    }
-
-    await deleteDoc(
-      doc(db, "books", id)
-    );
-
-    showStatus("An goge littafi.");
-
-    loadBooks();
-
-  };
+      if (!snap.exists()) return;
 
 
-  window.clearBookForm = function() {
+      const d =
+        snap.data();
 
-    document.getElementById("bookForm").reset();
 
-    document.getElementById("bookId").value = "";
+      document.getElementById(
+        "bookId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "bookTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "bookAuthor"
+      ).value =
+        d.author || "";
+
+
+      document.getElementById(
+        "bookUrl"
+      ).value =
+        d.url || "";
+
+
+      document.getElementById(
+        "bookDescription"
+      ).value =
+        d.description || "";
+
+    };
+
+
+  window.deleteBook =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge littafin?"
+        )
+      ) return;
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "books",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge littafi."
+        );
+
+
+        loadBooks();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearBookForm =
+    function() {
+
+      document
+        .getElementById("bookForm")
+        .reset();
+
+
+      document.getElementById(
+        "bookId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -2016,82 +3022,125 @@
 
   document
     .getElementById("galleryForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const id =
-          document.getElementById("galleryId").value;
+        try {
 
-        const data = {
+          const id =
+            document.getElementById(
+              "galleryId"
+            ).value;
 
-          title:
-            document.getElementById("galleryTitle").value.trim(),
 
-          imageUrl:
-            document.getElementById("galleryImageUrl").value.trim(),
+          const data = {
 
-          description:
-            document.getElementById("galleryDescription").value.trim(),
+            title:
+              document.getElementById(
+                "galleryTitle"
+              ).value.trim(),
 
-          updatedAt:
-            serverTimestamp()
+            imageUrl:
+              document.getElementById(
+                "galleryImageUrl"
+              ).value.trim(),
 
-        };
+            description:
+              document.getElementById(
+                "galleryDescription"
+              ).value.trim(),
 
-        if (id) {
+            updatedAt:
+              serverTimestamp()
 
-          await updateDoc(
-            doc(db, "gallery", id),
-            data
+          };
+
+
+          if (id) {
+
+            await updateDoc(
+              doc(
+                db,
+                "gallery",
+                id
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An gyara hoton."
+            );
+
+          }
+
+          else {
+
+            data.createdAt =
+              serverTimestamp();
+
+
+            await addDoc(
+              collection(
+                db,
+                "gallery"
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An ƙara hoto."
+            );
+
+          }
+
+
+          clearGalleryForm();
+
+          loadGallery();
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye hoto: " +
+            error.message,
+            "error"
           );
-
-          showStatus("An gyara hoton.");
-
-        } else {
-
-          data.createdAt =
-            serverTimestamp();
-
-          await addDoc(
-            collection(db, "gallery"),
-            data
-          );
-
-          showStatus("An ƙara hoto.");
 
         }
 
-        clearGalleryForm();
-
-        loadGallery();
-
-      } catch (error) {
-
-        showStatus(
-          "An kasa ajiye hoto: " + error.message,
-          "error"
-        );
-
       }
-
-    });
+    );
 
 
   async function loadGallery() {
 
     const box =
-      document.getElementById("galleryList");
+      document.getElementById(
+        "galleryList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
 
+
     try {
 
       const snap =
-        await getDocs(collection(db, "gallery"));
+        await getDocs(
+          collection(
+            db,
+            "gallery"
+          )
+        );
+
 
       if (snap.empty) {
 
@@ -2102,17 +3151,23 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
             <img
               src="${safeUrl(d.imageUrl)}"
@@ -2125,84 +3180,149 @@
               "
             >
 
-            <p>${escapeHTML(d.description)}</p>
+            <p>
+              ${escapeHTML(d.description)}
+            </p>
 
             <button
               class="btn-gold"
-              onclick="editGallery('${item.id}')">
+              onclick="editGallery('${item.id}')"
+            >
               Gyara
             </button>
 
             <button
               class="btn-danger"
-              onclick="deleteGallery('${item.id}')">
+              onclick="deleteGallery('${item.id}')"
+            >
               Goge
             </button>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       box.innerHTML =
-        `<div class="empty">${escapeHTML(error.message)}</div>`;
+        `
+        <div class="empty">
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editGallery = async function(id) {
+  window.editGallery =
+    async function(id) {
 
-    const snap =
-      await getDoc(doc(db, "gallery", id));
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("galleryId").value = id;
-
-    document.getElementById("galleryTitle").value =
-      d.title || "";
-
-    document.getElementById("galleryImageUrl").value =
-      d.imageUrl || "";
-
-    document.getElementById("galleryDescription").value =
-      d.description || "";
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "gallery",
+            id
+          )
+        );
 
 
-  window.deleteGallery = async function(id) {
-
-    if (!confirm("Ka tabbata kana son goge hoton?")) {
-      return;
-    }
-
-    await deleteDoc(
-      doc(db, "gallery", id)
-    );
-
-    showStatus("An goge hoto.");
-
-    loadGallery();
-
-  };
+      if (!snap.exists()) return;
 
 
-  window.clearGalleryForm = function() {
+      const d =
+        snap.data();
 
-    document.getElementById("galleryForm").reset();
 
-    document.getElementById("galleryId").value = "";
+      document.getElementById(
+        "galleryId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "galleryTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "galleryImageUrl"
+      ).value =
+        d.imageUrl || "";
+
+
+      document.getElementById(
+        "galleryDescription"
+      ).value =
+        d.description || "";
+
+    };
+
+
+  window.deleteGallery =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge hoton?"
+        )
+      ) return;
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "gallery",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge hoto."
+        );
+
+
+        loadGallery();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearGalleryForm =
+    function() {
+
+      document
+        .getElementById("galleryForm")
+        .reset();
+
+
+      document.getElementById(
+        "galleryId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -2211,81 +3331,120 @@
 
   document
     .getElementById("announcementForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const id =
-          document.getElementById("announcementId").value;
+        try {
 
-        const data = {
+          const id =
+            document.getElementById(
+              "announcementId"
+            ).value;
 
-          title:
-            document.getElementById("announcementTitle").value.trim(),
 
-          text:
-            document.getElementById("announcementText").value.trim(),
+          const data = {
 
-          updatedAt:
-            serverTimestamp()
+            title:
+              document.getElementById(
+                "announcementTitle"
+              ).value.trim(),
 
-        };
+            text:
+              document.getElementById(
+                "announcementText"
+              ).value.trim(),
 
-        if (id) {
+            updatedAt:
+              serverTimestamp()
 
-          await updateDoc(
-            doc(db, "announcements", id),
-            data
+          };
+
+
+          if (id) {
+
+            await updateDoc(
+              doc(
+                db,
+                "announcements",
+                id
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An gyara sanarwa."
+            );
+
+          }
+
+          else {
+
+            data.createdAt =
+              serverTimestamp();
+
+
+            await addDoc(
+              collection(
+                db,
+                "announcements"
+              ),
+              data
+            );
+
+
+            showStatus(
+              "An ƙara sanarwa."
+            );
+
+          }
+
+
+          clearAnnouncementForm();
+
+          loadAnnouncements();
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye sanarwa: " +
+            error.message,
+            "error"
           );
-
-          showStatus("An gyara sanarwa.");
-
-        } else {
-
-          data.createdAt =
-            serverTimestamp();
-
-          await addDoc(
-            collection(db, "announcements"),
-            data
-          );
-
-          showStatus("An ƙara sanarwa.");
 
         }
 
-        clearAnnouncementForm();
-
-        loadAnnouncements();
-
-      } catch (error) {
-
-        showStatus(
-          "An kasa ajiye sanarwa: " + error.message,
-          "error"
-        );
-
       }
-
-    });
+    );
 
 
   async function loadAnnouncements() {
 
     const box =
-      document.getElementById("announcementsList");
+      document.getElementById(
+        "announcementsList"
+      );
+
 
     box.innerHTML =
       '<div class="loading">Ana lodawa...</div>';
+
 
     try {
 
       const snap =
         await getDocs(
-          collection(db, "announcements")
+          collection(
+            db,
+            "announcements"
+          )
         );
+
 
       if (snap.empty) {
 
@@ -2296,97 +3455,163 @@
 
       }
 
+
       let html = "";
+
 
       snap.forEach(item => {
 
-        const d = item.data();
+        const d =
+          item.data();
+
 
         html += `
 
           <div class="item">
 
-            <h4>${escapeHTML(d.title)}</h4>
+            <h4>
+              ${escapeHTML(d.title)}
+            </h4>
 
-            <p>${escapeHTML(d.text)}</p>
+            <p>
+              ${escapeHTML(d.text)}
+            </p>
 
             <button
               class="btn-gold"
-              onclick="editAnnouncement('${item.id}')">
+              onclick="editAnnouncement('${item.id}')"
+            >
               Gyara
             </button>
 
             <button
               class="btn-danger"
-              onclick="deleteAnnouncement('${item.id}')">
+              onclick="deleteAnnouncement('${item.id}')"
+            >
               Goge
             </button>
 
           </div>
+
         `;
 
       });
 
-      box.innerHTML = html;
+
+      box.innerHTML =
+        html;
+
 
     } catch (error) {
 
       box.innerHTML =
-        `<div class="empty">${escapeHTML(error.message)}</div>`;
+        `
+        <div class="empty">
+          ${escapeHTML(error.message)}
+        </div>
+        `;
 
     }
 
   }
 
 
-  window.editAnnouncement = async function(id) {
+  window.editAnnouncement =
+    async function(id) {
 
-    const snap =
-      await getDoc(
-        doc(db, "announcements", id)
-      );
-
-    if (!snap.exists()) return;
-
-    const d = snap.data();
-
-    document.getElementById("announcementId").value = id;
-
-    document.getElementById("announcementTitle").value =
-      d.title || "";
-
-    document.getElementById("announcementText").value =
-      d.text || "";
-
-  };
+      const snap =
+        await getDoc(
+          doc(
+            db,
+            "announcements",
+            id
+          )
+        );
 
 
-  window.deleteAnnouncement = async function(id) {
-
-    if (!confirm("Ka tabbata kana son goge sanarwar?")) {
-      return;
-    }
-
-    await deleteDoc(
-      doc(db, "announcements", id)
-    );
-
-    showStatus("An goge sanarwa.");
-
-    loadAnnouncements();
-
-  };
+      if (!snap.exists()) return;
 
 
-  window.clearAnnouncementForm = function() {
+      const d =
+        snap.data();
 
-    document
-      .getElementById("announcementForm")
-      .reset();
 
-    document.getElementById("announcementId").value = "";
+      document.getElementById(
+        "announcementId"
+      ).value = id;
 
-  };
+
+      document.getElementById(
+        "announcementTitle"
+      ).value =
+        d.title || "";
+
+
+      document.getElementById(
+        "announcementText"
+      ).value =
+        d.text || "";
+
+    };
+
+
+  window.deleteAnnouncement =
+    async function(id) {
+
+      if (
+        !confirm(
+          "Ka tabbata kana son goge sanarwar?"
+        )
+      ) return;
+
+
+      try {
+
+        await deleteDoc(
+          doc(
+            db,
+            "announcements",
+            id
+          )
+        );
+
+
+        showStatus(
+          "An goge sanarwa."
+        );
+
+
+        loadAnnouncements();
+
+
+      } catch (error) {
+
+        showStatus(
+          "An kasa gogewa: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    };
+
+
+  window.clearAnnouncementForm =
+    function() {
+
+      document
+        .getElementById(
+          "announcementForm"
+        )
+        .reset();
+
+
+      document.getElementById(
+        "announcementId"
+      ).value = "";
+
+    };
 
 
   // ==================================================
@@ -2395,55 +3620,78 @@
 
   document
     .getElementById("aboutForm")
-    .addEventListener("submit", async (e) => {
+    .addEventListener(
+      "submit",
+      async (e) => {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
 
-        const data = {
+        try {
 
-          name:
-            document.getElementById("aboutName").value.trim(),
+          const data = {
 
-          title:
-            document.getElementById("aboutTitle").value.trim(),
+            name:
+              document.getElementById(
+                "aboutName"
+              ).value.trim(),
 
-          photoUrl:
-            document.getElementById("aboutPhotoUrl").value.trim(),
+            title:
+              document.getElementById(
+                "aboutTitle"
+              ).value.trim(),
 
-          biography:
-            document.getElementById("aboutBiography").value.trim(),
+            photoUrl:
+              document.getElementById(
+                "aboutPhotoUrl"
+              ).value.trim(),
 
-          message:
-            document.getElementById("aboutMessage").value.trim(),
+            biography:
+              document.getElementById(
+                "aboutBiography"
+              ).value.trim(),
 
-          updatedAt:
-            serverTimestamp()
+            message:
+              document.getElementById(
+                "aboutMessage"
+              ).value.trim(),
 
-        };
+            updatedAt:
+              serverTimestamp()
 
-        await setDoc(
-          doc(db, "settings", "aboutImam"),
-          data,
-          { merge:true }
-        );
+          };
 
-        showStatus(
-          "An ajiye bayanin Imam."
-        );
 
-      } catch (error) {
+          await setDoc(
+            doc(
+              db,
+              "settings",
+              "aboutImam"
+            ),
+            data,
+            {
+              merge: true
+            }
+          );
 
-        showStatus(
-          "An kasa ajiye About Imam: " +
-          error.message,
-          "error"
-        );
+
+          showStatus(
+            "An ajiye bayanin Imam."
+          );
+
+
+        } catch (error) {
+
+          showStatus(
+            "An kasa ajiye About Imam: " +
+            error.message,
+            "error"
+          );
+
+        }
 
       }
-
-    });
+    );
 
 
   async function loadAbout() {
@@ -2452,28 +3700,52 @@
 
       const snap =
         await getDoc(
-          doc(db, "settings", "aboutImam")
+          doc(
+            db,
+            "settings",
+            "aboutImam"
+          )
         );
 
+
       if (!snap.exists()) {
+
         return;
+
       }
 
-      const d = snap.data();
 
-      document.getElementById("aboutName").value =
+      const d =
+        snap.data();
+
+
+      document.getElementById(
+        "aboutName"
+      ).value =
         d.name || "";
 
-      document.getElementById("aboutTitle").value =
+
+      document.getElementById(
+        "aboutTitle"
+      ).value =
         d.title || "";
 
-      document.getElementById("aboutPhotoUrl").value =
+
+      document.getElementById(
+        "aboutPhotoUrl"
+      ).value =
         d.photoUrl || "";
 
-      document.getElementById("aboutBiography").value =
+
+      document.getElementById(
+        "aboutBiography"
+      ).value =
         d.biography || "";
 
-      document.getElementById("aboutMessage").value =
+
+      document.getElementById(
+        "aboutMessage"
+      ).value =
         d.message || "";
 
     } catch (error) {
@@ -2489,7 +3761,7 @@
 
 
   // ==================================================
-  // LOAD ALL
+  // LOAD EVERYTHING
   // ==================================================
 
   async function loadAllData() {
