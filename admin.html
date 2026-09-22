@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Panel | Imam Bichi Islamic Media</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7f4;
+      color: #123;
+    }
+
+    .login-box {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.12);
+    }
+
+    h2 {
+      color: #087443;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background: #087443;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: .9;
+    }
+
+    #dashboard {
+      display: none;
+    }
+
+    header {
+      background: #087443;
+      color: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .card h3 {
+      color: #087443;
+      margin-bottom: 8px;
+    }
+
+    .logout {
+      width: auto;
+      margin: 0;
+      padding: 9px 15px;
+      background: #b00020;
+    }
+
+    #message {
+      margin-top: 12px;
+      text-align: center;
+      color: #b00020;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-box">
+
+  <h2>IMAM BICHI</h2>
+  <p style="text-align:center;margin-bottom:15px;">
+    Islamic Media Admin
+  </p>
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <button id="loginBtn">
+    Login
+  </button>
+
+  <div id="message"></div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+  <header>
+    <strong>IMAM BICHI ADMIN</strong>
+
+    <button class="logout" id="logoutBtn">
+      Logout
+    </button>
+  </header>
+
+  <div class="container">
+
+    <h2 style="text-align:left;margin-bottom:20px;">
+      Dashboard
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>📚 Karatuttuka</h3>
+        <p>Add / Edit / Delete</p>
+      </div>
+
+      <div class="card">
+        <h3>🎧 Audio</h3>
+        <p>Add Audio</p>
+      </div>
+
+      <div class="card">
+        <h3>🎥 Video</h3>
+        <p>Add YouTube Video</p>
+      </div>
+
+      <div class="card">
+        <h3>📖 Littattafai</h3>
+        <p>Add PDF / Book Link</p>
+      </div>
+
+      <div class="card">
+        <h3>🖼️ Gallery</h3>
+        <p>Add Photo Link</p>
+      </div>
+
+      <div class="card">
+        <h3>📢 Sanarwa</h3>
+        <p>Add Announcement</p>
+      </div>
+
+      <div class="card">
+        <h3>👤 About Imam</h3>
+        <p>Edit Information</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+  import {
+    getFirestore,
+    doc,
+    getDoc
+  } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuO-4T4",
+    authDomain: "imam-bichi-islamic-media.firebaseapp.com",
+    projectId: "imam-bichi-islamic-media",
+    storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
+    messagingSenderId: "87559095522",
+    appId: "1:87559095522:web:4668efc5a419d014de8abb",
+    measurementId: "G-LR92D06R4N"
+  };
+
+
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
+
+  const db = getFirestore(app);
+
+
+  const loginPage = document.getElementById("loginPage");
+  const dashboard = document.getElementById("dashboard");
+
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const message = document.getElementById("message");
+
+
+  loginBtn.addEventListener("click", async () => {
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+      message.textContent = "Cika email da password.";
+      return;
+    }
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    } catch (error) {
+
+      message.textContent =
+        "Login ya kasa. Duba email da password.";
+
+      console.error(error);
+
+    }
+
+  });
+
+
+  onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+      loginPage.style.display = "block";
+      dashboard.style.display = "none";
+
+      return;
+    }
+
+
+    try {
+
+      const adminRef = doc(
+        db,
+        "users",
+        user.uid
+      );
+
+      const adminSnap = await getDoc(adminRef);
+
+
+      if (
+        adminSnap.exists() &&
+        adminSnap.data().role === "admin"
+      ) {
+
+        loginPage.style.display = "none";
+        dashboard.style.display = "block";
+
+      } else {
+
+        await signOut(auth);
+
+        message.textContent =
+          "Wannan account ba Admin ba ne.";
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+      await signOut(auth);
+
+      message.textContent =
+        "An samu matsala wajen tabbatar da Admin.";
+
+    }
+
+  });
+
+
+  logoutBtn.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+  });
+
+</script>
+
+</body>
+  </html>
