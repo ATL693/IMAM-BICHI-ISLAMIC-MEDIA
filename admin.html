@@ -1,162 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ha">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imam Bichi Islamic Media - Admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imam Bichi Islamic Media - Admin</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #f5f0df;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4efdf;
+  color:#222;
+}
 
-    .box {
-      width: 92%;
-      max-width: 400px;
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,.15);
-    }
+.container{
+  width:94%;
+  max-width:1000px;
+  margin:25px auto;
+}
 
-    h1 {
-      text-align: center;
-      color: #087443;
-      margin-bottom: 8px;
-    }
+.box{
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
 
-    .subtitle {
-      text-align: center;
-      color: #777;
-      margin-bottom: 25px;
-    }
+#loginBox{
+  max-width:420px;
+  margin:70px auto;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+h1,h2{
+  color:#087443;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #087443;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.center{text-align:center}
 
-    button:hover {
-      background: #065d35;
-    }
+input,textarea,select{
+  width:100%;
+  padding:13px;
+  margin:7px 0 14px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
 
-    #message {
-      margin-top: 15px;
-      text-align: center;
-      color: #c62828;
-      font-size: 14px;
-    }
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
 
-    #dashboard {
-      display: none;
-    }
+button{
+  border:0;
+  padding:13px 18px;
+  border-radius:8px;
+  background:#087443;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
 
-    .card {
-      background: #f8f8f8;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
-    }
+button:hover{
+  background:#065d35;
+}
 
-    .logout {
-      background: #9b1c1c;
-      margin-top: 15px;
-    }
-  </style>
+button:disabled{
+  opacity:.6;
+}
+
+.logout{
+  background:#a11b1b;
+}
+
+.back{
+  background:#555;
+  margin-bottom:15px;
+}
+
+#dashboard{
+  display:none;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.card{
+  padding:25px 10px;
+  background:#fafafa;
+  border:1px solid #ddd;
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.icon{
+  display:block;
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.section{
+  display:none;
+  margin-top:20px;
+}
+
+.message{
+  margin-top:12px;
+  padding:10px;
+  border-radius:7px;
+}
+
+.success{
+  background:#e6f7ec;
+  color:#087443;
+}
+
+.error{
+  background:#ffe5e5;
+  color:#b00020;
+}
+
+.small{
+  color:#777;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-  <!-- LOGIN -->
-  <div id="loginSection">
+<!-- ================= LOGIN ================= -->
 
+<div class="box" id="loginBox">
+
+  <div class="center">
     <h1>Admin Login</h1>
-    <div class="subtitle">
-      Imam Bichi Islamic Media
-    </div>
-
-    <input
-      type="email"
-      id="email"
-      placeholder="Admin Email"
-      autocomplete="email"
-    >
-
-    <input
-      type="password"
-      id="password"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button id="loginBtn">
-      Login
-    </button>
-
-    <div id="message"></div>
-
+    <p class="small">Imam Bichi Islamic Media</p>
   </div>
 
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+  >
 
-  <!-- DASHBOARD -->
-  <div id="dashboard">
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
 
-    <h1>Admin Dashboard</h1>
+  <button id="loginBtn">
+    Login
+  </button>
 
-    <div class="card">
-      📖 Karatuttuka
+  <div id="loginMessage"></div>
+
+</div>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<div id="dashboard">
+
+  <div class="box">
+
+    <div class="center">
+      <h1>Admin Dashboard</h1>
+      <p class="small">
+        Imam Bichi Islamic Media
+      </p>
     </div>
 
-    <div class="card">
-      🎧 Audio
+    <div class="cards">
+
+      <div class="card" onclick="openSection('lectures')">
+        <span class="icon">📖</span>
+        <b>Karatuttuka</b>
+      </div>
+
+      <div class="card" onclick="openSection('audio')">
+        <span class="icon">🎧</span>
+        <b>Audio</b>
+      </div>
+
+      <div class="card" onclick="openSection('video')">
+        <span class="icon">🎥</span>
+        <b>Video</b>
+      </div>
+
+      <div class="card" onclick="openSection('books')">
+        <span class="icon">📚</span>
+        <b>Littattafai</b>
+      </div>
+
+      <div class="card" onclick="openSection('gallery')">
+        <span class="icon">🖼️</span>
+        <b>Gallery</b>
+      </div>
+
+      <div class="card" onclick="openSection('announcements')">
+        <span class="icon">📢</span>
+        <b>Sanarwa</b>
+      </div>
+
+      <div class="card" onclick="openSection('about')">
+        <span class="icon">🕌</span>
+        <b>About Imam</b>
+      </div>
+
     </div>
 
-    <div class="card">
-      🎥 Video
-    </div>
-
-    <div class="card">
-      📚 Littattafai
-    </div>
-
-    <div class="card">
-      🖼️ Gallery
-    </div>
-
-    <div class="card">
-      📢 Sanarwa
-    </div>
-
-    <div class="card">
-      🕌 About Imam
-    </div>
+    <br>
 
     <button class="logout" id="logoutBtn">
       Logout
@@ -164,146 +234,929 @@
 
   </div>
 
+
+<!-- ================= KARATUTUKA ================= -->
+
+<div class="box section" id="lectures">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>📖 Ƙara Karatu</h2>
+
+  <input id="lectureTitle" placeholder="Taken Karatu">
+
+  <select id="lectureCategory">
+    <option value="">Zaɓi Category</option>
+    <option>Tafsiri</option>
+    <option>Hadisi</option>
+    <option>Fiqhu</option>
+    <option>Akida</option>
+    <option>Tarihi</option>
+    <option>Wa'azi</option>
+    <option>Sauran</option>
+  </select>
+
+  <textarea
+    id="lectureDescription"
+    placeholder="Bayani game da karatun"
+  ></textarea>
+
+  <input
+    id="lectureVideo"
+    placeholder="YouTube URL (optional)"
+  >
+
+  <input
+    id="lectureImage"
+    placeholder="Image URL (optional)"
+  >
+
+  <button onclick="saveLecture()">
+    ➕ Ajiye Karatu
+  </button>
+
+  <div id="lectureMessage"></div>
+
 </div>
 
 
+<!-- ================= AUDIO ================= -->
+
+<div class="box section" id="audio">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>🎧 Ƙara Audio</h2>
+
+  <input
+    id="audioTitle"
+    placeholder="Taken Audio"
+  >
+
+  <textarea
+    id="audioDescription"
+    placeholder="Bayani"
+  ></textarea>
+
+  <input
+    id="audioUrl"
+    placeholder="Audio URL"
+  >
+
+  <button onclick="saveAudio()">
+    ➕ Ajiye Audio
+  </button>
+
+  <div id="audioMessage"></div>
+
+</div>
+
+
+<!-- ================= VIDEO ================= -->
+
+<div class="box section" id="video">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>🎥 Ƙara Video</h2>
+
+  <input
+    id="videoTitle"
+    placeholder="Taken Video"
+  >
+
+  <textarea
+    id="videoDescription"
+    placeholder="Bayani"
+  ></textarea>
+
+  <input
+    id="videoUrl"
+    placeholder="YouTube URL"
+  >
+
+  <button onclick="saveVideo()">
+    ➕ Ajiye Video
+  </button>
+
+  <div id="videoMessage"></div>
+
+</div>
+
+
+<!-- ================= BOOKS ================= -->
+
+<div class="box section" id="books">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>📚 Ƙara Littafi</h2>
+
+  <input
+    id="bookTitle"
+    placeholder="Sunan Littafi"
+  >
+
+  <input
+    id="bookAuthor"
+    placeholder="Marubuci"
+  >
+
+  <textarea
+    id="bookDescription"
+    placeholder="Bayani"
+  ></textarea>
+
+  <input
+    id="bookUrl"
+    placeholder="PDF URL"
+  >
+
+  <button onclick="saveBook()">
+    ➕ Ajiye Littafi
+  </button>
+
+  <div id="bookMessage"></div>
+
+</div>
+
+
+<!-- ================= GALLERY ================= -->
+
+<div class="box section" id="gallery">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>🖼️ Ƙara Hoto</h2>
+
+  <input
+    id="galleryTitle"
+    placeholder="Taken Hoto"
+  >
+
+  <input
+    id="galleryImage"
+    placeholder="Image URL"
+  >
+
+  <textarea
+    id="galleryDescription"
+    placeholder="Bayani"
+  ></textarea>
+
+  <button onclick="saveGallery()">
+    ➕ Ajiye Hoto
+  </button>
+
+  <div id="galleryMessage"></div>
+
+</div>
+
+
+<!-- ================= SANARWA ================= -->
+
+<div class="box section" id="announcements">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>📢 Ƙara Sanarwa</h2>
+
+  <input
+    id="announcementTitle"
+    placeholder="Taken Sanarwa"
+  >
+
+  <textarea
+    id="announcementText"
+    placeholder="Rubuta sanarwa"
+  ></textarea>
+
+  <button onclick="saveAnnouncement()">
+    ➕ Ajiye Sanarwa
+  </button>
+
+  <div id="announcementMessage"></div>
+
+</div>
+
+
+<!-- ================= ABOUT IMAM ================= -->
+
+<div class="box section" id="about">
+
+  <button class="back" onclick="closeSections()">← Back</button>
+
+  <h2>🕌 About Imam</h2>
+
+  <input
+    id="aboutName"
+    placeholder="Sunan Imam"
+  >
+
+  <textarea
+    id="aboutText"
+    placeholder="Tarihin Imam / About Imam"
+  ></textarea>
+
+  <input
+    id="aboutImage"
+    placeholder="Image URL (optional)"
+  >
+
+  <button onclick="saveAbout()">
+    💾 Ajiye About Imam
+  </button>
+
+  <div id="aboutMessage"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= FIREBASE ================= -->
+
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
-  import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-  }
-    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
-
-  // =========================
-  // FIREBASE CONFIG
-  // =========================
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
-    authDomain: "imam-bichi-islamic-media.firebaseapp.com",
-    projectId: "imam-bichi-islamic-media",
-    storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
-    messagingSenderId: "87559095522",
-    appId: "1:87559095522:web:a2d9d783166f56aade8abb",
-    measurementId: "G-J2QD3SRX5N"
-  };
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-  // =========================
-  // INITIALIZE FIREBASE
-  // =========================
+/* ================= FIREBASE CONFIG ================= */
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
+
+  authDomain:
+  "imam-bichi-islamic-media.firebaseapp.com",
+
+  projectId:
+  "imam-bichi-islamic-media",
+
+  storageBucket:
+  "imam-bichi-islamic-media.firebasestorage.app",
+
+  messagingSenderId:
+  "87559095522",
+
+  appId:
+  "1:87559095522:web:a2d9d783166f56aade8abb",
+
+  measurementId:
+  "G-J2QD3SRX5N"
+};
 
 
-  // =========================
-  // ELEMENTS
-  // =========================
+/* ================= INITIALIZE ================= */
 
-  const loginSection =
-    document.getElementById("loginSection");
+const app = initializeApp(firebaseConfig);
 
-  const dashboard =
-    document.getElementById("dashboard");
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* ================= LOGIN ================= */
+
+document
+.getElementById("loginBtn")
+.addEventListener("click", async () => {
 
   const email =
-    document.getElementById("email");
+  document.getElementById("email").value.trim();
 
   const password =
-    document.getElementById("password");
-
-  const loginBtn =
-    document.getElementById("loginBtn");
-
-  const logoutBtn =
-    document.getElementById("logoutBtn");
+  document.getElementById("password").value;
 
   const message =
-    document.getElementById("message");
+  document.getElementById("loginMessage");
+
+  if(!email || !password){
+
+    message.textContent =
+    "Cika email da password.";
+
+    message.className =
+    "message error";
+
+    return;
+  }
+
+  const button =
+  document.getElementById("loginBtn");
+
+  button.disabled = true;
+  button.textContent = "Logging in...";
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    message.textContent =
+    "Login failed: " + error.code;
+
+    message.className =
+    "message error";
+
+    button.disabled = false;
+    button.textContent = "Login";
+  }
+
+});
 
 
-  // =========================
-  // LOGIN
-  // =========================
+/* ================= AUTH CHECK ================= */
 
-  loginBtn.addEventListener("click", async () => {
+onAuthStateChanged(auth, async (user) => {
 
-    message.textContent = "";
+  if(!user){
 
-    const emailValue = email.value.trim();
-    const passwordValue = password.value;
+    document.getElementById(
+      "loginBox"
+    ).style.display = "block";
 
-    if (!emailValue || !passwordValue) {
-      message.textContent =
-        "Please enter your email and password.";
+    document.getElementById(
+      "dashboard"
+    ).style.display = "none";
+
+    return;
+  }
+
+  try{
+
+    const userDoc =
+    await getDoc(
+      doc(db,"users",user.uid)
+    );
+
+    if(
+      !userDoc.exists() ||
+      userDoc.data().role !== "admin"
+    ){
+
+      alert("Ba ka da izinin Admin.");
+
+      await signOut(auth);
+
       return;
     }
 
-    loginBtn.disabled = true;
-    loginBtn.textContent = "Logging in...";
+    document.getElementById(
+      "loginBox"
+    ).style.display = "none";
 
-    try {
+    document.getElementById(
+      "dashboard"
+    ).style.display = "block";
 
-      await signInWithEmailAndPassword(
-        auth,
-        emailValue,
-        passwordValue
-      );
+  }catch(error){
 
-    } catch (error) {
+    console.error(error);
 
-      console.error(error);
-
-      message.textContent =
-        "Login failed: " + error.code;
-
-      loginBtn.disabled = false;
-      loginBtn.textContent = "Login";
-    }
-
-  });
-
-
-  // =========================
-  // AUTH STATE
-  // =========================
-
-  onAuthStateChanged(auth, (user) => {
-
-    if (user) {
-
-      loginSection.style.display = "none";
-      dashboard.style.display = "block";
-
-    } else {
-
-      loginSection.style.display = "block";
-      dashboard.style.display = "none";
-
-    }
-
-  });
-
-
-  // =========================
-  // LOGOUT
-  // =========================
-
-  logoutBtn.addEventListener("click", async () => {
+    alert(
+      "An kasa tabbatar da Admin: "
+      + error.message
+    );
 
     await signOut(auth);
+  }
 
+});
+
+
+/* ================= LOGOUT ================= */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click", async () => {
+
+  await signOut(auth);
+
+});
+
+
+/* ================= OPEN SECTION ================= */
+
+window.openSection = function(id){
+
+  document
+  .querySelectorAll(".section")
+  .forEach(section => {
+    section.style.display = "none";
   });
+
+  document.getElementById(id)
+  .style.display = "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+};
+
+
+/* ================= CLOSE ================= */
+
+window.closeSections = function(){
+
+  document
+  .querySelectorAll(".section")
+  .forEach(section => {
+    section.style.display = "none";
+  });
+
+};
+
+
+/* ================= MESSAGE ================= */
+
+function showMessage(id,text,success=true){
+
+  const box =
+  document.getElementById(id);
+
+  box.textContent = text;
+
+  box.className =
+  success
+  ? "message success"
+  : "message error";
+}
+
+
+/* ================= SAVE LECTURE ================= */
+
+window.saveLecture = async function(){
+
+  const title =
+  document.getElementById(
+    "lectureTitle"
+  ).value.trim();
+
+  const category =
+  document.getElementById(
+    "lectureCategory"
+  ).value;
+
+  const description =
+  document.getElementById(
+    "lectureDescription"
+  ).value.trim();
+
+  const videoUrl =
+  document.getElementById(
+    "lectureVideo"
+  ).value.trim();
+
+  const imageUrl =
+  document.getElementById(
+    "lectureImage"
+  ).value.trim();
+
+  if(!title || !category){
+
+    showMessage(
+      "lectureMessage",
+      "Saka Taken da Category.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"lectures"),
+      {
+        title,
+        category,
+        description,
+        videoUrl,
+        imageUrl,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "lectureMessage",
+      "An ajiye Karatu successfully."
+    );
+
+    document.getElementById(
+      "lectureTitle"
+    ).value="";
+
+    document.getElementById(
+      "lectureDescription"
+    ).value="";
+
+    document.getElementById(
+      "lectureVideo"
+    ).value="";
+
+    document.getElementById(
+      "lectureImage"
+    ).value="";
+
+  }catch(error){
+
+    showMessage(
+      "lectureMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE AUDIO ================= */
+
+window.saveAudio = async function(){
+
+  const title =
+  document.getElementById(
+    "audioTitle"
+  ).value.trim();
+
+  const description =
+  document.getElementById(
+    "audioDescription"
+  ).value.trim();
+
+  const audioUrl =
+  document.getElementById(
+    "audioUrl"
+  ).value.trim();
+
+  if(!title || !audioUrl){
+
+    showMessage(
+      "audioMessage",
+      "Saka Taken da Audio URL.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"audio"),
+      {
+        title,
+        description,
+        audioUrl,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "audioMessage",
+      "An ajiye Audio successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "audioMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE VIDEO ================= */
+
+window.saveVideo = async function(){
+
+  const title =
+  document.getElementById(
+    "videoTitle"
+  ).value.trim();
+
+  const description =
+  document.getElementById(
+    "videoDescription"
+  ).value.trim();
+
+  const videoUrl =
+  document.getElementById(
+    "videoUrl"
+  ).value.trim();
+
+  if(!title || !videoUrl){
+
+    showMessage(
+      "videoMessage",
+      "Saka Taken da YouTube URL.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"videos"),
+      {
+        title,
+        description,
+        videoUrl,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "videoMessage",
+      "An ajiye Video successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "videoMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE BOOK ================= */
+
+window.saveBook = async function(){
+
+  const title =
+  document.getElementById(
+    "bookTitle"
+  ).value.trim();
+
+  const author =
+  document.getElementById(
+    "bookAuthor"
+  ).value.trim();
+
+  const description =
+  document.getElementById(
+    "bookDescription"
+  ).value.trim();
+
+  const pdfUrl =
+  document.getElementById(
+    "bookUrl"
+  ).value.trim();
+
+  if(!title || !pdfUrl){
+
+    showMessage(
+      "bookMessage",
+      "Saka sunan littafi da PDF URL.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"books"),
+      {
+        title,
+        author,
+        description,
+        pdfUrl,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "bookMessage",
+      "An ajiye Littafi successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "bookMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE GALLERY ================= */
+
+window.saveGallery = async function(){
+
+  const title =
+  document.getElementById(
+    "galleryTitle"
+  ).value.trim();
+
+  const imageUrl =
+  document.getElementById(
+    "galleryImage"
+  ).value.trim();
+
+  const description =
+  document.getElementById(
+    "galleryDescription"
+  ).value.trim();
+
+  if(!title || !imageUrl){
+
+    showMessage(
+      "galleryMessage",
+      "Saka taken hoto da Image URL.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"gallery"),
+      {
+        title,
+        imageUrl,
+        description,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "galleryMessage",
+      "An ajiye Hoto successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "galleryMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE ANNOUNCEMENT ================= */
+
+window.saveAnnouncement = async function(){
+
+  const title =
+  document.getElementById(
+    "announcementTitle"
+  ).value.trim();
+
+  const text =
+  document.getElementById(
+    "announcementText"
+  ).value.trim();
+
+  if(!title || !text){
+
+    showMessage(
+      "announcementMessage",
+      "Saka taken da rubutun sanarwa.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"announcements"),
+      {
+        title,
+        text,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "announcementMessage",
+      "An ajiye Sanarwa successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "announcementMessage",
+      error.message,
+      false
+    );
+  }
+
+};
+
+
+/* ================= SAVE ABOUT ================= */
+
+window.saveAbout = async function(){
+
+  const name =
+  document.getElementById(
+    "aboutName"
+  ).value.trim();
+
+  const text =
+  document.getElementById(
+    "aboutText"
+  ).value.trim();
+
+  const imageUrl =
+  document.getElementById(
+    "aboutImage"
+  ).value.trim();
+
+  if(!name || !text){
+
+    showMessage(
+      "aboutMessage",
+      "Saka sunan Imam da tarihinsa.",
+      false
+    );
+
+    return;
+  }
+
+  try{
+
+    await setDoc(
+      doc(db,"site","about"),
+      {
+        name,
+        text,
+        imageUrl,
+        updatedAt:serverTimestamp()
+      }
+    );
+
+    showMessage(
+      "aboutMessage",
+      "An ajiye About Imam successfully."
+    );
+
+  }catch(error){
+
+    showMessage(
+      "aboutMessage",
+      error.message,
+      false
+    );
+  }
+
+};
 
 </script>
 
 </body>
-      </html>
+  </html>
