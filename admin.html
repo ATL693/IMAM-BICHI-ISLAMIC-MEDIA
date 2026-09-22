@@ -125,19 +125,16 @@
       signOut
     }
       from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
-
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuO-4T4",
-      authDomain: "imam-bichi-islamic-media.firebaseapp.com",
-      projectId: "imam-bichi-islamic-media",
-      storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
-      messagingSenderId: "87559095522",
-      appId: "1:87559095522:web:4668efc5a419d014de8abb",
-      measurementId: "G-LR92D06R4N"
-    };
-
-
+const firebaseConfig = {
+  apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuO-4T4",
+  authDomain: "imam-bichi-islamic-media.firebaseapp.com",
+  projectId: "imam-bichi-islamic-media",
+  storageBucket: "imam-bichi-islamic-media.firebasestorage.app",
+  messagingSenderId: "87559095522",
+  appId: "1:87559095522:web:4668efc5a419d014de8abb",
+  measurementId: "G-LR92D06R4N"
+};
+    
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
