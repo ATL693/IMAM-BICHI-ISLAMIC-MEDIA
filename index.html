@@ -4,23 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>IMAM BICHI ISLAMIC MEDIA</title>
+  <title>Imam Bichi Islamic Media</title>
 
-  <meta
-    name="description"
-    content="IMAM BICHI ISLAMIC MEDIA - Karatuttuka, Audio, Video, Littattafai, Hotuna da Sanarwa."
-  >
+  <meta name="description"
+        content="Imam Lawan Abubakar Ahmad Bichi - Karatuttuka, Wa'azai, Audio, Video, Littattafai da Ilimin Musulunci.">
 
   <style>
     :root {
       --green: #087443;
-      --dark-green: #064d2e;
-      --gold: #d8b23c;
-      --cream: #fbfaf3;
+      --dark-green: #04552f;
+      --gold: #d4af37;
+      --light-gold: #f4df9b;
+      --cream: #fffdf5;
       --white: #ffffff;
-      --text: #173126;
-      --muted: #687870;
-      --border: #e5ebe7;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e8e3d5;
+      --shadow: 0 8px 25px rgba(0,0,0,.08);
+      --radius: 16px;
     }
 
     * {
@@ -45,190 +46,286 @@
       color: inherit;
     }
 
-    .container {
-      width: 92%;
-      max-width: 1150px;
-      margin: auto;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    /* HEADER */
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .topbar {
+      background: var(--dark-green);
+      color: white;
+      padding: 7px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.97);
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      min-height: 72px;
+      max-width: 1200px;
+      margin: auto;
+      min-height: 75px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 12px 20px;
       gap: 20px;
     }
 
-    .logo {
-      font-size: 19px;
-      font-weight: 900;
-      color: var(--dark-green);
-      letter-spacing: .5px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .logo span {
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green);
       color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      border: 2px solid var(--gold);
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      color: var(--green);
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--muted);
     }
 
     nav {
       display: flex;
+      gap: 6px;
       align-items: center;
-      gap: 20px;
     }
 
     nav a {
-      font-size: 14px;
-      font-weight: 700;
-      color: #365247;
+      padding: 9px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      transition: .2s;
     }
 
     nav a:hover {
-      color: var(--green);
+      background: var(--green);
+      color: white;
     }
 
     .menu-btn {
       display: none;
-      border: none;
-      background: transparent;
-      font-size: 28px;
+      border: 0;
+      background: var(--green);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 9px;
+      font-size: 22px;
       cursor: pointer;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
-      padding: 85px 0;
       background:
-        linear-gradient(
-          135deg,
-          #edf7f1,
-          #fffaf0
-        );
+        linear-gradient(rgba(4,85,47,.91), rgba(4,85,47,.91)),
+        radial-gradient(circle at top right, #d4af37, transparent 35%);
+      color: white;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr .8fr;
-      gap: 55px;
-      align-items: center;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(212,175,55,.3);
+      border-radius: 50%;
+      right: -100px;
+      top: -100px;
     }
 
-    .eyebrow {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+    .hero-content {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
-    .hero h1 {
-      color: var(--dark-green);
-      font-size: clamp(38px, 6vw, 68px);
-      line-height: 1.05;
-      margin-bottom: 20px;
+    .arabic {
+      color: var(--light-gold);
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 5vw, 52px);
+      line-height: 1.2;
+      margin-bottom: 18px;
     }
 
     .hero p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+      color: #f1f5f3;
+      font-size: 16px;
     }
 
     .hero-buttons {
       margin-top: 28px;
       display: flex;
+      justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 19px;
+      display: inline-block;
+      padding: 12px 20px;
       border-radius: 10px;
-      background: var(--green);
-      color: white;
-      font-weight: 800;
-      border: 1px solid var(--green);
+      font-weight: bold;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: .2s;
     }
 
-    .btn:hover {
-      background: var(--dark-green);
+    .btn-gold {
+      background: var(--gold);
+      color: #17351f;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
     }
 
     .btn-outline {
+      border-color: rgba(255,255,255,.7);
+      color: white;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
       background: white;
       color: var(--green);
     }
 
-    .imam-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,.07);
-    }
-
-    .imam-image {
-      width: 100%;
-      height: 300px;
-      border-radius: 17px;
-      background: #edf5f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 75px;
-      color: var(--green);
-      margin-bottom: 20px;
-    }
-
-    .imam-card h2 {
-      color: var(--dark-green);
-      margin-bottom: 5px;
-    }
-
-    .imam-card p {
-      font-size: 14px;
-    }
-
-    /* SECTIONS */
+    /* =========================
+       GENERAL
+    ========================= */
 
     section {
-      padding: 75px 0;
+      padding: 70px 20px;
     }
 
-    .section-light {
-      background: white;
+    .container {
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .section-title {
+    .section-head {
       text-align: center;
       margin-bottom: 35px;
     }
 
-    .section-title h2 {
-      color: var(--dark-green);
-      font-size: 34px;
+    .section-head .small {
+      color: var(--gold);
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .section-head h2 {
+      color: var(--green);
+      font-size: 30px;
+      margin: 4px 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ANNOUNCEMENTS
+    ========================= */
+
+    .announcement-area {
+      background: #f8f4e7;
+    }
+
+    .announcement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .announcement-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .announcement-card h3 {
+      color: var(--green);
+      font-size: 17px;
       margin-bottom: 8px;
     }
 
-    .section-title p {
-      color: var(--muted);
+    .announcement-card p {
+      color: #4b5563;
+      font-size: 14px;
+      white-space: pre-line;
     }
 
-    /* CONTENT CARDS */
+    .date {
+      color: var(--gold);
+      font-size: 12px;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
 
     .cards {
       display: grid;
@@ -239,196 +336,410 @@
     .card {
       background: white;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 23px;
-      transition: .2s;
-    }
-
-    .section-light .card {
-      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: .25s;
     }
 
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
-    .icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 13px;
+    .card-image {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #edf2ee;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
       background: #e9f5ef;
       color: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 25px;
-      margin-bottom: 15px;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 9px;
     }
 
     .card h3 {
-      color: var(--dark-green);
-      margin-bottom: 7px;
+      color: #183d29;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
     .card p {
       color: var(--muted);
       font-size: 14px;
+      margin-bottom: 14px;
     }
 
-    /* ANNOUNCEMENT */
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-    .announcement {
-      background: var(--dark-green);
+    .small-btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--green);
       color: white;
-      border-radius: 18px;
-      padding: 28px;
+      font-size: 12px;
+      font-weight: bold;
     }
 
-    .announcement h3 {
-      color: #f2d46e;
-      margin-bottom: 8px;
+    .small-btn:hover {
+      background: var(--dark-green);
     }
 
-    .announcement p {
-      color: #dce9e2;
+    .gold-btn {
+      background: var(--gold);
+      color: #17351f;
     }
 
-    /* ABOUT */
+    /* =========================
+       AUDIO
+    ========================= */
+
+    .audio-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .audio-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 17px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.04);
+    }
+
+    .audio-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .audio-title {
+      color: var(--green);
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .audio-desc {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    audio {
+      width: 100%;
+      height: 42px;
+    }
+
+    /* =========================
+       VIDEOS
+    ========================= */
+
+    .video-frame {
+      width: 100%;
+      height: 210px;
+      border: 0;
+      background: #111;
+    }
+
+    /* =========================
+       BOOKS
+    ========================= */
+
+    .book-icon {
+      height: 170px;
+      background: linear-gradient(135deg, var(--green), var(--dark-green));
+      color: var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #eee;
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .3s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
 
     .about {
+      background: #f8f4e7;
+    }
+
+    .about-grid {
       display: grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 40px;
+      grid-template-columns: 320px 1fr;
+      gap: 45px;
       align-items: center;
     }
 
-    .about h2 {
-      color: var(--dark-green);
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
-
-    .about p {
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    .about-box {
-      background: var(--dark-green);
-      color: white;
+    .imam-photo {
+      width: 100%;
+      max-width: 320px;
+      height: 350px;
+      object-fit: cover;
       border-radius: 20px;
-      padding: 35px;
+      border: 5px solid white;
+      box-shadow: var(--shadow);
+      margin: auto;
     }
 
-    .about-box strong {
+    .about-content h2 {
+      color: var(--green);
+      font-size: 32px;
+      margin-bottom: 4px;
+    }
+
+    .about-content .title {
       color: var(--gold);
-      font-size: 24px;
-      display: block;
-      margin-bottom: 8px;
+      font-weight: bold;
+      margin-bottom: 18px;
     }
 
-    /* FOOTER */
+    .about-content p {
+      color: #4b5563;
+      margin-bottom: 15px;
+      white-space: pre-line;
+    }
+
+    .imam-message {
+      background: white;
+      border-left: 4px solid var(--gold);
+      border-radius: 10px;
+      padding: 18px;
+      font-style: italic;
+    }
+
+    /* =========================
+       LOADING / EMPTY
+    ========================= */
+
+    .loading {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      grid-column: 1 / -1;
+    }
+
+    .loading::before {
+      content: "⏳";
+      margin-right: 7px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      background: white;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      grid-column: 1 / -1;
+    }
+
+    .error-box {
+      background: #fff1f1;
+      color: #991b1b;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 20px;
+      display: none;
+      text-align: center;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
-      background: #052e1e;
-      color: #d9e7e0;
-      padding: 45px 0 20px;
+      background: var(--dark-green);
+      color: white;
+      padding: 45px 20px 20px;
     }
 
     .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 35px;
     }
 
-    .footer-title {
-      color: white;
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 8px;
+    footer h3 {
+      color: var(--light-gold);
+      margin-bottom: 12px;
     }
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+    footer p,
+    footer a {
+      color: #d9e6df;
+      font-size: 14px;
     }
 
-    .footer-links a:hover {
+    footer a {
+      display: block;
+      margin: 5px 0;
+    }
+
+    footer a:hover {
       color: var(--gold);
     }
 
     .copyright {
-      border-top: 1px solid #275341;
-      margin-top: 30px;
+      max-width: 1200px;
+      margin: 30px auto 0;
       padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.15);
       text-align: center;
-      color: #9fb6ac;
-      font-size: 13px;
+      color: #b9ccc2;
+      font-size: 12px;
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================= */
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: var(--shadow);
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 12px;
+      }
 
       .menu-btn {
         display: block;
       }
 
-      nav {
-        display: none;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 72px;
-        background: white;
-        padding: 18px 5%;
-        flex-direction: column;
-        align-items: flex-start;
-        border-bottom: 1px solid var(--border);
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
       .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .announcement-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .imam-message {
+        text-align: left;
+      }
+
+      .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 600px) {
+
+      .nav {
+        min-height: 65px;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-text h1 {
+        font-size: 14px;
+      }
 
       .hero {
-        padding: 60px 0;
+        padding: 65px 18px;
+      }
+
+      .hero h2 {
+        font-size: 31px;
       }
 
       section {
-        padding: 55px 0;
+        padding: 55px 15px;
       }
 
-      .cards {
+      .cards,
+      .announcement-grid {
         grid-template-columns: 1fr;
       }
 
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .audio-top {
+        align-items: flex-start;
         flex-direction: column;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .imam-image {
-        height: 240px;
       }
     }
   </style>
@@ -436,592 +747,1321 @@
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+  <!-- =========================
+       TOP BAR
+  ========================= -->
 
-<header>
-
-  <div class="container nav">
-
-    <a href="#home" class="logo">
-      🕌 IMAM <span>BICHI</span>
-    </a>
-
-    <button class="menu-btn" id="menuBtn">
-      ☰
-    </button>
-
-    <nav id="navigation">
-
-      <a href="#home">Gida</a>
-      <a href="#lectures">Karatuttuka</a>
-      <a href="#audio">Audio</a>
-      <a href="#video">Video</a>
-      <a href="#books">Littattafai</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#about">Game da Limami</a>
-
-    </nav>
-
+  <div class="topbar">
+    Bismillahir Rahmanir Rahim — Imam Bichi Islamic Media
   </div>
 
-</header>
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+    <div class="nav">
+
+      <a href="#home" class="brand">
+
+        <div class="brand-logo">
+          ☪
+        </div>
+
+        <div class="brand-text">
+          <h1>Imam Bichi Islamic Media</h1>
+          <span>Ilmi • Wa'azi • Al-Qur'ani • Sunnah</span>
+        </div>
+
+      </a>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <nav id="mainNav">
+        <a href="#home">Gida</a>
+        <a href="#announcements">Sanarwa</a>
+        <a href="#lectures">Karatuttuka</a>
+        <a href="#audio">Audio</a>
+        <a href="#videos">Video</a>
+        <a href="#books">Littattafai</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">Game da Imam</a>
+      </nav>
+
+    </div>
+  </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+  <!-- =========================
+       HERO
+  ========================= -->
 
-<main>
+  <section class="hero" id="home">
 
-<section class="hero" id="home">
+    <div class="hero-content">
 
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="eyebrow">
-        ILIMI • ADDINI • TUNATARWA
+      <div class="arabic">
+        بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
       </div>
 
-      <h1>
-        IMAM BICHI
-        ISLAMIC MEDIA
-      </h1>
+      <h2 id="heroTitle">
+        Imam Lawan Abubakar Ahmad Bichi
+      </h2>
 
-      <p>
-        Barka da zuwa shafin IMAM BICHI ISLAMIC MEDIA,
-        wurin tattara karatuttuka, wa'azuzzuka, audio,
-        video, littattafai, hotuna da sanarwa.
+      <p id="heroDescription">
+        Barka da zuwa Imam Bichi Islamic Media — dandali na karatuttuka,
+        wa'azai, audio, bidiyo, littattafai da sauran abubuwan ilimin Musulunci.
       </p>
 
       <div class="hero-buttons">
-
-        <a href="#lectures" class="btn">
-          📖 Duba Karatuttuka
+        <a href="#lectures" class="btn btn-gold">
+          Karatuttuka
         </a>
 
         <a href="#audio" class="btn btn-outline">
-          🎧 Saurari Audio
+          Saurari Audio
         </a>
-
       </div>
 
     </div>
 
+  </section>
 
-    <div class="imam-card">
 
-      <div class="imam-image">
-        🕌
-      </div>
-
-      <h2>
-        Babban Limamin Bichi
-      </h2>
-
-      <p>
-        Karatuttuka da bayanan ilimi
-      </p>
-
-    </div>
-
+  <div class="error-box" id="errorBox">
+    An samu matsala wajen haɗa homepage da Firebase.
   </div>
 
-</section>
 
+  <!-- =========================
+       ANNOUNCEMENTS
+  ========================= -->
 
-<!-- =========================
-     SANARWA
-========================= -->
+  <section class="announcement-area" id="announcements">
 
-<section>
+    <div class="container">
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="eyebrow">
-        SABON BAYANI
+      <div class="section-head">
+        <div class="small">Sabbin bayanai</div>
+        <h2>Sanarwa</h2>
+        <p>Sabbin sanarwa da bayanai daga Imam Bichi Islamic Media.</p>
       </div>
 
-      <h2>
-        Sanarwa
-      </h2>
-
-      <p>
-        Muhimman bayanai da sanarwa
-      </p>
-
-    </div>
-
-
-    <div class="announcement">
-
-      <h3>
-        Barka da zuwa IMAM BICHI ISLAMIC MEDIA
-      </h3>
-
-      <p>
-        Za a rika kawo muku sabbin karatuttuka,
-        wa'azuzzuka, audio, video, littattafai,
-        hotuna da sauran abubuwan ilimi a wannan shafi.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     KARATUTTUKA
-========================= -->
-
-<section class="section-light" id="lectures">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="eyebrow">
-        ILIMI
+      <div class="announcement-grid" id="announcementList">
+        <div class="loading">Ana ɗauko sanarwa...</div>
       </div>
 
-      <h2>
-        Karatuttuka
-      </h2>
-
-      <p>
-        Nemo kuma saurari karatuttukan ilimi
-      </p>
-
     </div>
 
-
-    <div class="cards">
-
-      <article class="card">
-
-        <div class="icon">📖</div>
-
-        <h3>
-          Tafsiri
-        </h3>
-
-        <p>
-          Karatuttukan Tafsirin Al-Qur'ani.
-        </p>
-
-      </article>
+  </section>
 
 
-      <article class="card">
+  <!-- =========================
+       LECTURES
+  ========================= -->
 
-        <div class="icon">📚</div>
+  <section id="lectures">
 
-        <h3>
-          Hadisi
-        </h3>
+    <div class="container">
 
-        <p>
-          Karatuttukan Hadisai da bayanansu.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="icon">🕌</div>
-
-        <h3>
-          Fiqhu
-        </h3>
-
-        <p>
-          Darussa da bayanai akan Fiqhun Musulunci.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="icon">☪️</div>
-
-        <h3>
-          Akida
-        </h3>
-
-        <p>
-          Darussan Akida da sauran fannoni na ilimi.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="icon">📜</div>
-
-        <h3>
-          Tarihi
-        </h3>
-
-        <p>
-          Tarihi da darussan da suka shafi Musulunci.
-        </p>
-
-      </article>
-
-
-      <article class="card">
-
-        <div class="icon">🎓</div>
-
-        <h3>
-          Sauran Darussa
-        </h3>
-
-        <p>
-          Wasu muhimman darussa da bayanai.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     AUDIO
-========================= -->
-
-<section id="audio">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="eyebrow">
-        SAURARO
+      <div class="section-head">
+        <div class="small">Ilimin Musulunci</div>
+        <h2>Karatuttuka</h2>
+        <p>Tafsir, Hadisi, Fiqhu, Akida, Tarihi da sauran karatuttuka.</p>
       </div>
 
-      <h2>
-        Audio
-      </h2>
-
-      <p>
-        Za a samu audio na karatuttuka a nan.
-      </p>
-
-    </div>
-
-
-    <div class="cards">
-
-      <article class="card">
-
-        <div class="icon">🎧</div>
-
-        <h3>
-          Sabon Audio
-        </h3>
-
-        <p>
-          Za a bayyana sunan karatu da audio
-          daga Admin Panel.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     VIDEO
-========================= -->
-
-<section class="section-light" id="video">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="eyebrow">
-        KALLI
+      <div class="cards" id="lectureList">
+        <div class="loading">Ana ɗauko karatuttuka...</div>
       </div>
 
-      <h2>
-        Video
-      </h2>
-
-      <p>
-        Videos na karatuttuka da wa'azuzzuka.
-      </p>
-
     </div>
 
-
-    <div class="cards">
-
-      <article class="card">
-
-        <div class="icon">🎥</div>
-
-        <h3>
-          Sabon Video
-        </h3>
-
-        <p>
-          Za a rika saka videos a nan
-          ta hanyar Admin Panel.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     LITATTAFAI
-========================= -->
+  <!-- =========================
+       AUDIO
+  ========================= -->
 
-<section id="books">
+  <section id="audio" style="background:#f8f4e7;">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-title">
-
-      <div class="eyebrow">
-        KARATU
+      <div class="section-head">
+        <div class="small">Sauti</div>
+        <h2>Audio</h2>
+        <p>Saurari karatuttuka da wa'azai.</p>
       </div>
 
-      <h2>
-        Littattafai
-      </h2>
-
-      <p>
-        Littattafai da PDF za su bayyana a nan.
-      </p>
-
-    </div>
-
-
-    <div class="cards">
-
-      <article class="card">
-
-        <div class="icon">📕</div>
-
-        <h3>
-          Littattafai / PDF
-        </h3>
-
-        <p>
-          Admin zai iya saka sabon littafi
-          ko PDF daga Admin Panel.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     GALLERY
-========================= -->
-
-<section class="section-light" id="gallery">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <div class="eyebrow">
-        HOTUNA
+      <div class="audio-list" id="audioList">
+        <div class="loading">Ana ɗauko audio...</div>
       </div>
 
-      <h2>
-        Gallery
-      </h2>
-
-      <p>
-        Hotunan karatuttuka da abubuwan da suka shafi shafin.
-      </p>
-
     </div>
 
-
-    <div class="cards">
-
-      <article class="card">
-
-        <div class="icon">🖼️</div>
-
-        <h3>
-          Gallery
-        </h3>
-
-        <p>
-          Za a rika saka hotuna daga Admin Panel.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     GAME DA LIMAMI
-========================= -->
+  <!-- =========================
+       VIDEOS
+  ========================= -->
 
-<section id="about">
+  <section id="videos">
 
-  <div class="container about">
+    <div class="container">
 
-    <div>
-
-      <div class="eyebrow">
-        GAME DA SHAFIN
+      <div class="section-head">
+        <div class="small">Bidiyo</div>
+        <h2>Videos</h2>
+        <p>Kalli karatuttuka da sauran bidiyoyi.</p>
       </div>
 
-      <h2>
-        Babban Limamin Bichi
-      </h2>
-
-      <p>
-        Wannan shafi an tsara shi domin tattara
-        da sauƙaƙa samun karatuttuka, wa'azuzzuka,
-        bayanai, hotuna da sauran abubuwan ilimi.
-      </p>
-
-      <p>
-        Za a rika sabunta shafin da sabbin abubuwan
-        ilimi domin masu ziyara su samu damar samun
-        bayanai cikin sauƙi.
-      </p>
+      <div class="cards" id="videoList">
+        <div class="loading">Ana ɗauko videos...</div>
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="about-box">
 
-      <strong>
-        IMAM BICHI
-      </strong>
+  <!-- =========================
+       BOOKS
+  ========================= -->
 
-      <span>
-        Islamic Media & Knowledge
-      </span>
+  <section id="books" style="background:#f8f4e7;">
+
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">Littattafai</div>
+        <h2>Littattafai / PDF</h2>
+        <p>Littattafan da aka samar domin ilmantarwa.</p>
+      </div>
+
+      <div class="cards" id="bookList">
+        <div class="loading">Ana ɗauko littattafai...</div>
+      </div>
 
     </div>
 
-  </div>
-
-</section>
-
-</main>
+  </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+  <!-- =========================
+       GALLERY
+  ========================= -->
 
-<footer>
+  <section id="gallery">
 
-  <div class="container">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">Hotuna</div>
+        <h2>Gallery</h2>
+        <p>Hotuna daga ayyuka da abubuwan ilimi.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryList">
+        <div class="loading">Ana ɗauko hotuna...</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT IMAM
+  ========================= -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">Game da Imam</div>
+        <h2>Game da Imam</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <div>
+          <img
+            id="imamPhoto"
+            class="imam-photo"
+            src=""
+            alt="Imam Lawan Abubakar Ahmad Bichi"
+            style="display:none;"
+          >
+
+          <div
+            id="imamPhotoPlaceholder"
+            class="imam-photo"
+            style="
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#087443;
+              color:#d4af37;
+              font-size:70px;
+            "
+          >
+            ☪
+          </div>
+        </div>
+
+        <div class="about-content">
+
+          <h2 id="imamName">
+            Imam Lawan Abubakar Ahmad Bichi
+          </h2>
+
+          <div class="title" id="imamTitle">
+            Babban Limamin Bichi
+          </div>
+
+          <p id="imamBiography">
+            Ana ɗauko bayanin Imam...
+          </p>
+
+          <div class="imam-message">
+
+            <strong style="color:#087443;">
+              Saƙon Imam
+            </strong>
+
+            <p id="imamMessage">
+              Ana ɗauko saƙon Imam...
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
 
     <div class="footer-grid">
 
       <div>
 
-        <div class="footer-title">
-          🕌 IMAM BICHI ISLAMIC MEDIA
-        </div>
+        <h3>Imam Bichi Islamic Media</h3>
 
         <p>
-          Ilimi • Addini • Tunatarwa
+          Dandali domin adana da yada karatuttuka,
+          wa'azai, audio, bidiyo, littattafai da
+          sauran abubuwan ilmantarwa na Musulunci.
         </p>
 
       </div>
 
+      <div>
 
-      <div class="footer-links">
+        <h3>Shafuka</h3>
 
         <a href="#home">Gida</a>
         <a href="#lectures">Karatuttuka</a>
         <a href="#audio">Audio</a>
-        <a href="#video">Video</a>
+        <a href="#videos">Video</a>
+
+      </div>
+
+      <div>
+
+        <h3>Ƙari</h3>
+
         <a href="#books">Littattafai</a>
-        <a href="#about">Game da Limami</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">Game da Imam</a>
 
       </div>
 
     </div>
 
-
     <div class="copyright">
-
-      © <span id="year"></span>
-      IMAM BICHI ISLAMIC MEDIA.
+      © <span id="year"></span> Imam Bichi Islamic Media.
       All Rights Reserved.
-
     </div>
 
-  </div>
-
-</footer>
+  </footer>
 
 
-<script>
+  <!-- =========================
+       FIREBASE
+  ========================= -->
 
-  // Mobile menu
-  const menuBtn = document.getElementById("menuBtn");
-  const navigation = document.getElementById("navigation");
+  <script type="module">
 
-  menuBtn.addEventListener("click", function () {
-    navigation.classList.toggle("active");
-  });
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+    import {
+      getFirestore,
+      collection,
+      doc,
+      onSnapshot
+    } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
-  // Close mobile menu after clicking a link
-  document.querySelectorAll("nav a").forEach(function(link) {
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
 
-    link.addEventListener("click", function() {
-      navigation.classList.remove("active");
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyC4vS0Y3N_qI5Q9YTA9hcrcRbg-Wo-GuT4",
+
+      authDomain:
+        "imam-bichi-islamic-media.firebaseapp.com",
+
+      projectId:
+        "imam-bichi-islamic-media",
+
+      storageBucket:
+        "imam-bichi-islamic-media.firebasestorage.app",
+
+      messagingSenderId:
+        "87559095522",
+
+      appId:
+        "1:87559095522:web:a2d9d783166f56aade8abb",
+
+      measurementId:
+        "G-J2QD3SRX5N"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mainNav = document.getElementById("mainNav");
+
+    menuBtn.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
     });
 
-  });
+    document.querySelectorAll("#mainNav a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+      });
+
+    });
 
 
-  // Current year
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+    /* =========================
+       YEAR
+    ========================= */
 
-</script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================
+       ERROR HANDLER
+    ========================= */
+
+    function showError(error) {
+
+      console.error("Firebase error:", error);
+
+      document.getElementById("errorBox").style.display =
+        "block";
+    }
+
+
+    /* =========================
+       HELPER FUNCTIONS
+    ========================= */
+
+    function value(data, names, fallback = "") {
+
+      for (const name of names) {
+
+        if (
+          data[name] !== undefined &&
+          data[name] !== null &&
+          String(data[name]).trim() !== ""
+        ) {
+          return data[name];
+        }
+
+      }
+
+      return fallback;
+    }
+
+
+    function safeText(text) {
+
+      if (
+        text === undefined ||
+        text === null
+      ) {
+        return "";
+      }
+
+      return String(text);
+    }
+
+
+    function escapeHTML(text) {
+
+      return safeText(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function getDate(data) {
+
+      const date = value(
+        data,
+        ["date", "createdAt", "publishedAt", "created"],
+        ""
+      );
+
+      if (!date) return "";
+
+      try {
+
+        if (
+          typeof date === "object" &&
+          date.toDate
+        ) {
+          return date.toDate().toLocaleDateString("en-GB");
+        }
+
+        return new Date(date).toLocaleDateString("en-GB");
+
+      } catch {
+
+        return safeText(date);
+      }
+    }
+
+
+    function youtubeId(url) {
+
+      if (!url) return "";
+
+      const text = String(url);
+
+      let match =
+        text.match(
+          /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/i
+        );
+
+      return match ? match[1] : "";
+    }
+
+
+    function normalizeUrl(url) {
+
+      if (!url) return "";
+
+      return String(url).trim();
+    }
+
+
+    /* =========================
+       ANNOUNCEMENTS
+    ========================= */
+
+    const announcementList =
+      document.getElementById("announcementList");
+
+    onSnapshot(
+      collection(db, "announcements"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          announcementList.innerHTML = `
+            <div class="empty">
+              Babu sanarwa a yanzu.
+            </div>
+          `;
+
+          return;
+        }
+
+        announcementList.innerHTML =
+          items.map(item => {
+
+            const title = value(
+              item,
+              ["title", "name", "heading"],
+              "Sanarwa"
+            );
+
+            const message = value(
+              item,
+              ["message", "description", "content", "text", "body"],
+              ""
+            );
+
+            return `
+              <article class="announcement-card">
+
+                <h3>
+                  ${escapeHTML(title)}
+                </h3>
+
+                <p>
+                  ${escapeHTML(message)}
+                </p>
+
+                ${
+                  getDate(item)
+                    ? `<div class="date">${escapeHTML(getDate(item))}</div>`
+                    : ""
+                }
+
+              </article>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       LECTURES
+    ========================= */
+
+    const lectureList =
+      document.getElementById("lectureList");
+
+    onSnapshot(
+      collection(db, "lectures"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          lectureList.innerHTML = `
+            <div class="empty">
+              Babu karatu da aka saka tukuna.
+            </div>
+          `;
+
+          return;
+        }
+
+        lectureList.innerHTML =
+          items.map(item => {
+
+            const title = value(
+              item,
+              ["title", "name", "heading"],
+              "Karatun Musulunci"
+            );
+
+            const category = value(
+              item,
+              ["category", "type", "subject"],
+              "Karatuttuka"
+            );
+
+            const description = value(
+              item,
+              ["description", "content", "summary", "details"],
+              ""
+            );
+
+            const speaker = value(
+              item,
+              ["speaker", "scholar", "imam", "author"],
+              ""
+            );
+
+            const url = normalizeUrl(
+              value(
+                item,
+                ["url", "link", "lectureUrl", "audioUrl", "videoUrl"],
+                ""
+              )
+            );
+
+            return `
+              <article class="card">
+
+                <div class="card-body">
+
+                  <span class="badge">
+                    ${escapeHTML(category)}
+                  </span>
+
+                  <h3>
+                    ${escapeHTML(title)}
+                  </h3>
+
+                  ${
+                    speaker
+                      ? `<p><strong>Malami:</strong> ${escapeHTML(speaker)}</p>`
+                      : ""
+                  }
+
+                  ${
+                    description
+                      ? `<p>${escapeHTML(description)}</p>`
+                      : ""
+                  }
+
+                  <div class="card-footer">
+
+                    ${
+                      getDate(item)
+                        ? `<span style="font-size:12px;color:#888;">
+                            ${escapeHTML(getDate(item))}
+                          </span>`
+                        : ""
+                    }
+
+                    ${
+                      url
+                        ? `<a
+                            href="${escapeHTML(url)}"
+                            target="_blank"
+                            rel="noopener"
+                            class="small-btn">
+                            Buɗe
+                          </a>`
+                        : ""
+                    }
+
+                  </div>
+
+                </div>
+
+              </article>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       AUDIO
+    ========================= */
+
+    const audioList =
+      document.getElementById("audioList");
+
+    onSnapshot(
+      collection(db, "audio"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          audioList.innerHTML = `
+            <div class="empty">
+              Babu audio da aka saka tukuna.
+            </div>
+          `;
+
+          return;
+        }
+
+        audioList.innerHTML =
+          items.map(item => {
+
+            const title = value(
+              item,
+              ["title", "name", "heading"],
+              "Audio"
+            );
+
+            const description = value(
+              item,
+              ["description", "content", "summary"],
+              ""
+            );
+
+            const audioUrl = normalizeUrl(
+              value(
+                item,
+                [
+                  "audioUrl",
+                  "url",
+                  "link",
+                  "fileUrl",
+                  "audio"
+                ],
+                ""
+              )
+            );
+
+            return `
+              <article class="audio-item">
+
+                <div class="audio-top">
+
+                  <div class="audio-title">
+                    ${escapeHTML(title)}
+                  </div>
+
+                  ${
+                    getDate(item)
+                      ? `<span style="font-size:12px;color:#888;">
+                          ${escapeHTML(getDate(item))}
+                        </span>`
+                      : ""
+                  }
+
+                </div>
+
+                ${
+                  description
+                    ? `<div class="audio-desc">
+                        ${escapeHTML(description)}
+                      </div>`
+                    : ""
+                }
+
+                ${
+                  audioUrl
+                    ? `<audio controls preload="none">
+                        <source src="${escapeHTML(audioUrl)}">
+                        Browser ɗinka baya tallafawa audio.
+                      </audio>`
+                    : `
+                      <div style="color:#991b1b;font-size:13px;">
+                        Ba a samu Audio URL ba.
+                      </div>
+                    `
+                }
+
+              </article>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       VIDEOS
+    ========================= */
+
+    const videoList =
+      document.getElementById("videoList");
+
+    onSnapshot(
+      collection(db, "videos"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          videoList.innerHTML = `
+            <div class="empty">
+              Babu bidiyo da aka saka tukuna.
+            </div>
+          `;
+
+          return;
+        }
+
+        videoList.innerHTML =
+          items.map(item => {
+
+            const title = value(
+              item,
+              ["title", "name", "heading"],
+              "Bidiyo"
+            );
+
+            const description = value(
+              item,
+              ["description", "content", "summary"],
+              ""
+            );
+
+            const videoUrl = normalizeUrl(
+              value(
+                item,
+                [
+                  "youtubeUrl",
+                  "videoUrl",
+                  "url",
+                  "link",
+                  "youtube"
+                ],
+                ""
+              )
+            );
+
+            const id = youtubeId(videoUrl);
+
+            return `
+              <article class="card">
+
+                ${
+                  id
+                    ? `
+                      <iframe
+                        class="video-frame"
+                        src="https://www.youtube.com/embed/${escapeHTML(id)}"
+                        title="${escapeHTML(title)}"
+                        loading="lazy"
+                        allowfullscreen>
+                      </iframe>
+                    `
+                    : `
+                      <div
+                        class="video-frame"
+                        style="
+                          display:flex;
+                          align-items:center;
+                          justify-content:center;
+                          color:white;
+                          font-size:45px;
+                        ">
+                        ▶
+                      </div>
+                    `
+                }
+
+                <div class="card-body">
+
+                  <h3>
+                    ${escapeHTML(title)}
+                  </h3>
+
+                  ${
+                    description
+                      ? `<p>${escapeHTML(description)}</p>`
+                      : ""
+                  }
+
+                  ${
+                    videoUrl
+                      ? `
+                        <a
+                          href="${escapeHTML(videoUrl)}"
+                          target="_blank"
+                          rel="noopener"
+                          class="small-btn">
+                          Buɗe Video
+                        </a>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              </article>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       BOOKS
+    ========================= */
+
+    const bookList =
+      document.getElementById("bookList");
+
+    onSnapshot(
+      collection(db, "books"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          bookList.innerHTML = `
+            <div class="empty">
+              Babu littafi da aka saka tukuna.
+            </div>
+          `;
+
+          return;
+        }
+
+        bookList.innerHTML =
+          items.map(item => {
+
+            const title = value(
+              item,
+              ["title", "name", "heading"],
+              "Littafi"
+            );
+
+            const author = value(
+              item,
+              ["author", "writer", "scholar"],
+              ""
+            );
+
+            const description = value(
+              item,
+              ["description", "content", "summary"],
+              ""
+            );
+
+            const pdfUrl = normalizeUrl(
+              value(
+                item,
+                [
+                  "pdfUrl",
+                  "bookUrl",
+                  "url",
+                  "link",
+                  "fileUrl"
+                ],
+                ""
+              )
+            );
+
+            return `
+              <article class="card">
+
+                <div class="book-icon">
+                  📖
+                </div>
+
+                <div class="card-body">
+
+                  <span class="badge">
+                    PDF / Littafi
+                  </span>
+
+                  <h3>
+                    ${escapeHTML(title)}
+                  </h3>
+
+                  ${
+                    author
+                      ? `<p>
+                          <strong>Marubuci:</strong>
+                          ${escapeHTML(author)}
+                        </p>`
+                      : ""
+                  }
+
+                  ${
+                    description
+                      ? `<p>${escapeHTML(description)}</p>`
+                      : ""
+                  }
+
+                  ${
+                    pdfUrl
+                      ? `
+                        <a
+                          href="${escapeHTML(pdfUrl)}"
+                          target="_blank"
+                          rel="noopener"
+                          class="small-btn gold-btn">
+                          Buɗe Littafi
+                        </a>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              </article>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    const galleryList =
+      document.getElementById("galleryList");
+
+    onSnapshot(
+      collection(db, "gallery"),
+
+      snapshot => {
+
+        const items = [];
+
+        snapshot.forEach(docSnap => {
+
+          items.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        });
+
+        items.reverse();
+
+        if (!items.length) {
+
+          galleryList.innerHTML = `
+            <div class="empty">
+              Babu hotuna da aka saka tukuna.
+            </div>
+          `;
+
+          return;
+        }
+
+        galleryList.innerHTML =
+          items.map(item => {
+
+            const imageUrl = normalizeUrl(
+              value(
+                item,
+                [
+                  "imageUrl",
+                  "photoUrl",
+                  "url",
+                  "image",
+                  "photo"
+                ],
+                ""
+              )
+            );
+
+            const title = value(
+              item,
+              ["title", "name", "caption", "description"],
+              "Gallery"
+            );
+
+            if (!imageUrl) return "";
+
+            return `
+              <a
+                href="${escapeHTML(imageUrl)}"
+                target="_blank"
+                rel="noopener"
+                class="gallery-item"
+                title="${escapeHTML(title)}">
+
+                <img
+                  src="${escapeHTML(imageUrl)}"
+                  alt="${escapeHTML(title)}"
+                  loading="lazy"
+                  onerror="this.style.display='none';"
+                >
+
+              </a>
+            `;
+
+          }).join("");
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       ABOUT IMAM
+       settings/aboutImam
+    ========================= */
+
+    onSnapshot(
+      doc(db, "settings", "aboutImam"),
+
+      snapshot => {
+
+        if (!snapshot.exists()) {
+          return;
+        }
+
+        const data = snapshot.data();
+
+
+        const name = value(
+          data,
+          ["name", "imamName"],
+          "Imam Lawan Abubakar Ahmad Bichi"
+        );
+
+        const title = value(
+          data,
+          ["title", "imamTitle"],
+          "Babban Limamin Bichi"
+        );
+
+        const photo = normalizeUrl(
+          value(
+            data,
+            ["photo", "photoUrl", "image", "imageUrl"],
+            ""
+          )
+        );
+
+        const biography = value(
+          data,
+          ["biography", "bio", "history", "description"],
+          ""
+        );
+
+        const message = value(
+          data,
+          ["message", "imamMessage"],
+          ""
+        );
+
+
+        document.getElementById("imamName")
+          .textContent = name;
+
+        document.getElementById("imamTitle")
+          .textContent = title;
+
+        document.getElementById("imamBiography")
+          .textContent = biography;
+
+        document.getElementById("imamMessage")
+          .textContent = message;
+
+
+        document.getElementById("heroTitle")
+          .textContent = name;
+
+
+        if (photo) {
+
+          const img =
+            document.getElementById("imamPhoto");
+
+          const placeholder =
+            document.getElementById("imamPhotoPlaceholder");
+
+          img.src = photo;
+          img.style.display = "block";
+          placeholder.style.display = "none";
+
+        }
+
+      },
+
+      showError
+    );
+
+
+    /* =========================
+       FIREBASE READY
+    ========================= */
+
+    console.log(
+      "Imam Bichi Islamic Media homepage connected to Firebase."
+    );
+
+  </script>
 
 </body>
-  </html>
+</html>
